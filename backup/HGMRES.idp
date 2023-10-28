@@ -22,28 +22,28 @@ func complex[int] PREC(complex[int] &l)
     complex[int] res=l;
 
     for(int i=0; i<npart; ++i)  {
-        if(usedARGV("-chopping")!=-1)
+        if(usedARGV("-oas")!=-1)
         {
             complex[int] bi(Ri[i].n);
             bi = Ri[i]*res;          // restricts rhs
             complex[int] ui = Ai[i] ^-1 *bi;    // local solves
             s[] += Ri[i]'*ui;                   // prolongation
         }
-        else if(usedARGV("-restricted")!=-1){
-            complex[int] bi(Ri[i].n);
-            bi = Ri[i]*res;          // restricts rhs
-            complex[int] ui = Ai[i] ^-1 *bi;    // local solves
-            bi = Di[i]*ui;                      // partition of unity
-            s[] += Ri[i]'*bi;                   // prolongation
-            //cout<< " use restricted!"<<endl;
-        }
-        else{
+        else if(usedARGV("-soras")!=-1){
             complex[int] bi(Ri[i].n);
             bi = Ri[i]*res;          // restricts rhs
             complex[int] ibi = Di[i]*bi;          // partition of unity
             complex[int] ui = Ai[i] ^-1 *ibi;    // local solves
             bi = Di[i]*ui;                      // partition of unity
             s[] += Ri[i]'*bi;                   // prolongation
+        }
+        else{
+           complex[int] bi(Ri[i].n);
+            bi = Ri[i]*res;          // restricts rhs
+            complex[int] ui = Ai[i] ^-1 *bi;    // local solves
+            bi = Di[i]*ui;                      // partition of unity
+            s[] += Ri[i]'*bi;                   // prolongation
+            //cout<< " use restricted!"<<endl;
         }
     }
 

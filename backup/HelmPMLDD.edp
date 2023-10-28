@@ -1,17 +1,16 @@
 
 include "getARGV.idp"
-int mpirank = 0;
 func vel = 1;//Ovt(x,y,z);  // km/s
 
+real t = clock();
 real freq = getARGV("-frequency",0.5); // Hz
-func k = 2.*pi*freq/vel;
-//func k = getARGV("-wavenumber", 2.*pi*freq/vel);
+real k = 2.*pi*freq/vel;
+k = getARGV("-wavenumber", k);
 real lambda = 2.*pi/k;
 
-if (mpirank == 0) cout << "lambda = " << lambda << endl;
-if (mpirank == 0) cout << "wave number = " << k << endl;
-
-
+cout << "running time: "<<clock()-t<<"  get k"<< endl;
+cout << "lambda = " << lambda << endl;
+cout << "wave number = " << k << endl;
 
 // dimensions of the domain
 real height = 1.;
@@ -22,12 +21,13 @@ real nppwl = 2.*pi*pow(k,0.25);//10  // can be adjusted to pollution-free 2.*pi*
 int  npl = ceil(nppwl*(height)/lambda);
 npl = npl+npl%2;  // number of elements in each direction is even 
                      // so that the point source in the center coincides with a mesh vertex
-real h = height/npl;
-int  layerspml = getARGV("-deltapml",2);//lambda/h/2; // can be adjusted
 // length of the pml
-real lengthpml = h*layerspml;
-if (mpirank == 0) cout << "nppwl = " << nppwl << ", h = "<< h << ", k to (-1-1/2p) = "<< pow(k, - 1.25)<< endl;
-if (mpirank == 0) cout << "layerspml = " << layerspml << ", lengthpml = "<< lengthpml << endl;
+real h = height/npl;
+real lengthpml = getARGV("lengthpml", 0.1);
+int  layerspml = ceil(lengthpml/h);//getARGV("-deltapml",2);//lambda/h/2; // can be adjusted
+lengthpml = h*layerspml;
+cout << "height = "<< height <<", length = "<<length<<", lengthpml = "<< lengthpml << ", layerspml = " << layerspml << endl;
+cout << "nppwl = " << nppwl << ", h = "<< h << ", k to (-1-1/2p) = "<< pow(k, - 1.25)<< endl;
 
 // generate mesh
 int nply = npl + 2*layerspml;
@@ -35,6 +35,7 @@ int nplx = (length+2*lengthpml)/h;
 mesh Th = square(nplx, nply, [x*(length+2*lengthpml)-lengthpml, y*(height+2*lengthpml)-lengthpml]);
 
 
+cout << "running time: "<<clock()-t<<"  get mesh"<< endl;
 // boundary label
 int borderg = 2;
 int[int] chlabpml=[1, borderg, 2, borderg, 3, borderg, 4, borderg];
@@ -61,7 +62,7 @@ real lengthpmli=lengthpml, xia, xib, yia, yib;
 //ENDIFMACRO
 */
 
-real apml = 1/h/h/layerspml/layerspml*10.0;
+real apml = getARGV("-apml", 1000.0);
     func sigmaix = pmli * ( (x>=xib)*(x-xib)*(x-xib)  +  (x<=xia)*(x-xia)*(x-xia))*apml;
     func sigmaiy = pmli * ( (y>=yib)*(y-yib)*(y-yib)  +  (y<=yia)*(y-yia)*(y-yia))*apml;
 
@@ -113,10 +114,14 @@ macro Varf(varfName, meshName, PhName)
 //fespace Vh(Th,P2);        // P1 fem space
 Vh<complex> u,rhs;
 Varf(vbp,Th,1)
+cout << "running time: "<<clock()-t<<"  define forms"<< endl;
 matrix<complex> A = vbp(Vh,Vh,solver = UMFPACK);  // global matrix
+cout << "running time: "<<clock()-t<<"  assemble A("<<A.n<<","<<A.m<<")"<< endl;
 rhs[] = vbp(0,Vh); 				 // global rhs
+cout << "running time: "<<clock()-t<<"  assemble rhs"<< endl;
 u[] = A^-1*rhs[];
 
+cout << "running time: "<<clock()-t<<"  direct solve"<< endl;
 Vh ureal = real(u);
 
 plot(ureal,wait=1,fill=1,dim=2,value=1,cmm = "numerical solution");
@@ -125,8 +130,10 @@ plot(ureal,wait=1,fill=1,dim=2,value=1,cmm = "numerical solution");
 cout << "setting up dd preconditioner....."<<endl;
 int npart = getARGV("-npart", 2);
 real[int] xian(npart),xibn(npart),yian(npart),yibn(npart); // coordinates for overlapping subdomains
-int overlaps = getARGV("-delta",2);
-cout << " num of subdomains: "<< npart <<", overlaps: "<<overlaps<<endl;
+real lengthoverlaps = getARGV("-lengthoverlaps",0.1);
+int overlaps = ceil(lengthoverlaps/h);//getARGV("-delta",2);
+lengthoverlaps = overlaps*h;
+cout << " num of subdomains: "<< npart <<", overlaps: "<<overlaps<<", length of overlaps: "<<lengthoverlaps<<endl;
 for(int i = 0; i<npart; i++){
     xian[i] = floor(length/npart*i/h)*h - overlaps*h;
     xibn[i] = floor(length/npart*(i+1)/h)*h + overlaps*h;
@@ -171,6 +178,7 @@ for(int i = 0; i<npart; i++){
     Ai[i] = ai(Vhi,Vhi,solver = UMFPACK, factorize=0);
 }
 
+cout << "running time: "<<clock()-t<<"  settup dd"<< endl;
 cout << "done! setting up dd preconditioner....."<<endl;
 // Iterative solver parameters
 real tol=getARGV("-tol",1e-10);    // tolerance for the iterative method
@@ -195,4 +203,5 @@ for(int i=0;i<ARGV.n;++i)
 {
     cout << ARGV[i] << "  ";
 }
-cout << endl;
+t = clock()-t;
+cout << endl << "running time: "<<t<< endl;
