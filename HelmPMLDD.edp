@@ -19,6 +19,7 @@ real length = 2.;
 // 10 ppwl
 real nppwl = 2.*pi*pow(k,0.25);//10  // can be adjusted to pollution-free 2.*pi*k^{1/2p} : lambda/nppwl = h = k^{-1-1/2p}
 int  npl = ceil(nppwl*(height)/lambda);
+npl = npl>80? npl:80;
 npl = npl+npl%2;  // number of elements in each direction is even 
                      // so that the point source in the center coincides with a mesh vertex
 // length of the pml
@@ -131,7 +132,7 @@ cout << "setting up dd preconditioner....."<<endl;
 int npart = getARGV("-npart", 2);
 real[int] xian(npart),xibn(npart),yian(npart),yibn(npart); // coordinates for overlapping subdomains
 real lengthoverlaps = getARGV("-lengthoverlaps",0.1);
-int overlaps = ceil(lengthoverlaps/h);//getARGV("-delta",2);
+int overlaps = getARGV(,"-overlaps",ceil(lengthoverlaps/h));//getARGV("-delta",2);
 lengthoverlaps = overlaps*h;
 cout << " num of subdomains: "<< npart <<", overlaps: "<<overlaps<<", length of overlaps: "<<lengthoverlaps<<endl;
 for(int i = 0; i<npart; i++){
@@ -144,7 +145,7 @@ xian[0] = 0.0;
 xibn[npart-1] = length;
 
 mesh[int] Thi(npart);          // sequence of ovr. meshes
-matrix<complex>[int] Ai(npart), Ri(npart), Di(npart);           // local restriction operators
+matrix<complex>[int] Ai(npart), Ri(npart), Di(npart),Dio(npart);           // local restriction operators
 matrix[int] Rir(npart), Dir(npart);           // local restriction operators
 for(int i = 0; i<npart; i++){
     func locali = (x>= xian[i] - lengthpml) && (x<=xibn[i] + lengthpml);
@@ -165,6 +166,14 @@ for(int i = 0; i<npart; i++){
                    + (x>xian[i]+overlaps*h*2 &&x<xibn[i]-overlaps*h*2);
     Dir[i] = chii[];
     Di[i] = Dir[i];
+    if(i==0)
+        chii = 1.0* (x<=xibn[i]);
+    else if(i==npart-1)
+        chii = 1.0* (x>=xian[i]);
+    else
+        chii = 1.0* (x>xian[i] &&x<xibn[i]);
+    Dir[i] = chii[];
+    Dio[i] = Dir[i];
     plot(Th,chii, cmm="chi", value=1, fill=1,wait=1);
     xia = xian[i];
     xib = xibn[i];

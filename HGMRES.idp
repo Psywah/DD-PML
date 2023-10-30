@@ -18,7 +18,7 @@ func complex[int] PREC(complex[int] &l)
     // Application of the preconditioner
     // M^{-1}*y = \sum Ri^T*Di*Ai^{-1}*Ri*y
     // Ri restriction operators, Ai local matrices
-    Vh<complex> s = 0, s0 = 0 ;
+    Vh<complex> s = 0, tmp = 0 ;
     complex[int] res=l;
 
     for(int i=0; i<npart; ++i)  {
@@ -37,13 +37,35 @@ func complex[int] PREC(complex[int] &l)
             bi = Di[i]*ui;                      // partition of unity
             s[] += Ri[i]'*bi;                   // prolongation
         }
+        else if(usedARGV("-sweep")!=-1){
+            complex[int] bi(Ri[i].n);
+            bi = Ri[i]*res;          // restricts rhs
+            complex[int] ui = Ai[i] ^-1 *bi;    // local solves
+            bi = Di[i]*ui;                      // partition of unity
+            s[] += Ri[i]'*bi;                   // prolongation
+            tmp[] = A*s[];
+            res = l;
+            res -= tmp[];
+        }
         else{
-           complex[int] bi(Ri[i].n);
+            complex[int] bi(Ri[i].n);
             bi = Ri[i]*res;          // restricts rhs
             complex[int] ui = Ai[i] ^-1 *bi;    // local solves
             bi = Di[i]*ui;                      // partition of unity
             s[] += Ri[i]'*bi;                   // prolongation
             //cout<< " use restricted!"<<endl;
+        }
+    }
+    if(usedARGV("-sweep")!=-1){
+        for(int i=npart-1; i>=0; --i)  {
+            complex[int] bi(Ri[i].n);
+            bi = Ri[i]*res;          // restricts rhs
+            complex[int] ui = Ai[i] ^-1 *bi;    // local solves
+            bi = Di[i]*ui;                      // partition of unity
+            s[] += Ri[i]'*bi;                   // prolongation
+            tmp[] = A*s[];
+            res = l;
+            res -= tmp[];
         }
     }
 
