@@ -207,16 +207,12 @@ include "HGMRES.idp"
 Vh<complex> un;
 Vh<complex> sol,er; // initial guess, final solution and error
 
-int gmres = getARGV("-gmres", 1); // 1 gmres, 0 Stationary iteraive solver
+bool gmres = getARGV("-gmres", 1);
 verbosity = 0;
-if(gmres==1)
+if(gmres)
     sol[] =  GMRES(un[], tol, maxit);
-//else if(method==2)
-//    sol[] =  StationaryIterate(un[], tol, maxit);
-else if(gmres==0)
-    sol[] =  StationaryIterateNew(un[], tol, maxit);
 else
-    cout<< "wrong method"<<endl;
+    sol[] =  StationaryIterate(un[], tol, maxit);
 
 ureal = real(sol);
 plot(ureal,wait=1,fill=1,dim=2,value=1,cmm = "numerical solution by iterative method");

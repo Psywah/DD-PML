@@ -18,38 +18,59 @@ func complex[int] PREC(complex[int] &l)
     // Application of the preconditioner
     // M^{-1}*y = \sum Ri^T*Di*Ai^{-1}*Ri*y
     // Ri restriction operators, Ai local matrices
-    Vh<complex> s = 0;
+    Vh<complex> s = 0, tmp = 0 ;
     complex[int] res=l;
-    if(usedARGV("-additive")!=-1){
-        for(int i=0; i<npart; ++i)  {
+
+    for(int i=0; i<npart; ++i)  {
+        if(usedARGV("-oas")!=-1)
+        {
+            complex[int] bi(Ri[i].n);
+            bi = Ri[i]*res;          // restricts rhs
+            complex[int] ui = Ai[i] ^-1 *bi;    // local solves
+            s[] += Ri[i]'*ui;                   // prolongation
+        }
+        else if(usedARGV("-soras")!=-1){
+            complex[int] bi(Ri[i].n);
+            bi = Ri[i]*res;          // restricts rhs
+            complex[int] ibi = Di[i]*bi;          // partition of unity
+            complex[int] ui = Ai[i] ^-1 *ibi;    // local solves
+            bi = Di[i]*ui;                      // partition of unity
+            s[] += Ri[i]'*bi;                   // prolongation
+        }
+        else if(usedARGV("-sweep")!=-1){
             complex[int] bi(Ri[i].n);
             bi = Ri[i]*res;          // restricts rhs
             complex[int] ui = Ai[i] ^-1 *bi;    // local solves
             bi = Di[i]*ui;                      // partition of unity
             s[] += Ri[i]'*bi;                   // prolongation
+            tmp[] = A*s[];
+            res = l;
+            res -= tmp[];
+            cout << "hello"<<endl;
         }
-    }else{
-        for(int i=0; i<npart; ++i)  {
-            complex[int] bi = Ri[i]*res;          // restricts rhs
+        else{
+            complex[int] bi(Ri[i].n);
+            bi = Ri[i]*res;          // restricts rhs
             complex[int] ui = Ai[i] ^-1 *bi;    // local solves
             bi = Di[i]*ui;                      // partition of unity
             s[] += Ri[i]'*bi;                   // prolongation
-            complex[int] tmp = Aapply(s[]);
-            res = l;
-            res -= tmp;
+            //cout<< " use restricted!"<<endl;
         }
-
+    }
+    if(usedARGV("-sweep")!=-1){
         for(int i=npart-1; i>=0; --i)  {
-            complex[int] bi = Ri[i]*res;          // restricts rhs
+            complex[int] bi(Ri[i].n);
+            bi = Ri[i]*res;          // restricts rhs
             complex[int] ui = Ai[i] ^-1 *bi;    // local solves
             bi = Di[i]*ui;                      // partition of unity
             s[] += Ri[i]'*bi;                   // prolongation
-            complex[int] tmp = Aapply(s[]);
+            tmp[] = A*s[];
             res = l;
-            res -= tmp;
+            res -= tmp[];
         }
     }
 
+    //s[]+=s0[];
     return s[];
 }/*# finRASPrecond #*/
 /*# debutGMRESsolve #*/
@@ -58,52 +79,21 @@ func complex[int] PRECnew(complex[int] &l, complex[int] u0)
     // Application of the preconditioner
     // M^{-1}*y = \sum Ri^T*Di*Ai^{-1}*Ri*y
     // Ri restriction operators, Ai local matrices
-    Vh<complex> s = 0, du=0;
+    Vh<complex> s = 0, tmp = 0 ;
     complex[int] res=l;
 
-    if(usedARGV("-additive")!=-1){
-        for(int i=0; i<npart; ++i)  {
-            complex[int] bi = Ri[i]*res;          // restricts rhs
-            complex[int] tmp = Ri[i]*u0;          // restricts rhs
-            complex[int] tmp1 = Ai[i]*tmp;
-            bi += tmp1;
-            tmp = intern[i]*bi;
-            complex[int] ui = Ai[i] ^-1 *tmp;    // local solves
+    if(usedARGV("-parallel")!=-1)
+    for(int i=0; i<npart; ++i)  {
+            complex[int] bi(Ri[i].n), tmp(Ri[i].n), tmp1(Ri[i].n);
+            tmp = Ri[i]*res;          // restricts rhs
+            bi = intern[i]*tmp;          // restricts rhs
+            tmp = Ri[i]*u0;
+            tmp *= -tgv;
+            bi += bord[i]*tmp;
+            complex[int] ui = Ai[i] ^-1 *bi;    // local solves
             bi = Di[i]*ui;                      // partition of unity
             s[] += Ri[i]'*bi;                   // prolongation
-        }
-    }else{
-        s[]=u0;
-        for(int i=0; i<npart; ++i)  {
-            complex[int] res = l - Aapply(du[]);
-            complex[int] bi = Ri[i]*res;
-            complex[int] si = Ri[i]*s[];          // restricts rhs
-            complex[int] tmp = Ai[i]*si;
-            bi += tmp;
-            tmp = intern[i]*bi;
-            complex[int] ui = Ai[i] ^-1 *tmp;    // local solves
-            si = Ri[i]*u0;
-            ui -= si;
-            bi = Di[i]*ui;                      // partition of unity
-            du[]+= Ri[i]'*bi;
-            s[] += Ri[i]'*bi;                   // prolongation
-        }
-        complex[int] u12 = s[];
-
-        for(int i=npart-1; i>=0; --i)  {
-            complex[int] res = l - Aapply(du[]);
-            complex[int] bi = Ri[i]*res;
-            complex[int] si = Ri[i]*s[];          // restricts rhs
-            complex[int] tmp = Ai[i]*si;
-            bi += tmp;
-            tmp = intern[i]*bi;
-            complex[int] ui = Ai[i] ^-1 *tmp;    // local solves
-            si = Ri[i]*u12;
-            ui -= si;
-            bi = Di[i]*ui;                      // partition of unity
-            du[]+= Ri[i]'*bi;
-            s[] += Ri[i]'*bi;                   // prolongation
-        }
+            //cout<< "tgv = "<< tgv<<endl;
     }
     return s[];
 }/*# finRASPrecond #*/
@@ -213,7 +203,6 @@ func complex[int] GMRES(complex[int] x0, real eps, int nbiter)
 }
 /*# finGMRESsolve #*/
 /*# debutIterativeSolve #*/
-/*
 func complex[int] StationaryIterate(complex[int] x0, real eps, int nbiter)
 {
     Vh<complex> r, z, v, un;
@@ -229,8 +218,8 @@ func complex[int] StationaryIterate(complex[int] x0, real eps, int nbiter)
     bool convgRes = false;
     un[] = x0;
     for(int it=0; it<nbiter; it++){
-       v[] = PREC(r[]);
-       //v[] = PRECnew(r[], un[]);
+       //v[] = PREC(r[]);
+       v[] = PRECnew(r[], un[]);
 
        un[] += v[];
        z[] = Aapply(un[]);
@@ -264,68 +253,3 @@ func complex[int] StationaryIterate(complex[int] x0, real eps, int nbiter)
     }
     return un[];
 }
-*/
-/*# finGMRESsolve #*/
-/*# debutIterativeSolve #*/
-
-func complex[int] StationaryIterateNew(complex[int] x0, real eps, int nbiter)
-{
-    Vh<complex> r, v, un, e;
-    real[int] res(nbiter+1),error(nbiter+1);
-    bool convgRes = false;
-    un[] = x0;
-    r[] = Aapply(un[]);
-    r[] -= rhs[];
-    r[] *= -1.0;
-
-    res[0] = r[].l2;      // initial residual norm
-
-    e[] = u[]-un[];
-    error[0] = e[].l2;
-    int it;
-    for(it=0; it<nbiter; it++){
-
-       if(usedARGV("-primal")!=-1){
-            v[] = PRECnew(r[], un[]);
-            un[] = v[];
-       }else{
-       v[] = PREC(r[]);
-       un[] += v[];
-       }
-
-       r[] = Aapply(un[]);
-       r[] -= rhs[];
-       r[] *= -1.0;
-
-       e[] = u[]-un[];
-       error[it+1] = e[].l2;
-       res[it+1] = r[].l2;      // initial residual norm
-       //if(error[it+1] < max(error[0]*eps, 1e-12) || res[it+1] < max(res[0]*eps,1e-12)){
-       //if(error[it+1] < error[0]*eps || res[it+1] < res[0]*eps){
-       if(res[it+1] < res[0]*eps){
-            convgRes = true;
-            it++;
-            break;
-        }
-    }
-    cout<< "error = [";
-    for(int i =0;i<it;i++)
-        cout<<error[i]+", ";
-    cout<< error[it] +"]"<<endl;
-    cout<< "res = [";
-    for(int i =0;i<it;i++)
-        cout<<res[i]+", ";
-    cout<< res[it] +"]"<<endl;
-    if(convgRes){
-            cout << "StationaryIterate has converged in " + (it) + " iterations " << endl;
-    }
-    else{
-            cout << "StationaryIterate can not converge in " + (it) + " iterations " << endl;
-    }
-            cout << "The relative residual is " +  res[it]/res[0] << endl;
-            cout << "The relative error is " +  error[it]/error[0] << endl;
-
-
-    return un[];
-}
-
