@@ -28,6 +28,27 @@ func complex[int] PREC(complex[int] &l)
             bi = Di[i]*ui;                      // partition of unity
             s[] += Ri[i]'*bi;                   // prolongation
         }
+    }else if(usedARGV("-sweep4")!=-1){
+        for(int i=0; i<npart; ++i)  {
+            complex[int] bi = Ri[i]*res;          // restricts rhs
+            complex[int] ui = Ai[i] ^-1 *bi;    // local solves
+            bi = Di[i]*ui;                      // partition of unity
+            s[] += Ri[i]'*bi;                   // prolongation
+            complex[int] tmp = Aapply(s[]);
+            res = l;
+            res -= tmp;
+        }
+
+        for(int i=npart-1; i>=0; --i)  {
+            complex[int] bi = Ri[i]*res;          // restricts rhs
+            complex[int] ui = Ai[i] ^-1 *bi;    // local solves
+            bi = Di[i]*ui;                      // partition of unity
+            s[] += Ri[i]'*bi;                   // prolongation
+            complex[int] tmp = Aapply(s[]);
+            res = l;
+            res -= tmp;
+        }
+
     }else{
         for(int i=0; i<npart; ++i)  {
             complex[int] bi = Ri[i]*res;          // restricts rhs
@@ -70,6 +91,34 @@ func complex[int] PRECnew(complex[int] &l, complex[int] u0)
             tmp = intern[i]*bi;
             complex[int] ui = Ai[i] ^-1 *tmp;    // local solves
             bi = Di[i]*ui;                      // partition of unity
+            s[] += Ri[i]'*bi;                   // prolongation
+        }
+    }else if(usedARGV("-sweep4")!=-1){
+        s[]=u0;
+        for(int i=0; i<npart; ++i)  {
+            complex[int] res = l - Aapply(du[]);
+            complex[int] bi = Ri[i]*res;
+            complex[int] ui = Ai[i] ^-1 *bi;    // local solves
+            complex[int] si = Ri[i]*s[];          // restricts rhs
+            complex[int] tmp = Ri[i]*u0;
+            si -= tmp;
+            ui += si;
+            bi = Di[i]*ui;                      // partition of unity
+            du[]+= Ri[i]'*bi;
+            s[] += Ri[i]'*bi;                   // prolongation
+        }
+        complex[int] u12 = s[];
+
+        for(int i=npart-1; i>=0; --i)  {
+            complex[int] res = l - Aapply(du[]);
+            complex[int] bi = Ri[i]*res;
+            complex[int] ui = Ai[i] ^-1 *bi;    // local solves
+            complex[int] si = Ri[i]*s[];          // restricts rhs
+            complex[int] tmp = Ri[i]*u12;
+            si -= tmp;
+            ui += si;
+            bi = Di[i]*ui;                      // partition of unity
+            du[]+= Ri[i]'*bi;
             s[] += Ri[i]'*bi;                   // prolongation
         }
     }else{
