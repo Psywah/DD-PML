@@ -2,21 +2,45 @@
 # first argument wave number, second argument prec type(sweep )
 echo "Hello World!"
 
-#echo "number of subdomain $1"
+echo "number of subdomain $1"
 #echo "overlap length $2"
 
-FreeFem++  HelmPMLDD.edp -ns -nw -lengthoverlaps 0.025 -lengthpml 0.025 -gmres 0 -apml 5000  -wavenumber 40 -npart 2 -primal -sweep4
-FreeFem++  HelmPMLDD.edp -ns -nw -lengthoverlaps 0.025 -lengthpml 0.025 -gmres 0 -apml 5000  -wavenumber 40 -npart 4 -primal -sweep4
-FreeFem++  HelmPMLDD.edp -ns -nw -lengthoverlaps 0.025 -lengthpml 0.025 -gmres 0 -apml 5000  -wavenumber 40 -npart 8 -primal -sweep4
-FreeFem++  HelmPMLDD.edp -ns -nw -lengthoverlaps 0.025 -lengthpml 0.025 -gmres 0 -apml 5000  -wavenumber 80 -npart 2 -primal -sweep4
-FreeFem++  HelmPMLDD.edp -ns -nw -lengthoverlaps 0.025 -lengthpml 0.025 -gmres 0 -apml 5000  -wavenumber 80 -npart 4 -primal -sweep4
-FreeFem++  HelmPMLDD.edp -ns -nw -lengthoverlaps 0.025 -lengthpml 0.025 -gmres 0 -apml 5000  -wavenumber 80 -npart 8 -primal -sweep4
-FreeFem++  HelmPMLDD.edp -ns -nw -lengthoverlaps 0.025 -lengthpml 0.025 -gmres 0 -apml 5000  -wavenumber 120 -npart 2 -primal -sweep4
-FreeFem++  HelmPMLDD.edp -ns -nw -lengthoverlaps 0.025 -lengthpml 0.025 -gmres 0 -apml 5000  -wavenumber 120 -npart 4 -primal -sweep4
-FreeFem++  HelmPMLDD.edp -ns -nw -lengthoverlaps 0.025 -lengthpml 0.025 -gmres 0 -apml 5000  -wavenumber 120 -npart 8 -primal -sweep4
-FreeFem++  HelmPMLDD.edp -ns -nw -lengthoverlaps 0.025 -lengthpml 0.025 -gmres 0 -apml 5000  -wavenumber 160 -npart 2 -primal -sweep4
-FreeFem++  HelmPMLDD.edp -ns -nw -lengthoverlaps 0.025 -lengthpml 0.025 -gmres 0 -apml 5000  -wavenumber 160 -npart 4 -primal -sweep4
-FreeFem++  HelmPMLDD.edp -ns -nw -lengthoverlaps 0.025 -lengthpml 0.025 -gmres 0 -apml 5000  -wavenumber 160 -npart 8 -primal -sweep4
+FreeFem++  HelmPMLDD.edp -ns -nw -lengthoverlaps 0.025 -gmres 0  -wavenumber 40 -npart 2  -primal -sweep4
+FreeFem++  HelmPMLDD.edp -ns -nw -lengthoverlaps 0.0125 -gmres 0  -wavenumber 40 -npart 2   -primal -sweep4 
+FreeFem++  HelmPMLDD.edp -ns -nw -overlaps 1 -gmres 0  -wavenumber 40 -npart 2   -primal -sweep4-additive
+FreeFem++  HelmPMLDD.edp -ns -nw -lengthoverlaps 0.025 -gmres 0  -wavenumber 40 -npart 4   -primal -sweep4
+FreeFem++  HelmPMLDD.edp -ns -nw -lengthoverlaps 0.0125 -gmres 0  -wavenumber 40 -npart 4   -primal -sweep4
+FreeFem++  HelmPMLDD.edp -ns -nw -overlaps 1 -gmres 0  -wavenumber 40 -npart 4   -primal -sweep4
+FreeFem++  HelmPMLDD.edp -ns -nw -lengthoverlaps 0.025 -gmres 0  -wavenumber 40 -npart 8   -primal -sweep4
+FreeFem++  HelmPMLDD.edp -ns -nw -lengthoverlaps 0.0125 -gmres 0  -wavenumber 40 -npart 8   -primal -sweep4
+FreeFem++  HelmPMLDD.edp -ns -nw -overlaps 1 -gmres 0  -wavenumber 40 -npart 8   -primal -sweep4
+FreeFem++  HelmPMLDD.edp -ns -nw -lengthoverlaps 0.025 -gmres 0  -wavenumber 80 -npart 2   -primal -sweep4
+FreeFem++  HelmPMLDD.edp -ns -nw -lengthoverlaps 0.0125 -gmres 0  -wavenumber 80 -npart 2   -primal -sweep4
+FreeFem++  HelmPMLDD.edp -ns -nw -overlaps 1 -gmres 0  -wavenumber 80 -npart 2   -primal -sweep4
+FreeFem++  HelmPMLDD.edp -ns -nw -lengthoverlaps 0.025 -gmres 0  -wavenumber 80 -npart 4   -primal -sweep4
+FreeFem++  HelmPMLDD.edp -ns -nw -lengthoverlaps 0.0125 -gmres 0  -wavenumber 80 -npart 4   -primal -sweep4
+FreeFem++  HelmPMLDD.edp -ns -nw -overlaps 1 -gmres 0  -wavenumber 80 -npart 4   -primal -sweep4
+FreeFem++  HelmPMLDD.edp -ns -nw -lengthoverlaps 0.025 -gmres 0  -wavenumber 80 -npart 8   -primal -sweep4
+FreeFem++  HelmPMLDD.edp -ns -nw -lengthoverlaps 0.0125 -gmres 0  -wavenumber 80 -npart 8   -primal -sweep4
+FreeFem++  HelmPMLDD.edp -ns -nw -overlaps 1 -gmres 0  -wavenumber 80 -npart 8   -primal -sweep4
+FreeFem++  HelmPMLDD.edp -ns -nw -lengthoverlaps 0.025 -gmres 0  -wavenumber 120 -npart 2   -primal -sweep4
+FreeFem++  HelmPMLDD.edp -ns -nw -lengthoverlaps 0.0125 -gmres 0  -wavenumber 120 -npart 2   -primal -sweep4
+FreeFem++  HelmPMLDD.edp -ns -nw -overlaps 1 -gmres 0  -wavenumber 120 -npart 2   -primal -sweep4
+FreeFem++  HelmPMLDD.edp -ns -nw -lengthoverlaps 0.025 -gmres 0  -wavenumber 120 -npart 4   -primal -sweep4
+FreeFem++  HelmPMLDD.edp -ns -nw -lengthoverlaps 0.0125 -gmres 0  -wavenumber 120 -npart 4   -primal -sweep4
+FreeFem++  HelmPMLDD.edp -ns -nw -overlaps 1 -gmres 0  -wavenumber 120 -npart 4   -primal -sweep4
+FreeFem++  HelmPMLDD.edp -ns -nw -lengthoverlaps 0.025 -gmres 0  -wavenumber 120 -npart 8   -primal -sweep4
+FreeFem++  HelmPMLDD.edp -ns -nw -lengthoverlaps 0.0125 -gmres 0  -wavenumber 120 -npart 8   -primal -sweep4
+FreeFem++  HelmPMLDD.edp -ns -nw -overlaps 1 -gmres 0  -wavenumber 120 -npart 8   -primal -sweep4
+FreeFem++  HelmPMLDD.edp -ns -nw -lengthoverlaps 0.025 -gmres 0  -wavenumber 160 -npart 2   -primal -sweep4
+FreeFem++  HelmPMLDD.edp -ns -nw -lengthoverlaps 0.0125 -gmres 0  -wavenumber 160 -npart 2   -primal -sweep4
+FreeFem++  HelmPMLDD.edp -ns -nw -overlaps 1 -gmres 0  -wavenumber 160 -npart 2   -primal -sweep4
+FreeFem++  HelmPMLDD.edp -ns -nw -lengthoverlaps 0.025 -gmres 0  -wavenumber 160 -npart 4   -primal -sweep4
+FreeFem++  HelmPMLDD.edp -ns -nw -lengthoverlaps 0.0125 -gmres 0  -wavenumber 160 -npart 4   -primal -sweep4
+FreeFem++  HelmPMLDD.edp -ns -nw -overlaps 1 -gmres 0  -wavenumber 160 -npart 4   -primal -sweep4
+FreeFem++  HelmPMLDD.edp -ns -nw -lengthoverlaps 0.025 -gmres 0  -wavenumber 160 -npart 8   -primal -sweep4
+FreeFem++  HelmPMLDD.edp -ns -nw -lengthoverlaps 0.0125 -gmres 0  -wavenumber 160 -npart 8   -primal -sweep4
+FreeFem++  HelmPMLDD.edp -ns -nw -overlaps 1 -gmres 0  -wavenumber 160 -npart 8   -primal -sweep4
 
 
 #echo "number of subdomain $1"
