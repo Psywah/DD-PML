@@ -82,8 +82,10 @@ func sigmax = max ( sigmaix, sigmagx );
 func sigmay = max ( sigmaiy, sigmagy );
 
 // point source in the center of the domain
-real xs = length/2.;
-real ys = height/2.;
+int npart = getARGV("-npart", 2);
+int npartx = getARGV("-npartx", 2); // for checkerboard
+real xs = length/npartx/2.;
+real ys = height/npartx/2.;
 
 // remove singularity at the source when computing error and plotting
 func supp = sqrt((x-xs)^2+(y-ys)^2) > lambda;
@@ -129,8 +131,6 @@ plot(ureal,wait=1,fill=1,dim=2,value=1,cmm = "numerical solution");
 
 // Domain decomposition data structures
 cout << "setting up dd preconditioner....."<<endl;
-int npart = getARGV("-npart", 2);
-int npartx = getARGV("-npartx", 2); // for checkerboard
 npart = npartx * npartx; // for checkerboard
 real[int] xian(npart),xibn(npart),yian(npart),yibn(npart); // coordinates for overlapping subdomains
 real lengthoverlaps = getARGV("-lengthoverlaps",0.1);
