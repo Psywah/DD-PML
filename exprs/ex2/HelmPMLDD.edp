@@ -123,6 +123,10 @@ fespace Ph(Th,P0);        // P1 fem space
 
 Ph plotc = nn;
 plot(plotc, cmm="wave velocity", value=1, fill=1,wait=1);
+load "iovtk"
+int[int] Order = [1];
+string DataName = "u";
+savevtk("u.vtu", Th, plotc, dataname=DataName, order=Order);
 
 
 macro Varf(varfName, meshName, PhName)
