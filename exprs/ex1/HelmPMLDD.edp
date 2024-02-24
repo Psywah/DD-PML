@@ -24,7 +24,7 @@ npl = npl+npl%2;  // number of elements in each direction is even
                      // so that the point source in the center coincides with a mesh vertex
 // length of the pml
 real h = height/npl;
-real lengthpml = getARGV("lengthpml", 0.1);
+real lengthpml = getARGV("-lengthpml", 0.1);
 int  layerspml = ceil(lengthpml/h);//getARGV("-deltapml",2);//lambda/h/2; // can be adjusted
 lengthpml = h*layerspml;
 cout << "height = "<< height <<", length = "<<length<<", lengthpml = "<< lengthpml << ", layerspml = " << layerspml << endl;
