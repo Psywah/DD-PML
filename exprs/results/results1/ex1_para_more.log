@@ -1,0 +1,494 @@
+Hello World!
+number of subdomain 
+-- FreeFem++ v4.13 (2024年 01月 20日 星期六 00:49:06 CST - git no git)
+   file : HelmPMLDD.edp
+ Load: lg_fem lg_mesh lg_mesh3 eigenvalue 
+
+ *** Warning  The identifier z hide a Global identifier  
+
+ *** Warning  The identifier y hide a Global identifier  
+ sizestack + 1024 =22456  ( 21432 )
+
+running time: 0.000159  get k
+lambda = 0.15708
+wave number = 40
+height = 1, length = 1, lengthpml = 0.0294118, layerspml = 3
+nppwl = 15.8014, h = 0.00980392, k to (-1-1/2p) = 0.00994088
+  -- Square mesh : nb vertices  =11881 ,  nb triangles = 23328 ,  nb boundary edges 432
+running time: 0.004212  get mesh
+running time: 0.05911  define forms
+running time: 0.333329  assemble A(47089,47089)
+running time: 0.364881  assemble rhs
+running time: 0.364884  direct solve
+setting up dd preconditioner.....
+ num of subdomains: 2, overlaps: 3, length of overlaps: 0.0294118
+running time: 0.953431  settup dd
+done! setting up dd preconditioner.....
+Gmres:
+ r = [ 0.00033703, 0.000108151, 1.25053e-05, 5.20807e-07, 3.58513e-08, 1.49666e-09, 5.57921e-11, 1.37933e-12, 4.05155e-14, 1.58594e-15, 5.98906e-17];
+GMRES has converged in resudual 9 iterations 
+The relative residual is 1.77701e-13
+Stationary iteration:
+error = [0, 61.9837, 58.1063, 58.1315, 58.1148, 58.1123, 58.1125, 58.1125, 58.1125, 58.1125, 58.1125, 58.1125, 58.1125, 58.1125]
+res = [0.000353957, 0.000126816, 1.50587e-05, 1.0969e-06, 8.26023e-08, 1.35909e-08, 1.60643e-09, 1.53777e-10, 1.52925e-11, 1.89434e-12, 2.32191e-13, 2.45501e-14, 2.57126e-15, 3.00875e-16]
+StationaryIterate has converged in 13 iterations 
+The relative residual is 8.50031e-13
+58.1125/0 : d d d
+  current line = 375
+ call StationaryIterateNew  at  line 223
+Exec error :  Div by 0
+   -- number :1
+Exec error :  Div by 0
+   -- number :1
+ err code 8 ,  mpirank 0
+-- FreeFem++ v4.13 (2024年 01月 20日 星期六 00:49:06 CST - git no git)
+   file : HelmPMLDD.edp
+ Load: lg_fem lg_mesh lg_mesh3 eigenvalue 
+
+ *** Warning  The identifier z hide a Global identifier  
+
+ *** Warning  The identifier y hide a Global identifier  
+ sizestack + 1024 =22456  ( 21432 )
+
+running time: 8.1e-05  get k
+lambda = 0.15708
+wave number = 40
+height = 1, length = 1, lengthpml = 0.0294118, layerspml = 3
+nppwl = 15.8014, h = 0.00980392, k to (-1-1/2p) = 0.00994088
+  -- Square mesh : nb vertices  =11881 ,  nb triangles = 23328 ,  nb boundary edges 432
+running time: 0.002659  get mesh
+running time: 0.033261  define forms
+running time: 0.276318  assemble A(47089,47089)
+running time: 0.299955  assemble rhs
+running time: 0.299958  direct solve
+setting up dd preconditioner.....
+ num of subdomains: 4, overlaps: 3, length of overlaps: 0.0294118
+running time: 0.994866  settup dd
+done! setting up dd preconditioner.....
+Gmres:
+ r = [ 0.000194902, 0.000295464, 4.74172e-05, 2.57873e-05, 1.41586e-05, 1.18473e-06, 6.7212e-07, 3.59267e-07, 6.25816e-08, 3.34924e-08, 1.38768e-08, 2.27634e-09, 1.02746e-09, 4.25936e-10, 7.11462e-11, 2.60603e-11, 1.26473e-11, 3.12674e-12, 1.11207e-12, 4.06106e-13, 1.07947e-13, 3.60407e-14, 1.30752e-14, 4.23731e-15, 1.49397e-15, 3.8426e-16, 1.62386e-16];
+GMRES has converged in resudual 25 iterations 
+The relative residual is 8.33168e-13
+Stationary iteration:
+error = [0, 49.2099, 60.3995, 57.8729, 58.0943, 58.1397, 58.1241, 58.1162, 58.1111, 58.1107, 58.1118, 58.1126, 58.1125, 58.1125, 58.1125, 58.1125, 58.1125, 58.1125, 58.1125, 58.1125, 58.1125, 58.1125, 58.1125, 58.1125, 58.1125, 58.1125, 58.1125, 58.1125, 58.1125, 58.1125]
+res = [0.000353957, 0.000581073, 9.1151e-05, 3.49479e-05, 2.3054e-05, 3.51039e-06, 1.07447e-06, 8.13613e-07, 1.46993e-07, 6.23687e-08, 4.56763e-08, 7.80389e-09, 3.10212e-09, 2.13162e-09, 4.10566e-10, 1.50497e-10, 1.15518e-10, 1.8558e-11, 9.33161e-12, 6.09025e-12, 1.19129e-12, 4.08081e-13, 2.40568e-13, 4.44788e-14, 2.28558e-14, 1.6075e-14, 2.79118e-15, 1.34705e-15, 8.08539e-16, 1.59881e-16]
+StationaryIterate has converged in 29 iterations 
+The relative residual is 4.51697e-13
+58.1125/0 : d d d
+  current line = 375
+ call StationaryIterateNew  at  line 223
+Exec error :  Div by 0
+   -- number :1
+Exec error :  Div by 0
+   -- number :1
+ err code 8 ,  mpirank 0
+-- FreeFem++ v4.13 (2024年 01月 20日 星期六 00:49:06 CST - git no git)
+   file : HelmPMLDD.edp
+ Load: lg_fem lg_mesh lg_mesh3 eigenvalue 
+
+ *** Warning  The identifier z hide a Global identifier  
+
+ *** Warning  The identifier y hide a Global identifier  
+ sizestack + 1024 =22456  ( 21432 )
+
+running time: 0.000108  get k
+lambda = 0.15708
+wave number = 40
+height = 1, length = 1, lengthpml = 0.0294118, layerspml = 3
+nppwl = 15.8014, h = 0.00980392, k to (-1-1/2p) = 0.00994088
+  -- Square mesh : nb vertices  =11881 ,  nb triangles = 23328 ,  nb boundary edges 432
+running time: 0.003568  get mesh
+running time: 0.044649  define forms
+running time: 0.331457  assemble A(47089,47089)
+running time: 0.35466  assemble rhs
+running time: 0.354663  direct solve
+setting up dd preconditioner.....
+ num of subdomains: 8, overlaps: 3, length of overlaps: 0.0294118
+running time: 1.26606  settup dd
+done! setting up dd preconditioner.....
+Gmres:
+ r = [ 0.000178624, 0.00030558, 0.000264489, 0.000229917, 6.00111e-05, 3.86662e-05, 1.97046e-05, 1.23845e-05, 7.49716e-06, 4.45054e-06, 3.27009e-06, 1.88408e-06, 1.11036e-06, 4.65487e-07, 3.03619e-07, 1.49252e-07, 1.06839e-07, 6.64284e-08, 2.90091e-08, 1.86647e-08, 7.87356e-09, 5.59879e-09, 3.63636e-09, 2.11261e-09, 1.13808e-09, 5.95531e-10, 3.77398e-10, 2.02522e-10, 1.2048e-10, 7.44869e-11, 4.36296e-11, 1.99133e-11, 9.36918e-12, 6.53288e-12, 4.55999e-12, 2.09876e-12, 1.06446e-12, 5.66227e-13, 2.99796e-13, 1.78845e-13, 9.62883e-14, 3.66406e-14, 2.05213e-14, 1.07315e-14, 7.1348e-15, 4.72263e-15, 2.66279e-15, 1.53687e-15, 7.13618e-16, 3.65561e-16, 1.81296e-16, 1.21241e-16];
+GMRES has converged in resudual 50 iterations 
+The relative residual is 6.78752e-13
+Stationary iteration:
+error = [0, 38.1703, 49.1895, 54.5077, 59.1121, 57.7251, 57.8967, 58.0855, 58.1774, 58.1779, 58.138, 58.123, 58.1239, 58.1212, 58.1184, 58.1173, 58.1138, 58.1131, 58.1129, 58.1122, 58.112, 58.1129, 58.1129, 58.1123, 58.1123, 58.1125, 58.1125, 58.1125, 58.1125, 58.1125, 58.1125, 58.1125, 58.1125, 58.1125, 58.1125, 58.1125, 58.1125, 58.1125, 58.1125, 58.1125, 58.1125, 58.1125, 58.1125, 58.1125, 58.1125, 58.1125, 58.1125, 58.1125, 58.1125, 58.1125, 58.1125, 58.1125, 58.1125, 58.1125, 58.1125, 58.1125, 58.1125, 58.1125, 58.1125, 58.1125, 58.1125, 58.1125, 58.1125, 58.1125, 58.1125, 58.1125, 58.1125, 58.1125, 58.1125, 58.1125, 58.1125, 58.1125, 58.1125, 58.1125, 58.1125, 58.1125, 58.1125, 58.1125]
+res = [0.000353957, 0.000659956, 0.000593348, 0.00054318, 0.000103151, 6.12833e-05, 5.29588e-05, 3.63287e-05, 3.31986e-05, 1.72042e-05, 1.50652e-05, 5.00311e-06, 3.71815e-06, 3.34045e-06, 2.08702e-06, 1.81696e-06, 8.87045e-07, 6.60944e-07, 4.4795e-07, 2.91489e-07, 2.4595e-07, 1.4581e-07, 1.16019e-07, 6.71482e-08, 4.76921e-08, 3.77142e-08, 2.51785e-08, 1.94424e-08, 1.25551e-08, 8.74964e-09, 6.26264e-09, 4.07102e-09, 3.18769e-09, 2.0385e-09, 1.48036e-09, 9.62908e-10, 6.53706e-10, 4.66561e-10, 3.11882e-10, 2.23963e-10, 1.53529e-10, 1.03762e-10, 7.58098e-11, 5.0313e-11, 3.81948e-11, 2.58077e-11, 1.87318e-11, 1.30303e-11, 9.15176e-12, 6.57878e-12, 4.64146e-12, 3.29507e-12, 2.37196e-12, 1.62361e-12, 1.19264e-12, 8.10235e-13, 5.95517e-13, 4.09288e-13, 2.9319e-13, 2.03948e-13, 1.43637e-13, 1.00353e-13, 7.09647e-14, 4.89782e-14, 3.50066e-14, 2.37388e-14, 1.70859e-14, 1.15761e-14, 8.31284e-15, 5.69613e-15, 4.0515e-15, 2.80229e-15, 1.98572e-15, 1.37512e-15, 9.8077e-16, 6.74494e-16, 4.84143e-16, 3.31145e-16]
+StationaryIterate has converged in 77 iterations 
+The relative residual is 9.35551e-13
+58.1125/0 : d d d
+  current line = 375
+ call StationaryIterateNew  at  line 223
+Exec error :  Div by 0
+   -- number :1
+Exec error :  Div by 0
+   -- number :1
+ err code 8 ,  mpirank 0
+-- FreeFem++ v4.13 (2024年 01月 20日 星期六 00:49:06 CST - git no git)
+   file : HelmPMLDD.edp
+ Load: lg_fem lg_mesh lg_mesh3 eigenvalue 
+
+ *** Warning  The identifier z hide a Global identifier  
+
+ *** Warning  The identifier y hide a Global identifier  
+ sizestack + 1024 =22456  ( 21432 )
+
+running time: 7.6e-05  get k
+lambda = 0.0785398
+wave number = 80
+height = 1, length = 1, lengthpml = 0.025, layerspml = 6
+nppwl = 18.7911, h = 0.00416667, k to (-1-1/2p) = 0.00417963
+  -- Square mesh : nb vertices  =64009 ,  nb triangles = 127008 ,  nb boundary edges 1008
+running time: 0.01414  get mesh
+running time: 0.206571  define forms
+running time: 1.60578  assemble A(255025,255025)
+running time: 1.73314  assemble rhs
+running time: 1.73315  direct solve
+setting up dd preconditioner.....
+ num of subdomains: 2, overlaps: 6, length of overlaps: 0.025
+running time: 4.96547  settup dd
+done! setting up dd preconditioner.....
+Gmres:
+ r = [ 0.000105682, 1.32925e-05, 8.69271e-07, 2.48271e-08, 1.82996e-09, 6.33859e-11, 2.8473e-12, 8.76987e-14, 2.03865e-15, 4.1514e-17];
+GMRES has converged in resudual 8 iterations 
+The relative residual is 3.9282e-13
+Stationary iteration:
+error = [0, 81.7172, 74.8531, 74.8366, 74.8389, 74.8382, 74.8382, 74.8382, 74.8382, 74.8382, 74.8382, 74.8382]
+res = [0.000106515, 1.43206e-05, 1.0669e-06, 4.973e-08, 3.92333e-09, 3.3519e-10, 2.65716e-11, 2.32023e-12, 2.04851e-13, 1.41617e-14, 1.12336e-15, 1.06066e-16]
+StationaryIterate has converged in 11 iterations 
+The relative residual is 9.95785e-13
+74.8382/0 : d d d
+  current line = 375
+ call StationaryIterateNew  at  line 223
+Exec error :  Div by 0
+   -- number :1
+Exec error :  Div by 0
+   -- number :1
+ err code 8 ,  mpirank 0
+-- FreeFem++ v4.13 (2024年 01月 20日 星期六 00:49:06 CST - git no git)
+   file : HelmPMLDD.edp
+ Load: lg_fem lg_mesh lg_mesh3 eigenvalue 
+
+ *** Warning  The identifier z hide a Global identifier  
+
+ *** Warning  The identifier y hide a Global identifier  
+ sizestack + 1024 =22456  ( 21432 )
+
+running time: 0.000113  get k
+lambda = 0.0785398
+wave number = 80
+height = 1, length = 1, lengthpml = 0.025, layerspml = 6
+nppwl = 18.7911, h = 0.00416667, k to (-1-1/2p) = 0.00417963
+  -- Square mesh : nb vertices  =64009 ,  nb triangles = 127008 ,  nb boundary edges 1008
+running time: 0.018675  get mesh
+running time: 0.296727  define forms
+running time: 1.66571  assemble A(255025,255025)
+running time: 1.79367  assemble rhs
+running time: 1.79367  direct solve
+setting up dd preconditioner.....
+ num of subdomains: 4, overlaps: 6, length of overlaps: 0.025
+running time: 5.57264  settup dd
+done! setting up dd preconditioner.....
+Gmres:
+ r = [ 9.20275e-05, 5.36311e-05, 4.4275e-06, 1.55757e-06, 9.57705e-07, 4.71523e-08, 2.69879e-08, 1.77264e-08, 8.8189e-10, 5.04866e-10, 3.01666e-10, 1.82461e-11, 1.13173e-11, 5.86566e-12, 3.97587e-13, 2.58223e-13, 1.17262e-13, 7.80964e-15, 4.23564e-15, 1.973e-15, 1.50054e-16, 6.63502e-17];
+GMRES has converged in resudual 20 iterations 
+The relative residual is 7.20982e-13
+Stationary iteration:
+error = [0, 67.511, 77.8518, 74.9698, 74.8907, 74.8389, 74.841, 74.839, 74.838, 74.8382, 74.8382, 74.8382, 74.8382, 74.8382, 74.8382, 74.8382, 74.8382, 74.8382, 74.8382, 74.8382, 74.8382, 74.8382, 74.8382, 74.8382]
+res = [0.000106515, 6.40198e-05, 8.92092e-06, 1.71259e-06, 1.34357e-06, 2.15254e-07, 4.08204e-08, 2.9519e-08, 4.47955e-09, 8.63696e-10, 6.39621e-10, 9.38753e-11, 2.23434e-11, 1.76166e-11, 2.4852e-12, 6.38453e-13, 4.97903e-13, 6.02675e-14, 1.9242e-14, 1.44302e-14, 1.5438e-15, 5.03806e-16, 3.47558e-16, 3.52189e-17]
+StationaryIterate has converged in 23 iterations 
+The relative residual is 3.30648e-13
+74.8382/0 : d d d
+  current line = 375
+ call StationaryIterateNew  at  line 223
+Exec error :  Div by 0
+   -- number :1
+Exec error :  Div by 0
+   -- number :1
+ err code 8 ,  mpirank 0
+-- FreeFem++ v4.13 (2024年 01月 20日 星期六 00:49:06 CST - git no git)
+   file : HelmPMLDD.edp
+ Load: lg_fem lg_mesh lg_mesh3 eigenvalue 
+
+ *** Warning  The identifier z hide a Global identifier  
+
+ *** Warning  The identifier y hide a Global identifier  
+ sizestack + 1024 =22456  ( 21432 )
+
+running time: 0.000107  get k
+lambda = 0.0785398
+wave number = 80
+height = 1, length = 1, lengthpml = 0.025, layerspml = 6
+nppwl = 18.7911, h = 0.00416667, k to (-1-1/2p) = 0.00417963
+  -- Square mesh : nb vertices  =64009 ,  nb triangles = 127008 ,  nb boundary edges 1008
+running time: 0.018412  get mesh
+running time: 0.292798  define forms
+running time: 1.73979  assemble A(255025,255025)
+running time: 1.86982  assemble rhs
+running time: 1.86983  direct solve
+setting up dd preconditioner.....
+ num of subdomains: 8, overlaps: 6, length of overlaps: 0.025
+running time: 6.75451  settup dd
+done! setting up dd preconditioner.....
+Gmres:
+ r = [ 8.93646e-05, 5.79597e-05, 4.05752e-05, 3.18403e-05, 4.68173e-06, 2.20229e-06, 1.1868e-06, 8.85794e-07, 7.17487e-07, 5.65199e-07, 4.82791e-07, 5.34318e-08, 3.47799e-08, 2.28472e-08, 1.79718e-08, 1.3856e-08, 1.03069e-08, 8.20979e-09, 1.2311e-09, 7.74915e-10, 4.86978e-10, 3.66883e-10, 2.63119e-10, 1.9028e-10, 1.49992e-10, 3.25667e-11, 2.22761e-11, 1.24063e-11, 9.07553e-12, 5.97949e-12, 4.17386e-12, 3.2939e-12, 9.21066e-13, 6.38012e-13, 3.06267e-13, 2.09062e-13, 1.31016e-13, 6.87923e-14, 4.5015e-14, 1.87455e-14, 1.25691e-14, 5.77765e-15, 3.8775e-15, 1.89586e-15, 8.40836e-16, 5.09544e-16, 2.2817e-16, 1.63123e-16, 8.33271e-17];
+GMRES has converged in resudual 47 iterations 
+The relative residual is 9.3244e-13
+Stationary iteration:
+error = [0, 55.4613, 65.0349, 70.9872, 76.4084, 74.94, 74.9373, 74.934, 74.9017, 74.8616, 74.8556, 74.844, 74.8388, 74.8404, 74.8419, 74.8409, 74.8405, 74.8393, 74.838, 74.8381, 74.8382, 74.8383, 74.8383, 74.8383, 74.8383, 74.8382, 74.8382, 74.8382, 74.8382, 74.8382, 74.8382, 74.8382, 74.8382, 74.8382, 74.8382, 74.8382, 74.8382, 74.8382, 74.8382, 74.8382, 74.8382, 74.8382, 74.8382, 74.8382, 74.8382, 74.8382, 74.8382, 74.8382, 74.8382, 74.8382, 74.8382, 74.8382, 74.8382, 74.8382, 74.8382, 74.8382, 74.8382]
+res = [0.000106515, 7.1241e-05, 6.3263e-05, 5.83116e-05, 9.28085e-06, 2.73849e-06, 2.13802e-06, 1.87883e-06, 1.56857e-06, 1.38074e-06, 1.30975e-06, 2.36771e-07, 6.66237e-08, 6.22289e-08, 5.031e-08, 4.57234e-08, 3.35511e-08, 3.23095e-08, 5.87549e-09, 2.49627e-09, 2.36978e-09, 1.6683e-09, 1.57334e-09, 9.16245e-10, 8.97784e-10, 1.76678e-10, 9.48668e-11, 9.18334e-11, 5.72485e-11, 5.48307e-11, 2.67141e-11, 2.61102e-11, 6.28883e-12, 3.72217e-12, 3.64268e-12, 2.02526e-12, 1.97451e-12, 8.44985e-13, 8.25202e-13, 2.51221e-13, 1.44246e-13, 1.41102e-13, 6.99846e-14, 6.83719e-14, 2.54208e-14, 2.41375e-14, 1.01571e-14, 5.44333e-15, 5.38707e-15, 2.46981e-15, 2.4282e-15, 8.9589e-16, 8.02784e-16, 4.28157e-16, 2.12745e-16, 2.10738e-16, 9.11894e-17]
+StationaryIterate has converged in 56 iterations 
+The relative residual is 8.56121e-13
+74.8382/0 : d d d
+  current line = 375
+ call StationaryIterateNew  at  line 223
+Exec error :  Div by 0
+   -- number :1
+Exec error :  Div by 0
+   -- number :1
+ err code 8 ,  mpirank 0
+-- FreeFem++ v4.13 (2024年 01月 20日 星期六 00:49:06 CST - git no git)
+   file : HelmPMLDD.edp
+ Load: lg_fem lg_mesh lg_mesh3 eigenvalue 
+
+ *** Warning  The identifier z hide a Global identifier  
+
+ *** Warning  The identifier y hide a Global identifier  
+ sizestack + 1024 =22456  ( 21432 )
+
+running time: 0.000107  get k
+lambda = 0.0523599
+wave number = 120
+height = 1, length = 1, lengthpml = 0.0251256, layerspml = 10
+nppwl = 20.7958, h = 0.00251256, k to (-1-1/2p) = 0.00251781
+  -- Square mesh : nb vertices  =175561 ,  nb triangles = 349448 ,  nb boundary edges 1672
+running time: 0.051389  get mesh
+running time: 0.843551  define forms
+running time: 4.87957  assemble A(700569,700569)
+running time: 5.23841  assemble rhs
+running time: 5.23841  direct solve
+setting up dd preconditioner.....
+ num of subdomains: 2, overlaps: 10, length of overlaps: 0.0251256
+running time: 14.7366  settup dd
+done! setting up dd preconditioner.....
+Gmres:
+ r = [ 5.24272e-05, 1.90614e-06, 3.08021e-08, 2.00699e-10, 3.60078e-12, 3.84323e-14, 2.8001e-16, 2.37713e-18];
+GMRES has converged in resudual 6 iterations 
+The relative residual is 4.53415e-14
+Stationary iteration:
+error = [0, 64.0078, 63.7377, 63.7347, 63.7347, 63.7347, 63.7347, 63.7347, 63.7347]
+res = [5.24618e-05, 1.94677e-06, 3.4443e-08, 4.38412e-10, 6.91166e-12, 2.79752e-13, 6.39204e-15, 7.75301e-17, 3.42887e-18]
+StationaryIterate has converged in 8 iterations 
+The relative residual is 6.53594e-14
+63.7347/0 : d d d
+  current line = 375
+ call StationaryIterateNew  at  line 223
+Exec error :  Div by 0
+   -- number :1
+Exec error :  Div by 0
+   -- number :1
+ err code 8 ,  mpirank 0
+-- FreeFem++ v4.13 (2024年 01月 20日 星期六 00:49:06 CST - git no git)
+   file : HelmPMLDD.edp
+ Load: lg_fem lg_mesh lg_mesh3 eigenvalue 
+
+ *** Warning  The identifier z hide a Global identifier  
+
+ *** Warning  The identifier y hide a Global identifier  
+ sizestack + 1024 =22456  ( 21432 )
+
+running time: 0.000102  get k
+lambda = 0.0523599
+wave number = 120
+height = 1, length = 1, lengthpml = 0.0251256, layerspml = 10
+nppwl = 20.7958, h = 0.00251256, k to (-1-1/2p) = 0.00251781
+  -- Square mesh : nb vertices  =175561 ,  nb triangles = 349448 ,  nb boundary edges 1672
+running time: 0.053074  get mesh
+running time: 0.866289  define forms
+running time: 4.88292  assemble A(700569,700569)
+running time: 5.23815  assemble rhs
+running time: 5.23816  direct solve
+setting up dd preconditioner.....
+ num of subdomains: 4, overlaps: 10, length of overlaps: 0.0251256
+running time: 15.9512  settup dd
+done! setting up dd preconditioner.....
+Gmres:
+ r = [ 5.16458e-05, 9.21683e-06, 1.35145e-06, 3.18125e-08, 1.50769e-08, 2.18257e-09, 5.00941e-11, 2.76974e-11, 4.53189e-12, 1.39778e-13, 5.81503e-14, 1.19858e-14, 3.50527e-16, 1.1098e-16, 2.6533e-17];
+GMRES has converged in resudual 13 iterations 
+The relative residual is 5.1375e-13
+Stationary iteration:
+error = [0, 56.555, 63.6063, 63.7441, 63.7384, 63.7345, 63.7347, 63.7347, 63.7347, 63.7347, 63.7347, 63.7347, 63.7347, 63.7347, 63.7347, 63.7347]
+res = [5.24618e-05, 9.34767e-06, 1.94742e-06, 3.20331e-08, 1.98243e-08, 6.02375e-09, 5.96605e-11, 5.56426e-11, 1.97797e-11, 2.38064e-13, 1.71701e-13, 6.2004e-14, 8.86358e-16, 4.94026e-16, 1.8694e-16, 4.24309e-18]
+StationaryIterate has converged in 15 iterations 
+The relative residual is 8.08795e-14
+63.7347/0 : d d d
+  current line = 375
+ call StationaryIterateNew  at  line 223
+Exec error :  Div by 0
+   -- number :1
+Exec error :  Div by 0
+   -- number :1
+ err code 8 ,  mpirank 0
+-- FreeFem++ v4.13 (2024年 01月 20日 星期六 00:49:06 CST - git no git)
+   file : HelmPMLDD.edp
+ Load: lg_fem lg_mesh lg_mesh3 eigenvalue 
+
+ *** Warning  The identifier z hide a Global identifier  
+
+ *** Warning  The identifier y hide a Global identifier  
+ sizestack + 1024 =22456  ( 21432 )
+
+running time: 0.000118  get k
+lambda = 0.0523599
+wave number = 120
+height = 1, length = 1, lengthpml = 0.0251256, layerspml = 10
+nppwl = 20.7958, h = 0.00251256, k to (-1-1/2p) = 0.00251781
+  -- Square mesh : nb vertices  =175561 ,  nb triangles = 349448 ,  nb boundary edges 1672
+running time: 0.053074  get mesh
+running time: 0.945279  define forms
+running time: 5.04922  assemble A(700569,700569)
+running time: 5.42258  assemble rhs
+running time: 5.42259  direct solve
+setting up dd preconditioner.....
+ num of subdomains: 8, overlaps: 10, length of overlaps: 0.0251256
+running time: 18.9146  settup dd
+done! setting up dd preconditioner.....
+Gmres:
+ r = [ 5.14476e-05, 1.02658e-05, 6.80786e-06, 5.28712e-06, 1.17589e-06, 4.87645e-08, 3.15351e-08, 2.12558e-08, 1.56374e-08, 1.0094e-08, 7.40639e-09, 9.39235e-10, 1.41345e-10, 7.86128e-11, 3.13918e-11, 2.09324e-11, 1.15183e-11, 9.01128e-12, 1.40429e-12, 4.65705e-13, 2.71459e-13, 1.15106e-13, 6.72624e-14, 2.58773e-14, 1.72781e-14, 3.65936e-15, 1.65464e-15, 6.23122e-16, 2.11878e-16, 1.24739e-16, 3.78194e-17];
+GMRES has converged in resudual 29 iterations 
+The relative residual is 7.35105e-13
+Stationary iteration:
+error = [0, 50.2312, 56.1391, 60.2468, 63.6272, 63.7455, 63.7423, 63.7396, 63.737, 63.7349, 63.7344, 63.7343, 63.7347, 63.7347, 63.7347, 63.7347, 63.7347, 63.7347, 63.7347, 63.7347, 63.7347, 63.7347, 63.7347, 63.7347, 63.7347, 63.7347, 63.7347, 63.7347, 63.7347, 63.7347, 63.7347, 63.7347, 63.7347, 63.7347]
+res = [5.24618e-05, 1.04496e-05, 9.35329e-06, 8.52505e-06, 1.94335e-06, 4.89879e-08, 4.49276e-08, 3.45744e-08, 3.22167e-08, 2.11712e-08, 1.79578e-08, 5.4541e-09, 1.71913e-10, 1.52322e-10, 8.99406e-11, 7.68239e-11, 3.88794e-11, 2.95793e-11, 9.99884e-12, 6.06231e-13, 5.50723e-13, 3.01942e-13, 2.53862e-13, 1.08135e-13, 7.45264e-14, 2.53308e-14, 3.3365e-15, 2.7402e-15, 1.23494e-15, 9.20335e-16, 3.63953e-16, 2.1613e-16, 7.90591e-17, 1.34814e-17]
+StationaryIterate has converged in 33 iterations 
+The relative residual is 2.56976e-13
+63.7347/0 : d d d
+  current line = 375
+ call StationaryIterateNew  at  line 223
+Exec error :  Div by 0
+   -- number :1
+Exec error :  Div by 0
+   -- number :1
+ err code 8 ,  mpirank 0
+-- FreeFem++ v4.13 (2024年 01月 20日 星期六 00:49:06 CST - git no git)
+   file : HelmPMLDD.edp
+ Load: lg_fem lg_mesh lg_mesh3 eigenvalue 
+
+ *** Warning  The identifier z hide a Global identifier  
+
+ *** Warning  The identifier y hide a Global identifier  
+ sizestack + 1024 =22456  ( 21432 )
+
+running time: 0.000115  get k
+lambda = 0.0392699
+wave number = 160
+height = 1, length = 1, lengthpml = 0.0263158, layerspml = 15
+nppwl = 22.3465, h = 0.00175439, k to (-1-1/2p) = 0.00175732
+  -- Square mesh : nb vertices  =361201 ,  nb triangles = 720000 ,  nb boundary edges 2400
+running time: 0.108053  get mesh
+running time: 1.66104  define forms
+running time: 10.4862  assemble A(1442401,1442401)
+running time: 11.2704  assemble rhs
+running time: 11.2704  direct solve
+setting up dd preconditioner.....
+ num of subdomains: 2, overlaps: 15, length of overlaps: 0.0263158
+running time: 31.6608  settup dd
+done! setting up dd preconditioner.....
+Gmres:
+ r = [ 3.17243e-05, 4.96989e-07, 5.73433e-10, 9.50523e-13, 4.6053e-16, 1.08948e-18];
+GMRES has converged in resudual 4 iterations 
+The relative residual is 3.43422e-14
+Stationary iteration:
+error = [0, 51.6283, 53.3297, 53.3297, 53.3297, 53.3297]
+res = [3.17282e-05, 4.97009e-07, 5.86837e-10, 1.31745e-12, 1.42716e-15, 7.79492e-18]
+StationaryIterate has converged in 5 iterations 
+The relative residual is 2.45678e-13
+53.3297/0 : d d d
+  current line = 375
+ call StationaryIterateNew  at  line 223
+Exec error :  Div by 0
+   -- number :1
+Exec error :  Div by 0
+   -- number :1
+ err code 8 ,  mpirank 0
+-- FreeFem++ v4.13 (2024年 01月 20日 星期六 00:49:06 CST - git no git)
+   file : HelmPMLDD.edp
+ Load: lg_fem lg_mesh lg_mesh3 eigenvalue 
+
+ *** Warning  The identifier z hide a Global identifier  
+
+ *** Warning  The identifier y hide a Global identifier  
+ sizestack + 1024 =22456  ( 21432 )
+
+running time: 0.000106  get k
+lambda = 0.0392699
+wave number = 160
+height = 1, length = 1, lengthpml = 0.0263158, layerspml = 15
+nppwl = 22.3465, h = 0.00175439, k to (-1-1/2p) = 0.00175732
+  -- Square mesh : nb vertices  =361201 ,  nb triangles = 720000 ,  nb boundary edges 2400
+running time: 0.106762  get mesh
+running time: 1.63798  define forms
+running time: 10.4303  assemble A(1442401,1442401)
+running time: 11.2186  assemble rhs
+running time: 11.2187  direct solve
+setting up dd preconditioner.....
+ num of subdomains: 4, overlaps: 15, length of overlaps: 0.0263158
+running time: 34.6678  settup dd
+done! setting up dd preconditioner.....
+Gmres:
+ r = [ 3.16827e-05, 1.69835e-06, 4.50465e-07, 2.89893e-10, 1.4627e-10, 3.3332e-11, 1.02293e-14, 4.92395e-15, 2.02715e-15, 1.16501e-18];
+GMRES has converged in resudual 8 iterations 
+The relative residual is 3.6771e-14
+Stationary iteration:
+error = [0, 49.2122, 52.464, 53.3297, 53.3297, 53.3297, 53.3297, 53.3297, 53.3297, 53.3297]
+res = [3.17282e-05, 1.70019e-06, 4.6558e-07, 2.93553e-10, 1.5971e-10, 5.28124e-11, 1.48528e-14, 7.72292e-15, 3.8778e-15, 1.96477e-18]
+StationaryIterate has converged in 9 iterations 
+The relative residual is 6.19251e-14
+53.3297/0 : d d d
+  current line = 375
+ call StationaryIterateNew  at  line 223
+Exec error :  Div by 0
+   -- number :1
+Exec error :  Div by 0
+   -- number :1
+ err code 8 ,  mpirank 0
+-- FreeFem++ v4.13 (2024年 01月 20日 星期六 00:49:06 CST - git no git)
+   file : HelmPMLDD.edp
+ Load: lg_fem lg_mesh lg_mesh3 eigenvalue 
+
+ *** Warning  The identifier z hide a Global identifier  
+
+ *** Warning  The identifier y hide a Global identifier  
+ sizestack + 1024 =22456  ( 21432 )
+
+running time: 0.000113  get k
+lambda = 0.0392699
+wave number = 160
+height = 1, length = 1, lengthpml = 0.0263158, layerspml = 15
+nppwl = 22.3465, h = 0.00175439, k to (-1-1/2p) = 0.00175732
+  -- Square mesh : nb vertices  =361201 ,  nb triangles = 720000 ,  nb boundary edges 2400
+running time: 0.105835  get mesh
+running time: 1.65781  define forms
+running time: 10.2893  assemble A(1442401,1442401)
+running time: 11.0582  assemble rhs
+running time: 11.0582  direct solve
+setting up dd preconditioner.....
+ num of subdomains: 8, overlaps: 15, length of overlaps: 0.0263158
+running time: 39.7531  settup dd
+done! setting up dd preconditioner.....
+Gmres:
+ r = [ 3.16701e-05, 1.92011e-06, 1.34022e-06, 1.05309e-06, 4.12655e-07, 5.28188e-10, 3.34132e-10, 1.70121e-10, 1.09669e-10, 7.37423e-11, 5.17128e-11, 8.12687e-12, 1.17189e-14, 6.30924e-15, 3.25394e-15, 2.08154e-15, 1.00904e-15, 6.29849e-16, 1.25932e-16, 1.72383e-18];
+GMRES has converged in resudual 18 iterations 
+The relative residual is 5.4431e-14
+Stationary iteration:
+error = [0, 47.0875, 49.6802, 51.4199, 52.8693, 53.3296, 53.3296, 53.3297, 53.3297, 53.3297, 53.3297, 53.3297, 53.3297, 53.3297, 53.3297, 53.3297, 53.3297, 53.3297, 53.3297, 53.3297]
+res = [3.17282e-05, 1.92294e-06, 1.69129e-06, 1.51226e-06, 4.65037e-07, 5.30513e-10, 3.95922e-10, 2.35338e-10, 1.63725e-10, 1.01878e-10, 6.94126e-11, 2.38789e-11, 1.41277e-14, 1.03298e-14, 6.18031e-15, 3.61319e-15, 1.78475e-15, 9.87355e-16, 2.91611e-16, 2.19085e-18]
+StationaryIterate has converged in 19 iterations 
+The relative residual is 6.90504e-14
+53.3297/0 : d d d
+  current line = 375
+ call StationaryIterateNew  at  line 223
+Exec error :  Div by 0
+   -- number :1
+Exec error :  Div by 0
+   -- number :1
+ err code 8 ,  mpirank 0

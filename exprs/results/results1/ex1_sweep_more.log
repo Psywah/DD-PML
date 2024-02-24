@@ -1,0 +1,445 @@
+Hello World!
+-- FreeFem++ v4.13 (2024年 01月 20日 星期六 00:49:06 CST - git no git)
+   file : HelmPMLDD.edp
+ Load: lg_fem lg_mesh lg_mesh3 eigenvalue 
+
+ *** Warning  The identifier z hide a Global identifier  
+
+ *** Warning  The identifier y hide a Global identifier  
+ sizestack + 1024 =22456  ( 21432 )
+
+running time: 9.9e-05  get k
+lambda = 0.15708
+wave number = 40
+height = 1, length = 1, lengthpml = 0.0294118, layerspml = 3
+nppwl = 15.8014, h = 0.00980392, k to (-1-1/2p) = 0.00994088
+  -- Square mesh : nb vertices  =11881 ,  nb triangles = 23328 ,  nb boundary edges 432
+running time: 0.00272  get mesh
+running time: 0.032773  define forms
+running time: 0.28351  assemble A(47089,47089)
+running time: 0.306936  assemble rhs
+running time: 0.30694  direct solve
+setting up dd preconditioner.....
+ num of subdomains: 2, overlaps: 3, length of overlaps: 0.0294118
+running time: 0.896058  settup dd
+done! setting up dd preconditioner.....
+Stationary iteration:
+error = [0, 58.1187, 58.1136, 58.1125, 58.1125, 58.1125, 58.1125, 58.1125]
+res = [0.000353957, 1.20997e-05, 8.38779e-08, 1.43567e-09, 1.47209e-11, 2.13791e-13, 2.4407e-15, 4.07441e-17]
+StationaryIterate has converged in 7 iterations 
+The relative residual is 1.1511e-13
+58.1125/0 : d d d
+  current line = 375
+ call StationaryIterateNew  at  line 218
+Exec error :  Div by 0
+   -- number :1
+Exec error :  Div by 0
+   -- number :1
+ err code 8 ,  mpirank 0
+-- FreeFem++ v4.13 (2024年 01月 20日 星期六 00:49:06 CST - git no git)
+   file : HelmPMLDD.edp
+ Load: lg_fem lg_mesh lg_mesh3 eigenvalue 
+
+ *** Warning  The identifier z hide a Global identifier  
+
+ *** Warning  The identifier y hide a Global identifier  
+ sizestack + 1024 =22456  ( 21432 )
+
+running time: 0.000116  get k
+lambda = 0.15708
+wave number = 40
+height = 1, length = 1, lengthpml = 0.0294118, layerspml = 3
+nppwl = 15.8014, h = 0.00980392, k to (-1-1/2p) = 0.00994088
+  -- Square mesh : nb vertices  =11881 ,  nb triangles = 23328 ,  nb boundary edges 432
+running time: 0.003527  get mesh
+running time: 0.035458  define forms
+running time: 0.285705  assemble A(47089,47089)
+running time: 0.309147  assemble rhs
+running time: 0.309152  direct solve
+setting up dd preconditioner.....
+ num of subdomains: 4, overlaps: 3, length of overlaps: 0.0294118
+running time: 1.01244  settup dd
+done! setting up dd preconditioner.....
+Stationary iteration:
+error = [0, 57.9764, 58.1135, 58.1124, 58.1125, 58.1125, 58.1125, 58.1125]
+res = [0.000353957, 2.79957e-05, 1.95912e-07, 2.16196e-09, 3.18189e-11, 4.24325e-13, 6.00285e-15, 9.01422e-17]
+StationaryIterate has converged in 7 iterations 
+The relative residual is 2.5467e-13
+58.1125/0 : d d d
+  current line = 375
+ call StationaryIterateNew  at  line 218
+Exec error :  Div by 0
+   -- number :1
+Exec error :  Div by 0
+   -- number :1
+ err code 8 ,  mpirank 0
+-- FreeFem++ v4.13 (2024年 01月 20日 星期六 00:49:06 CST - git no git)
+   file : HelmPMLDD.edp
+ Load: lg_fem lg_mesh lg_mesh3 eigenvalue 
+
+ *** Warning  The identifier z hide a Global identifier  
+
+ *** Warning  The identifier y hide a Global identifier  
+ sizestack + 1024 =22456  ( 21432 )
+
+running time: 8.8e-05  get k
+lambda = 0.15708
+wave number = 40
+height = 1, length = 1, lengthpml = 0.0294118, layerspml = 3
+nppwl = 15.8014, h = 0.00980392, k to (-1-1/2p) = 0.00994088
+  -- Square mesh : nb vertices  =11881 ,  nb triangles = 23328 ,  nb boundary edges 432
+running time: 0.002678  get mesh
+running time: 0.034  define forms
+running time: 0.296298  assemble A(47089,47089)
+running time: 0.319655  assemble rhs
+running time: 0.319659  direct solve
+setting up dd preconditioner.....
+ num of subdomains: 8, overlaps: 3, length of overlaps: 0.0294118
+running time: 1.23988  settup dd
+done! setting up dd preconditioner.....
+Stationary iteration:
+error = [0, 58.1738, 58.1137, 58.1124, 58.1125, 58.1125, 58.1125, 58.1125, 58.1125]
+res = [0.000353957, 4.99164e-05, 4.92532e-07, 6.45139e-09, 1.31398e-10, 1.61065e-12, 3.6713e-14, 4.86706e-16, 2.83942e-17]
+StationaryIterate has converged in 8 iterations 
+The relative residual is 8.02194e-14
+58.1125/0 : d d d
+  current line = 375
+ call StationaryIterateNew  at  line 218
+Exec error :  Div by 0
+   -- number :1
+Exec error :  Div by 0
+   -- number :1
+ err code 8 ,  mpirank 0
+-- FreeFem++ v4.13 (2024年 01月 20日 星期六 00:49:06 CST - git no git)
+   file : HelmPMLDD.edp
+ Load: lg_fem lg_mesh lg_mesh3 eigenvalue 
+
+ *** Warning  The identifier z hide a Global identifier  
+
+ *** Warning  The identifier y hide a Global identifier  
+ sizestack + 1024 =22456  ( 21432 )
+
+running time: 0.000101  get k
+lambda = 0.0785398
+wave number = 80
+height = 1, length = 1, lengthpml = 0.025, layerspml = 6
+nppwl = 18.7911, h = 0.00416667, k to (-1-1/2p) = 0.00417963
+  -- Square mesh : nb vertices  =64009 ,  nb triangles = 127008 ,  nb boundary edges 1008
+running time: 0.01397  get mesh
+running time: 0.251264  define forms
+running time: 1.7279  assemble A(255025,255025)
+running time: 1.8578  assemble rhs
+running time: 1.8578  direct solve
+setting up dd preconditioner.....
+ num of subdomains: 2, overlaps: 6, length of overlaps: 0.025
+running time: 5.22015  settup dd
+done! setting up dd preconditioner.....
+Stationary iteration:
+error = [0, 74.8448, 74.8385, 74.8382, 74.8382, 74.8382, 74.8382]
+res = [0.000106515, 7.07078e-07, 3.06996e-09, 1.76242e-11, 1.44865e-13, 8.01677e-16, 1.02124e-17]
+StationaryIterate has converged in 6 iterations 
+The relative residual is 9.58775e-14
+74.8382/0 : d d d
+  current line = 375
+ call StationaryIterateNew  at  line 218
+Exec error :  Div by 0
+   -- number :1
+Exec error :  Div by 0
+   -- number :1
+ err code 8 ,  mpirank 0
+-- FreeFem++ v4.13 (2024年 01月 20日 星期六 00:49:06 CST - git no git)
+   file : HelmPMLDD.edp
+ Load: lg_fem lg_mesh lg_mesh3 eigenvalue 
+
+ *** Warning  The identifier z hide a Global identifier  
+
+ *** Warning  The identifier y hide a Global identifier  
+ sizestack + 1024 =22456  ( 21432 )
+
+running time: 8.2e-05  get k
+lambda = 0.0785398
+wave number = 80
+height = 1, length = 1, lengthpml = 0.025, layerspml = 6
+nppwl = 18.7911, h = 0.00416667, k to (-1-1/2p) = 0.00417963
+  -- Square mesh : nb vertices  =64009 ,  nb triangles = 127008 ,  nb boundary edges 1008
+running time: 0.014212  get mesh
+running time: 0.193674  define forms
+running time: 1.57323  assemble A(255025,255025)
+running time: 1.70104  assemble rhs
+running time: 1.70105  direct solve
+setting up dd preconditioner.....
+ num of subdomains: 4, overlaps: 6, length of overlaps: 0.025
+running time: 5.52127  settup dd
+done! setting up dd preconditioner.....
+Stationary iteration:
+error = [0, 74.9093, 74.8385, 74.8382, 74.8382, 74.8382, 74.8382]
+res = [0.000106515, 1.8489e-06, 4.88738e-09, 2.70712e-11, 2.12864e-13, 1.32213e-15, 1.28054e-17]
+StationaryIterate has converged in 6 iterations 
+The relative residual is 1.20222e-13
+74.8382/0 : d d d
+  current line = 375
+ call StationaryIterateNew  at  line 218
+Exec error :  Div by 0
+   -- number :1
+Exec error :  Div by 0
+   -- number :1
+ err code 8 ,  mpirank 0
+-- FreeFem++ v4.13 (2024年 01月 20日 星期六 00:49:06 CST - git no git)
+   file : HelmPMLDD.edp
+ Load: lg_fem lg_mesh lg_mesh3 eigenvalue 
+
+ *** Warning  The identifier z hide a Global identifier  
+
+ *** Warning  The identifier y hide a Global identifier  
+ sizestack + 1024 =22456  ( 21432 )
+
+running time: 8.2e-05  get k
+lambda = 0.0785398
+wave number = 80
+height = 1, length = 1, lengthpml = 0.025, layerspml = 6
+nppwl = 18.7911, h = 0.00416667, k to (-1-1/2p) = 0.00417963
+  -- Square mesh : nb vertices  =64009 ,  nb triangles = 127008 ,  nb boundary edges 1008
+running time: 0.013821  get mesh
+running time: 0.210107  define forms
+running time: 1.6364  assemble A(255025,255025)
+running time: 1.76451  assemble rhs
+running time: 1.76452  direct solve
+setting up dd preconditioner.....
+ num of subdomains: 8, overlaps: 6, length of overlaps: 0.025
+running time: 6.64806  settup dd
+done! setting up dd preconditioner.....
+Stationary iteration:
+error = [0, 74.9301, 74.8401, 74.8382, 74.8382, 74.8382, 74.8382]
+res = [0.000106515, 3.43802e-06, 1.209e-08, 1.23056e-10, 9.29405e-13, 9.23101e-15, 9.03527e-17]
+StationaryIterate has converged in 6 iterations 
+The relative residual is 8.48265e-13
+74.8382/0 : d d d
+  current line = 375
+ call StationaryIterateNew  at  line 218
+Exec error :  Div by 0
+   -- number :1
+Exec error :  Div by 0
+   -- number :1
+ err code 8 ,  mpirank 0
+-- FreeFem++ v4.13 (2024年 01月 20日 星期六 00:49:06 CST - git no git)
+   file : HelmPMLDD.edp
+ Load: lg_fem lg_mesh lg_mesh3 eigenvalue 
+
+ *** Warning  The identifier z hide a Global identifier  
+
+ *** Warning  The identifier y hide a Global identifier  
+ sizestack + 1024 =22456  ( 21432 )
+
+running time: 7.9e-05  get k
+lambda = 0.0523599
+wave number = 120
+height = 1, length = 1, lengthpml = 0.0251256, layerspml = 10
+nppwl = 20.7958, h = 0.00251256, k to (-1-1/2p) = 0.00251781
+  -- Square mesh : nb vertices  =175561 ,  nb triangles = 349448 ,  nb boundary edges 1672
+running time: 0.039437  get mesh
+running time: 0.813107  define forms
+running time: 4.8615  assemble A(700569,700569)
+running time: 5.22582  assemble rhs
+running time: 5.22583  direct solve
+setting up dd preconditioner.....
+ num of subdomains: 2, overlaps: 10, length of overlaps: 0.0251256
+running time: 14.771  settup dd
+done! setting up dd preconditioner.....
+Stationary iteration:
+error = [0, 63.7362, 63.7347, 63.7347, 63.7347]
+res = [5.24618e-05, 2.14323e-08, 4.68339e-12, 3.97922e-15, 3.56184e-18]
+StationaryIterate has converged in 4 iterations 
+The relative residual is 6.78939e-14
+63.7347/0 : d d d
+  current line = 375
+ call StationaryIterateNew  at  line 218
+Exec error :  Div by 0
+   -- number :1
+Exec error :  Div by 0
+   -- number :1
+ err code 8 ,  mpirank 0
+-- FreeFem++ v4.13 (2024年 01月 20日 星期六 00:49:06 CST - git no git)
+   file : HelmPMLDD.edp
+ Load: lg_fem lg_mesh lg_mesh3 eigenvalue 
+
+ *** Warning  The identifier z hide a Global identifier  
+
+ *** Warning  The identifier y hide a Global identifier  
+ sizestack + 1024 =22456  ( 21432 )
+
+running time: 0.000115  get k
+lambda = 0.0523599
+wave number = 120
+height = 1, length = 1, lengthpml = 0.0251256, layerspml = 10
+nppwl = 20.7958, h = 0.00251256, k to (-1-1/2p) = 0.00251781
+  -- Square mesh : nb vertices  =175561 ,  nb triangles = 349448 ,  nb boundary edges 1672
+running time: 0.051706  get mesh
+running time: 0.852622  define forms
+running time: 4.84369  assemble A(700569,700569)
+running time: 5.19983  assemble rhs
+running time: 5.19984  direct solve
+setting up dd preconditioner.....
+ num of subdomains: 4, overlaps: 10, length of overlaps: 0.0251256
+running time: 16.0556  settup dd
+done! setting up dd preconditioner.....
+Stationary iteration:
+error = [0, 63.7408, 63.7347, 63.7347, 63.7347]
+res = [5.24618e-05, 6.39476e-08, 7.34666e-12, 4.87826e-15, 3.81419e-18]
+StationaryIterate has converged in 4 iterations 
+The relative residual is 7.27041e-14
+63.7347/0 : d d d
+  current line = 375
+ call StationaryIterateNew  at  line 218
+Exec error :  Div by 0
+   -- number :1
+Exec error :  Div by 0
+   -- number :1
+ err code 8 ,  mpirank 0
+-- FreeFem++ v4.13 (2024年 01月 20日 星期六 00:49:06 CST - git no git)
+   file : HelmPMLDD.edp
+ Load: lg_fem lg_mesh lg_mesh3 eigenvalue 
+
+ *** Warning  The identifier z hide a Global identifier  
+
+ *** Warning  The identifier y hide a Global identifier  
+ sizestack + 1024 =22456  ( 21432 )
+
+running time: 0.000106  get k
+lambda = 0.0523599
+wave number = 120
+height = 1, length = 1, lengthpml = 0.0251256, layerspml = 10
+nppwl = 20.7958, h = 0.00251256, k to (-1-1/2p) = 0.00251781
+  -- Square mesh : nb vertices  =175561 ,  nb triangles = 349448 ,  nb boundary edges 1672
+running time: 0.051296  get mesh
+running time: 0.857017  define forms
+running time: 4.8706  assemble A(700569,700569)
+running time: 5.23049  assemble rhs
+running time: 5.23049  direct solve
+setting up dd preconditioner.....
+ num of subdomains: 8, overlaps: 10, length of overlaps: 0.0251256
+running time: 18.7087  settup dd
+done! setting up dd preconditioner.....
+Stationary iteration:
+error = [0, 63.7413, 63.7347, 63.7347, 63.7347]
+res = [5.24618e-05, 1.72802e-07, 2.47435e-11, 2.01439e-14, 1.01868e-17]
+StationaryIterate has converged in 4 iterations 
+The relative residual is 1.94175e-13
+63.7347/0 : d d d
+  current line = 375
+ call StationaryIterateNew  at  line 218
+Exec error :  Div by 0
+   -- number :1
+Exec error :  Div by 0
+   -- number :1
+ err code 8 ,  mpirank 0
+-- FreeFem++ v4.13 (2024年 01月 20日 星期六 00:49:06 CST - git no git)
+   file : HelmPMLDD.edp
+ Load: lg_fem lg_mesh lg_mesh3 eigenvalue 
+
+ *** Warning  The identifier z hide a Global identifier  
+
+ *** Warning  The identifier y hide a Global identifier  
+ sizestack + 1024 =22456  ( 21432 )
+
+running time: 9.1e-05  get k
+lambda = 0.0392699
+wave number = 160
+height = 1, length = 1, lengthpml = 0.0263158, layerspml = 15
+nppwl = 22.3465, h = 0.00175439, k to (-1-1/2p) = 0.00175732
+  -- Square mesh : nb vertices  =361201 ,  nb triangles = 720000 ,  nb boundary edges 2400
+running time: 0.085352  get mesh
+running time: 1.60587  define forms
+running time: 10.6739  assemble A(1442401,1442401)
+running time: 11.4669  assemble rhs
+running time: 11.4669  direct solve
+setting up dd preconditioner.....
+ num of subdomains: 2, overlaps: 15, length of overlaps: 0.0263158
+running time: 32.2493  settup dd
+done! setting up dd preconditioner.....
+Stationary iteration:
+error = [0, 53.3297, 53.3297, 53.3297]
+res = [3.17282e-05, 3.563e-10, 9.43074e-16, 1.61262e-18]
+StationaryIterate has converged in 3 iterations 
+The relative residual is 5.08259e-14
+53.3297/0 : d d d
+  current line = 375
+ call StationaryIterateNew  at  line 218
+Exec error :  Div by 0
+   -- number :1
+Exec error :  Div by 0
+   -- number :1
+ err code 8 ,  mpirank 0
+-- FreeFem++ v4.13 (2024年 01月 20日 星期六 00:49:06 CST - git no git)
+   file : HelmPMLDD.edp
+ Load: lg_fem lg_mesh lg_mesh3 eigenvalue 
+
+ *** Warning  The identifier z hide a Global identifier  
+
+ *** Warning  The identifier y hide a Global identifier  
+ sizestack + 1024 =22456  ( 21432 )
+
+running time: 9.8e-05  get k
+lambda = 0.0392699
+wave number = 160
+height = 1, length = 1, lengthpml = 0.0263158, layerspml = 15
+nppwl = 22.3465, h = 0.00175439, k to (-1-1/2p) = 0.00175732
+  -- Square mesh : nb vertices  =361201 ,  nb triangles = 720000 ,  nb boundary edges 2400
+running time: 0.08041  get mesh
+running time: 1.54372  define forms
+running time: 10.3889  assemble A(1442401,1442401)
+running time: 11.1629  assemble rhs
+running time: 11.1629  direct solve
+setting up dd preconditioner.....
+ num of subdomains: 4, overlaps: 15, length of overlaps: 0.0263158
+running time: 34.2851  settup dd
+done! setting up dd preconditioner.....
+Stationary iteration:
+error = [0, 53.3297, 53.3297, 53.3297]
+res = [3.17282e-05, 1.38487e-09, 1.59167e-15, 1.65344e-18]
+StationaryIterate has converged in 3 iterations 
+The relative residual is 5.21125e-14
+53.3297/0 : d d d
+  current line = 375
+ call StationaryIterateNew  at  line 218
+Exec error :  Div by 0
+   -- number :1
+Exec error :  Div by 0
+   -- number :1
+ err code 8 ,  mpirank 0
+-- FreeFem++ v4.13 (2024年 01月 20日 星期六 00:49:06 CST - git no git)
+   file : HelmPMLDD.edp
+ Load: lg_fem lg_mesh lg_mesh3 eigenvalue 
+
+ *** Warning  The identifier z hide a Global identifier  
+
+ *** Warning  The identifier y hide a Global identifier  
+ sizestack + 1024 =22456  ( 21432 )
+
+running time: 0.00011  get k
+lambda = 0.0392699
+wave number = 160
+height = 1, length = 1, lengthpml = 0.0263158, layerspml = 15
+nppwl = 22.3465, h = 0.00175439, k to (-1-1/2p) = 0.00175732
+  -- Square mesh : nb vertices  =361201 ,  nb triangles = 720000 ,  nb boundary edges 2400
+running time: 0.107578  get mesh
+running time: 1.60535  define forms
+running time: 10.3771  assemble A(1442401,1442401)
+running time: 11.1735  assemble rhs
+running time: 11.1735  direct solve
+setting up dd preconditioner.....
+ num of subdomains: 8, overlaps: 15, length of overlaps: 0.0263158
+running time: 40.3606  settup dd
+done! setting up dd preconditioner.....
+Stationary iteration:
+error = [0, 53.3296, 53.3297, 53.3297]
+res = [3.17282e-05, 6.45958e-09, 7.4442e-15, 1.6739e-18]
+StationaryIterate has converged in 3 iterations 
+The relative residual is 5.27574e-14
+53.3297/0 : d d d
+  current line = 375
+ call StationaryIterateNew  at  line 218
+Exec error :  Div by 0
+   -- number :1
+Exec error :  Div by 0
+   -- number :1
+ err code 8 ,  mpirank 0
