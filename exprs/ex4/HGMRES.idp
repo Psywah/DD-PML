@@ -124,65 +124,48 @@ func complex[int] PRECnew(complex[int] &l, complex[int] u0)
     }else if(usedARGV("-sweep33")!=-1){
         s[]=u0;
         complex[int] u00 = u0;
-        int[int] order1=[0,3,6,1,4,7,2,5,8];
-        int[int] order2=[6,3,0,7,4,1,8,5,2];
-        int[int] order3=[2,5,8,1,4,7,0,3,6];
-        int[int] order4=[8,5,2,7,4,1,6,3,0];
-        for(int i=0; i<npart; ++i)  {
-            int ii = order1[i];
-            complex[int] res = l - Aapply(du[]);
-            complex[int] bi = Ri[ii]*res;
-            complex[int] ui = Ai[ii] ^-1 *bi;    // local solves
-            complex[int] si = Ri[ii]*s[];          // restricts rhs
-            complex[int] tmp = Ri[ii]*u00;
-            si -= tmp;
-            ui += si;
-            bi = Di[ii]*ui;                      // partition of unity
-            du[]+= Ri[ii]'*bi;
-            s[] += Ri[ii]'*bi;                   // prolongation
+        int[int, int] order(4,npart);
+        int[int] order0(npart);
+        for(int ix=0, index=0;ix<npartx;ix++)
+            for(int iy=0;iy<npartx;iy++){
+                order0[index] = ix*npartx+iy;
+                index++;
+                }
+        for(int iy=0, index=0;iy<npartx;iy++)
+            for(int ix=0;ix<npartx;ix++){
+                order(0,index) = ix*npartx+iy;
+                index++;}
+        for(int iy=0, index=0;iy<npartx;iy++)
+            for(int ix=npartx-1;ix>=0;ix--){
+                order(1,index) = ix*npartx+iy;
+                index++;}
+        for(int iy=npartx-1, index=0;iy>=0;iy--)
+            for(int ix=0;ix<npartx;ix++){
+                order(2,index) = ix*npartx+iy;
+                index++;}
+        for(int iy=npartx-1, index=0;iy>=0;iy--)
+            for(int ix=npartx-1;ix>=0;ix--){
+                order(3,index) = ix*npartx+iy;
+                index++;}
+                
+
+        for(int j=0;j<4;j++){
+            u00 = s[];
+            for(int i=0; i<npart; ++i)  {
+                int ii = order(j,i);
+                complex[int] res = l - Aapply(du[]);
+                complex[int] bi = Ri[ii]*res;
+                complex[int] ui = Ai[ii] ^-1 *bi;    // local solves
+                complex[int] si = Ri[ii]*s[];          // restricts rhs
+                complex[int] tmp = Ri[ii]*u00;
+                si -= tmp;
+                ui += si;
+                bi = Di[ii]*ui;                      // partition of unity
+                du[]+= Ri[ii]'*bi;
+                s[] += Ri[ii]'*bi;                   // prolongation
+            }
         }
-        u00 = s[];
-        for(int i=0; i<npart; ++i)  {
-            int ii = order2[i];
-            complex[int] res = l - Aapply(du[]);
-            complex[int] bi = Ri[ii]*res;
-            complex[int] ui = Ai[ii] ^-1 *bi;    // local solves
-            complex[int] si = Ri[ii]*s[];          // restricts rhs
-            complex[int] tmp = Ri[ii]*u00;
-            si -= tmp;
-            ui += si;
-            bi = Di[ii]*ui;                      // partition of unity
-            du[]+= Ri[ii]'*bi;
-            s[] += Ri[ii]'*bi;                   // prolongation
-        }
-        u00 = s[];
-        for(int i=0; i<npart; ++i)  {
-            int ii = order3[i];
-            complex[int] res = l - Aapply(du[]);
-            complex[int] bi = Ri[ii]*res;
-            complex[int] ui = Ai[ii] ^-1 *bi;    // local solves
-            complex[int] si = Ri[ii]*s[];          // restricts rhs
-            complex[int] tmp = Ri[ii]*u00;
-            si -= tmp;
-            ui += si;
-            bi = Di[ii]*ui;                      // partition of unity
-            du[]+= Ri[ii]'*bi;
-            s[] += Ri[ii]'*bi;                   // prolongation
-        }
-        u00 = s[];
-        for(int i=0; i<npart; ++i)  {
-            int ii = order4[i];
-            complex[int] res = l - Aapply(du[]);
-            complex[int] bi = Ri[ii]*res;
-            complex[int] ui = Ai[ii] ^-1 *bi;    // local solves
-            complex[int] si = Ri[ii]*s[];          // restricts rhs
-            complex[int] tmp = Ri[ii]*u00;
-            si -= tmp;
-            ui += si;
-            bi = Di[ii]*ui;                      // partition of unity
-            du[]+= Ri[ii]'*bi;
-            s[] += Ri[ii]'*bi;                   // prolongation
-        }
+        
     }else{
         s[]=u0;
         for(int i=0; i<npart; ++i)  {
