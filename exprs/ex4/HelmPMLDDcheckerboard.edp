@@ -280,7 +280,7 @@ for(int i = 0; i<npartx; i++){
 cout << "running time: "<<clock()-t<<"  settup dd"<< endl;
 cout << "done! setting up dd preconditioner....."<<endl;
 // Iterative solver parameters
-real tol=getARGV("-tol",1e-6);    // tolerance for the iterative method
+real tol=getARGV("-tol",1e-12);    // tolerance for the iterative method
 int maxit=getARGV("-maxit",200);    // maximum number of iterations
 
 include "HGMRES.idp"
