@@ -129,7 +129,7 @@ func complex[int] PRECnew(complex[int] &l, complex[int] u0)
         int[int] order3=[2,5,8,1,4,7,0,3,6];
         int[int] order4=[8,5,2,7,4,1,6,3,0];
         for(int i=0; i<npart; ++i)  {
-            int ii = order1[i]
+            int ii = order1[i];
             complex[int] res = l - Aapply(du[]);
             complex[int] bi = Ri[ii]*res;
             complex[int] ui = Ai[ii] ^-1 *bi;    // local solves
@@ -143,7 +143,7 @@ func complex[int] PRECnew(complex[int] &l, complex[int] u0)
         }
         u00 = s[];
         for(int i=0; i<npart; ++i)  {
-            int ii = order2[i]
+            int ii = order2[i];
             complex[int] res = l - Aapply(du[]);
             complex[int] bi = Ri[ii]*res;
             complex[int] ui = Ai[ii] ^-1 *bi;    // local solves
@@ -157,7 +157,7 @@ func complex[int] PRECnew(complex[int] &l, complex[int] u0)
         }
         u00 = s[];
         for(int i=0; i<npart; ++i)  {
-            int ii = order3[i]
+            int ii = order3[i];
             complex[int] res = l - Aapply(du[]);
             complex[int] bi = Ri[ii]*res;
             complex[int] ui = Ai[ii] ^-1 *bi;    // local solves
@@ -171,7 +171,7 @@ func complex[int] PRECnew(complex[int] &l, complex[int] u0)
         }
         u00 = s[];
         for(int i=0; i<npart; ++i)  {
-            int ii = order4[i]
+            int ii = order4[i];
             complex[int] res = l - Aapply(du[]);
             complex[int] bi = Ri[ii]*res;
             complex[int] ui = Ai[ii] ^-1 *bi;    // local solves
