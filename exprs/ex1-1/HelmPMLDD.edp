@@ -135,7 +135,7 @@ matrix<complex> A = vbp(Vh,Vh,solver = sparsesolver);  // global matrix
 cout << "running time: "<<clock()-t<<"  assemble A("<<A.n<<","<<A.m<<")"<< endl;
 rhs[] = vbp(0,Vh); 				 // global rhs
 cout << "running time: "<<clock()-t<<"  assemble rhs"<< endl;
-u[] = A^-1*rhs[];
+//u[] = A^-1*rhs[];
 
 
 cout << "running time: "<<clock()-t<<"  direct solve"<< endl;
@@ -146,6 +146,7 @@ plot(ureal,wait=1,fill=1,dim=2,value=1,cmm = "numerical solution");
 // Domain decomposition data structures
 cout << "setting up dd preconditioner....."<<endl;
 int npart = getARGV("-npart", 2);
+int npartx = getARGV("-npartx", 2); // for checkerboard
 real[int] xian(npart),xibn(npart),yian(npart),yibn(npart); // coordinates for overlapping subdomains
 real lengthoverlaps = getARGV("-lengthoverlaps",0.1);
 int overlaps = getARGV(,"-overlaps",ceil(lengthoverlaps/h));//getARGV("-delta",2);
