@@ -37,7 +37,7 @@ semilogy([40,80,120,160], ras8,'k:o','DisplayName','N=8','LineWidth',4)
 legend('show');
 
 xlabel('wave number k');
-ylabel('convergence rate');
+ylabel('convergence rate \rho');
 title('Convergence rate per double sweep  for RMS-PML');
 set(gca,'FontSize',16);
 hold off

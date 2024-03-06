@@ -27,15 +27,15 @@ ras8=[res40(15)/res40(1),res80(15)/res80(1),res120(15)/res120(1),res160(15)/res1
 
 
 
-semilogy([40,80,120,160], ras2,'r--.','DisplayName','N=2','LineWidth',4)
+semilogy([40,80,120,160], ras2,'r--.','DisplayName','N=2 \times 2','LineWidth',4)
 hold on
-semilogy([40,80,120,160], ras4,'b:x','DisplayName','N=4','LineWidth',4)
-semilogy([40,80,120,160], ras8,'k:o','DisplayName','N=8','LineWidth',4)
+semilogy([40,80,120,160], ras4,'b:x','DisplayName','N=4 \times 4','LineWidth',4)
+semilogy([40,80,120,160], ras8,'k:o','DisplayName','N=8 \times 8','LineWidth',4)
 
 legend('show');
 
 xlabel('wave number k');
-ylabel('convergence rate');
+ylabel('convergence rate \rho');
 title('Convergence rate per (N_x+N_y-1) iterations for RAS-PML');
 set(gca,'FontSize',16);
 hold off
