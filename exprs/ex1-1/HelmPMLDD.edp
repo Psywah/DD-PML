@@ -71,6 +71,13 @@ real apml = getARGV("-apml", 1000.0);
     // pml for the global boundaries
     func sigmagx = pmlg * ( (x>=length)*(x-length)*(x-length)  +  (x<=0)*x*x )*apml;
     func sigmagy = pmlg * ( (y>=height)*(y-height)*(y-height)  +  (y<=0)*y*y )*apml;
+    func dsigmaix = pmli * 2*( (x>=xib)*(x-xib)  +  (x<=xia)*(x-xia))*apml;
+    func dsigmaiy = pmli * 2*( (y>=yib)*(y-yib)  +  (y<=yia)*(y-yia))*apml;
+
+    // pml for the global boundaries
+    func dsigmagx = pmlg * 2*( (x>=length)*(x-length)  +  (x<=0)*x )*apml;
+    func dsigmagy = pmlg * 2*( (y>=height)*(y-height)  +  (y<=0)*y )*apml;
+
 
 func Pk = P2;  
 fespace Vh(Th,P2);        // P1 fem space
@@ -81,6 +88,8 @@ fespace Vh(Th,P2);        // P1 fem space
 // take the max value of sigma of the two pmls (global boundary and subdomain boundary) for the preconditioner
 func sigmax = max ( sigmaix, sigmagx );
 func sigmay = max ( sigmaiy, sigmagy );
+func dsigmax = max ( dsigmaix, dsigmagx );
+func dsigmay = max ( dsigmaiy, dsigmagy );
 
 // point source in the center of the domain
 real xs = length/2.;
@@ -95,19 +104,24 @@ func exact = supp*1i*(j0(k*sqrt((x-xs)^2+(y-ys)^2))+1i*y0(k*sqrt((x-xs)^2+(y-ys)
 macro Grad(u) [dx(u),dy(u)] // EOM
 
 // gradient for the operator
-macro Gradpmlg(u) [(1.+1i*sigmagy)/(1.+1i*sigmagx)*dx(u),
-                  (1.+1i*sigmagx)/(1.+1i*sigmagy)*dy(u)] // EOM
+macro Gradpmlg(u) [(1.)/(1.+1i*sigmagx)^2*dx(u),
+                   (1.)/(1.+1i*sigmagy)^2*dy(u)] // EOM
 
 // gradient for the preconditioner
-macro Gradpml(u) [(1.+1i*sigmay)/(1.+1i*sigmax)*dx(u),
-                  (1.+1i*sigmax)/(1.+1i*sigmay)*dy(u)] // EOM
+macro Gradpml(u) [(1.)/(1.+1i*sigmax)^2*dx(u),
+                  (1.)/(1.+1i*sigmay)^2*dy(u)] // EOM
 
+macro betaDotGradg(u) ((1i*dsigmagx)/(1.+1i*sigmagx)^3*dx(u)+
+                  (1i*dsigmagy)/(1.+1i*sigmagy)^3*dy(u)) // EOM
+macro betaDotGrad(u) ((1i*dsigmaix)/(1.+1i*sigmax)^3*dx(u)+
+                  (1i*dsigmaiy)/(1.+1i*sigmay)^3*dy(u)) // EOM
 // Definition of the problem to solve
 func f = exp(-((x-xs)^2+(y-ys)^2)*k*10);   // right hand side
 
 macro Varf(varfName, meshName, PhName)
     varf varfName(u,v) =
-  int2d(meshName)(-(1+1i*sigmagx)*(1+1i*sigmagy)*u*v+ 1./k^2*Grad(u)'*Gradpmlg(v))
+  int2d(meshName)(-u*v+ 1./k^2*Grad(u)'*Gradpmlg(v))
+        - int2d(meshName)(1./k^2*betaDotGradg(u)*v)
         - int1d(meshName,borderg*!pmlg)(1i/k*u*v)
         - int2d(meshName)(f*v)
 		+ on(borderg*pmlg,u=0); // EOM
@@ -121,7 +135,7 @@ matrix<complex> A = vbp(Vh,Vh,solver = sparsesolver);  // global matrix
 cout << "running time: "<<clock()-t<<"  assemble A("<<A.n<<","<<A.m<<")"<< endl;
 rhs[] = vbp(0,Vh); 				 // global rhs
 cout << "running time: "<<clock()-t<<"  assemble rhs"<< endl;
-//u[] = A^-1*rhs[];
+u[] = A^-1*rhs[];
 
 
 cout << "running time: "<<clock()-t<<"  direct solve"<< endl;
@@ -191,7 +205,8 @@ for(int i = 0; i<npart; i++){
     yia = yian[i];
     yib = yibn[i];
     varf ai(u,v) = 
-             int2d(Thi[i])(-(1+1i*sigmax)*(1+1i*sigmay)*u*v+1./k^2*Grad(u)'*Gradpml(v))
+             int2d(Thi[i])(-u*v+1./k^2*Grad(u)'*Gradpml(v))
+                - int2d(Thi[i])(1./k^2*betaDotGrad(u)*v)
 				- int1d(Thi[i],borderg*!pmlg)(1i/k*u*v)
 				- int1d(Thi[i],10*!pmli)(1i/k*u*v)
 				+ on(borderg*pmlg,10*pmli,u=0); // EOM
@@ -235,7 +250,7 @@ ureal = real(sol);
 plot(ureal,wait=1,fill=1,dim=2,value=1,cmm = "numerical solution by iterative method");
 
 load "iovtk"
-int[int] Order = [2];
+int[int] Order = [1];
 string DataName = "u";
 string filename= "u" +k+".vtu";
 savevtk(filename, Th, ureal, dataname=DataName, order=Order);
