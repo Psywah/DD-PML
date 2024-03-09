@@ -66,6 +66,7 @@ real lengthpmli=lengthpml, xia, xib, yia, yib;
 */
 
 real apml = getARGV("-apml", 1000.0);
+apml = k^2.5;
     func sigmaix = pmli * ( (x>=xib)*(x-xib)*(x-xib)  +  (x<=xia)*(x-xia)*(x-xia))*apml;
     func sigmaiy = pmli * ( (y>=yib)*(y-yib)*(y-yib)  +  (y<=yia)*(y-yia)*(y-yia))*apml;
 
