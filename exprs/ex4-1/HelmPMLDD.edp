@@ -1,0 +1,297 @@
+load "UMFPACK64"
+load "MUMPS_seq"
+include "getARGV.idp"
+func vel = 1;//Ovt(x,y,z);  // km/s
+
+real t = clock();
+real freq = getARGV("-frequency",0.5); // Hz
+real k = 2.*pi*freq/vel;
+k = getARGV("-wavenumber", k);
+real lambda = 2.*pi/k;
+
+cout << "running time: "<<clock()-t<<"  get k"<< endl;
+cout << "lambda = " << lambda << endl;
+cout << "wave number = " << k << endl;
+
+// dimensions of the domain
+real height = 1.;
+real length = 1.;
+
+// 10 ppwl
+real nppwl = 2.*pi*pow(k,0.25);//10  // can be adjusted to pollution-free 2.*pi*k^{1/2p} : lambda/nppwl = h = k^{-1-1/2p}
+int  npl = ceil(nppwl*(height)/lambda);
+npl = npl>80? npl:80;
+npl = npl+npl%2;  // number of elements in each direction is even 
+                     // so that the point source in the center coincides with a mesh vertex
+// length of the pml
+real h = height/npl;
+real lengthpml = getARGV("-lengthpml", 0.1);
+int  layerspml = ceil(lengthpml/h);//getARGV("-deltapml",2);//lambda/h/2; // can be adjusted
+lengthpml = h*layerspml;
+cout << "height = "<< height <<", length = "<<length<<", lengthpml = "<< lengthpml << ", layerspml = " << layerspml << endl;
+cout << "nppwl = " << nppwl << ", h = "<< h << ", k to (-1-1/2p) = "<< pow(k, - 1.25)<< endl;
+
+// generate mesh
+int nply = npl + 2*layerspml;
+int nplx = (length+2*lengthpml)/h;
+mesh Th = square(nplx, nply, [x*(length+2*lengthpml)-lengthpml, y*(height+2*lengthpml)-lengthpml]);
+
+
+cout << "running time: "<<clock()-t<<"  get mesh"<< endl;
+// boundary label
+int borderg = 2;
+int[int] chlabpml=[1, borderg, 2, borderg, 3, borderg, 4, borderg];
+Th=change(Th,refe=chlabpml);
+
+real epst = 1e-10;
+
+int pmli = 1; // switch between impedance and pml for the subdomain interfaces
+int pmlg = 1; // switch between impedance and pml for the global boundary
+
+// pml location and size for the subdomain interfaces. It will be set in the preconditioner assembly
+real lengthpmli=lengthpml, xia, xib, yia, yib;
+
+/*
+//macro PMLoption 1
+//IFMACRO(PMLoption, 1)
+    // pml for the subdomain interface
+    func sigmaix = pmli * ( (x>=xib)/max(epst,(xib+lengthpmli-x)*k)  +  (x<=xia)/max(epst,(x + lengthpmli-xia)*k) );
+    func sigmaiy = pmli * ( (y>=yib)/max(epst,(yib+lengthpmli-y)*k)  +  (y<=yia)/max(epst,(y + lengthpmli-yia)*k) );
+
+    // pml for the global boundaries
+    func sigmagx = pmlg * ( (x>=length)/max(epst,(length+lengthpml-x)*k)  +  (x<=0)/max(epst,(x + lengthpml)*k) );
+    func sigmagy = pmlg * ( (y>=height)/max(epst,(height+lengthpml-y)*k)  +  (y<=0)/max(epst,(y + lengthpml)*k) );
+//ENDIFMACRO
+*/
+
+real apml = getARGV("-apml", 1000.0);
+//apml=k^2.5;
+    func sigmaix = pmli * ( (x>=xib)*(x-xib)*(x-xib)  +  (x<=xia)*(x-xia)*(x-xia))*apml;
+    func sigmaiy = pmli * ( (y>=yib)*(y-yib)*(y-yib)  +  (y<=yia)*(y-yia)*(y-yia))*apml;
+
+    // pml for the global boundaries
+    func sigmagx = pmlg * ( (x>=length)*(x-length)*(x-length)  +  (x<=0)*x*x )*apml;
+    func sigmagy = pmlg * ( (y>=height)*(y-height)*(y-height)  +  (y<=0)*y*y )*apml;
+    func dsigmaix = pmli * 2*( (x>=xib)*(x-xib)  +  (x<=xia)*(x-xia))*apml;
+    func dsigmaiy = pmli * 2*( (y>=yib)*(y-yib)  +  (y<=yia)*(y-yia))*apml;
+
+    // pml for the global boundaries
+    func dsigmagx = pmlg * 2*( (x>=length)*(x-length)  +  (x<=0)*x )*apml;
+    func dsigmagy = pmlg * 2*( (y>=height)*(y-height)  +  (y<=0)*y )*apml;
+
+
+func Pk = P2;  
+fespace Vh(Th,P2);        // P1 fem space
+//Vh sigmagxh=sigmagx, sigmagyh=sigmagy;
+//plot(sigmagxh,wait=1,fill=1,dim=2,value=1);
+//plot(sigmagyh,wait=1,fill=1,dim=2,value=1);
+
+// take the max value of sigma of the two pmls (global boundary and subdomain boundary) for the preconditioner
+func sigmax = max ( sigmaix, sigmagx );
+func sigmay = max ( sigmaiy, sigmagy );
+func dsigmax = max ( dsigmaix, dsigmagx );
+func dsigmay = max ( dsigmaiy, dsigmagy );
+
+// point source in the center of the domain
+real xs = length/2.;
+real ys = height/2.;
+
+// remove singularity at the source when computing error and plotting
+func supp = sqrt((x-xs)^2+(y-ys)^2) > lambda;
+
+// exact solution
+func exact = supp*1i*(j0(k*sqrt((x-xs)^2+(y-ys)^2))+1i*y0(k*sqrt((x-xs)^2+(y-ys)^2)))/4;
+
+macro Grad(u) [dx(u),dy(u)] // EOM
+
+// gradient for the operator
+macro Gradpmlg(u) [(1.)/(1.+1i*sigmagx)^2*dx(u),
+                   (1.)/(1.+1i*sigmagy)^2*dy(u)] // EOM
+
+// gradient for the preconditioner
+macro Gradpml(u) [(1.)/(1.+1i*sigmax)^2*dx(u),
+                  (1.)/(1.+1i*sigmay)^2*dy(u)] // EOM
+
+macro betaDotGradg(u) ((1i*dsigmagx)/(1.+1i*sigmagx)^3*dx(u)+
+                  (1i*dsigmagy)/(1.+1i*sigmagy)^3*dy(u)) // EOM
+macro betaDotGrad(u) ((1i*dsigmaix)/(1.+1i*sigmax)^3*dx(u)+
+                  (1i*dsigmaiy)/(1.+1i*sigmay)^3*dy(u)) // EOM
+// Definition of the problem to solve
+func f = exp(-((x-xs)^2+(y-ys)^2)*k*10);   // right hand side
+
+func innerCir = sqrt((x-.5)^2+(y-.5)^2) <= 0.4;
+func dist = 0.4 -sqrt((x-.5)^2+(y-.5)^2);
+func Ac = [[0,2], [2,0]]*innerCir*dist + [[1,0], [0,1]];
+func Dgammag = [[(1.)/(1.+1i*sigmagx),0],[0,(1.)/(1.+1i*sigmagy)]];
+func Dgamma = [[(1.)/(1.+1i*sigmax),0],[0,(1.)/(1.+1i*sigmay)]];
+func alphag = Dgammag*Ac*Dgammag;
+func alpha = Dgamma*Ac*Dgamma;
+func betag = Dgammag*Ac*[(1i*dsigmagx)/(1.+1i*sigmagx)^2,(1i*dsigmagy)/(1.+1i*sigmagy)^2];
+func beta = Dgamma*Ac*[(1i*dsigmaix)/(1.+1i*sigmax)^2,(1i*dsigmaiy)/(1.+1i*sigmay)^2];
+IFMACRO(!NN)
+    macro NN 1 //
+ENDIFMACRO
+IFMACRO(NN, 1)
+    func nn = 1;
+ENDIFMACRO
+IFMACRO(NN, 2)
+    func nn = 1. + innerCir *dist*2.5;
+ENDIFMACRO
+IFMACRO(NN, 3)
+    func nn = 1. - innerCir *dist*1.25 ;
+ENDIFMACRO
+
+fespace Ph(Th,P0);        // P1 fem space
+
+Ph plotc = nn;
+plot(plotc, cmm="wave velocity", value=1, fill=1,wait=1);
+load "iovtk"
+int[int] Order = [1];
+string DataName = "nn";
+savevtk("nn.vtu", Th, plotc, dataname=DataName, order=Order);
+
+
+macro Varf(varfName, meshName, PhName)
+    varf varfName(u,v) =
+  int2d(meshName)(-u*v*nn+ 1./k^2*Grad(v)'*(alphag*Grad(u)))
+        - int2d(meshName)(1./k^2*Grad(u)'*betag*v)
+        - int1d(meshName,borderg*!pmlg)(1i/k*u*v)
+        - int2d(meshName)(f*v)
+		+ on(borderg*pmlg,u=0); // EOM
+
+//func Pk = P2;  
+//fespace Vh(Th,P2);        // P1 fem space
+Vh<complex> u,rhs;
+Varf(vbp,Th,1)
+cout << "running time: "<<clock()-t<<"  define forms"<< endl;
+matrix<complex> A = vbp(Vh,Vh,solver = sparsesolver);  // global matrix
+cout << "running time: "<<clock()-t<<"  assemble A("<<A.n<<","<<A.m<<")"<< endl;
+rhs[] = vbp(0,Vh); 				 // global rhs
+cout << "running time: "<<clock()-t<<"  assemble rhs"<< endl;
+//u[] = A^-1*rhs[];
+
+
+cout << "running time: "<<clock()-t<<"  direct solve"<< endl;
+Vh ureal = real(u);
+
+plot(ureal,wait=1,fill=1,dim=2,value=1,cmm = "numerical solution");
+
+// Domain decomposition data structures
+cout << "setting up dd preconditioner....."<<endl;
+int npart = getARGV("-npart", 2);
+int npartx = getARGV("-npartx", 2); // for checkerboard
+real[int] xian(npart),xibn(npart),yian(npart),yibn(npart); // coordinates for overlapping subdomains
+real lengthoverlaps = getARGV("-lengthoverlaps",0.1);
+int overlaps = getARGV(,"-overlaps",ceil(lengthoverlaps/h));//getARGV("-delta",2);
+lengthoverlaps = overlaps*h;
+cout << " num of subdomains: "<< npart <<", overlaps: "<<overlaps<<", length of overlaps: "<<lengthoverlaps<<endl;
+for(int i = 0; i<npart; i++){
+    xian[i] = floor(length/npart*i/h)*h - overlaps*h;
+    xibn[i] = floor(length/npart*(i+1)/h)*h + overlaps*h;
+    yian[i] = 0;
+    yibn[i] = height;
+}
+xian[0] = 0.0;
+xibn[npart-1] = length;
+
+mesh[int] Thi(npart);          // sequence of ovr. meshes
+matrix<complex>[int] Ai(npart), Ri(npart), Di(npart),Dio(npart);           // local restriction operators
+matrix[int] Rir(npart), Dir(npart);           // local restriction operators
+matrix<complex>[int] intern(npart), bord(npart);
+for(int i = 0; i<npart; i++){
+    func locali = (x>= xian[i] - lengthpml) && (x<=xibn[i] + lengthpml);
+    Thi[i] = trunc(Th, locali, label = 10);
+    fespace Vhi(Thi[i], Pk);
+    Rir[i] = interpolate(Vhi,Vh);
+    Ri[i] = Rir[i];
+    Vhi chii;
+    if(i==0)
+        chii = (xibn[i] - x)/overlaps/h/2 * (x>=xibn[i]-overlaps*h*2) * (x<xibn[i])
+                   + (x<xibn[i]-overlaps*h*2);
+    else if(i==npart-1)
+        chii = (x - xian[i])/overlaps/h/2 * (x<=xian[i]+overlaps*h*2) *(x>xian[i])
+                   + (x>xian[i]+overlaps*h*2);
+    else
+        chii = (x - xian[i])/overlaps/h/2 * (x<=xian[i]+overlaps*h*2)*(x>xian[i])
+                   + (xibn[i]-x)/overlaps/h/2 * (x>=xibn[i]-overlaps*h*2)*(x<xibn[i])
+                   + (x>xian[i]+overlaps*h*2 &&x<xibn[i]-overlaps*h*2);
+    Dir[i] = chii[];
+    Di[i] = Dir[i];
+    if(i==0)
+        chii = 1.0* (x<=xibn[i]);
+    else if(i==npart-1)
+        chii = 1.0* (x>=xian[i]);
+    else
+        chii = 1.0* (x>xian[i] &&x<xibn[i]);
+    Dir[i] = chii[];
+    Dio[i] = Dir[i];
+    //plot(Th,chii, cmm="chi", value=1, fill=1,wait=1);
+    chii = (x>xian[i]-lengthpml) && (x < xibn[i]+lengthpml) && (y>-lengthpml) && (y<height+lengthpml);
+    Dir[i] = chii[];
+    intern[i] = Dir[i];
+    chii = 1 - ((x>xian[i]-lengthpml) && (x < xibn[i]+lengthpml) && (y>-lengthpml) && (y<height+lengthpml));
+    plot(Th,chii, cmm="chi", value=1, fill=1,wait=1);
+    Dir[i] = chii[];
+    bord[i] = Dir[i];
+
+    xia = xian[i];
+    xib = xibn[i];
+    yia = yian[i];
+    yib = yibn[i];
+    varf ai(u,v) = 
+             int2d(Thi[i])(-u*v*nn+1./k^2*Grad(v)'*(alpha*Grad(u)))
+                - int2d(Thi[i])(1./k^2*Grad(u)'*beta*v)
+				- int1d(Thi[i],borderg*!pmlg)(1i/k*u*v)
+				- int1d(Thi[i],10*!pmli)(1i/k*u*v)
+				+ on(borderg*pmlg,10*pmli,u=0); // EOM
+    //Ai[i] = ai(Vhi,Vhi,solver = sparsesolver, factorize=0, tgv=-1);
+    Ai[i] = ai(Vhi,Vhi,solver = sparsesolver, factorize=true, tgv=tgv);
+}
+
+cout << "running time: "<<clock()-t<<"  settup dd"<< endl;
+cout << "done! setting up dd preconditioner....."<<endl;
+// Iterative solver parameters
+real tol=getARGV("-tol",1e-12);    // tolerance for the iterative method
+int maxit=getARGV("-maxit",200);    // maximum number of iterations
+
+include "HGMRES.idp"
+Vh<complex> un;
+Vh<complex> sol,er; // initial guess, final solution and error
+
+int gmres = getARGV("-gmres", 1); // 1 gmres, 0 Stationary iteraive solver
+verbosity = 0;
+if(gmres==1)
+{cout<< "Gmres:"<<endl;
+    sol[] =  GMRES(un[], tol, maxit);
+cout << "running time: "<<clock()-t<<"  settup dd"<< endl;
+cout << "done! gmres solve....."<<endl;
+}else if(gmres==0)
+{cout<< "Stationary iteration:"<<endl;
+    sol[] =  StationaryIterateNew(un[], tol, maxit);
+cout << "running time: "<<clock()-t<<"  settup dd"<< endl;
+cout << "done! fixed point solve....."<<endl;
+}else
+{    cout<< "Gmres:"<<endl;
+    sol[] =  GMRES(un[], tol, maxit);
+cout << "running time: "<<clock()-t<<"  settup dd"<< endl;
+cout << "done! gmres solve....."<<endl;
+    cout<< "Stationary iteration:"<<endl;
+    sol[] =  StationaryIterateNew(un[], tol, maxit);
+cout << "running time: "<<clock()-t<<"  settup dd"<< endl;
+cout << "done! fixed point solve....."<<endl;
+}
+ureal = real(sol);
+plot(ureal,wait=1,fill=1,dim=2,value=1,cmm = "numerical solution by iterative method");
+
+load "iovtk"
+Order = [1];
+DataName = "u";
+string filename= "u" +k+".vtu";
+savevtk(filename, Th, ureal, dataname=DataName, order=Order);
+cout<< "log runing arguments:"<<endl;
+for(int i=0;i<ARGV.n;++i)
+{
+    cout << ARGV[i] << "  ";
+}
+t = clock()-t;
+cout << endl << "running time: "<<t<< endl;
