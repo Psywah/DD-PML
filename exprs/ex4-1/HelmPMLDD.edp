@@ -122,6 +122,7 @@ func f = exp(-((x-xs)^2+(y-ys)^2)*k*10);   // right hand side
 func innerCir = sqrt((x-.5)^2+(y-.5)^2) <= 0.4;
 func dist = 0.4 -sqrt((x-.5)^2+(y-.5)^2);
 func Ac = [[0,2], [2,0]]*innerCir*dist + [[1,0], [0,1]];
+//func Ac = [[0,0.5], [0.5,0]]*innerCir + [[1,0], [0,1]];
 func Dgammag = [[(1.)/(1.+1i*sigmagx),0],[0,(1.)/(1.+1i*sigmagy)]];
 func Dgamma = [[(1.)/(1.+1i*sigmax),0],[0,(1.)/(1.+1i*sigmay)]];
 func alphag = Dgammag*Ac*Dgammag;
