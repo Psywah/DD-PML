@@ -17,6 +17,12 @@ FreeFem++  HelmPMLDDcheckerboard.edp -ns -nw -lengthoverlaps 0.025 -lengthpml 0.
 FreeFem++  HelmPMLDDcheckerboard.edp -ns -nw -lengthoverlaps 0.025 -lengthpml 0.025 -gmres 0 -apml 5000  -wavenumber 250 -npartx 2 -primal -sweep33 -DNN=$1 -tol 1e-6
 FreeFem++  HelmPMLDDcheckerboard.edp -ns -nw -lengthoverlaps 0.025 -lengthpml 0.025 -gmres 0 -apml 5000  -wavenumber 250 -npartx 4 -primal -sweep33  -DNN=$1 -tol 1e-6
 FreeFem++  HelmPMLDDcheckerboard.edp -ns -nw -lengthoverlaps 0.025 -lengthpml 0.025 -gmres 0 -apml 5000  -wavenumber 250 -npartx 8 -primal -sweep33 -DNN=$1 -tol 1e-6
+FreeFem++  HelmPMLDDcheckerboard.edp -ns -nw -lengthoverlaps 0.025 -lengthpml 0.025 -gmres 0 -apml 5000  -wavenumber 300 -npartx 2 -primal -sweep33 -DNN=$1 -tol 1e-6
+FreeFem++  HelmPMLDDcheckerboard.edp -ns -nw -lengthoverlaps 0.025 -lengthpml 0.025 -gmres 0 -apml 5000  -wavenumber 300 -npartx 4 -primal -sweep33  -DNN=$1 -tol 1e-6
+FreeFem++  HelmPMLDDcheckerboard.edp -ns -nw -lengthoverlaps 0.025 -lengthpml 0.025 -gmres 0 -apml 5000  -wavenumber 300 -npartx 8 -primal -sweep33 -DNN=$1 -tol 1e-6
+FreeFem++  HelmPMLDDcheckerboard.edp -ns -nw -lengthoverlaps 0.025 -lengthpml 0.025 -gmres 0 -apml 5000  -wavenumber 350 -npartx 2 -primal -sweep33 -DNN=$1 -tol 1e-6
+FreeFem++  HelmPMLDDcheckerboard.edp -ns -nw -lengthoverlaps 0.025 -lengthpml 0.025 -gmres 0 -apml 5000  -wavenumber 350 -npartx 4 -primal -sweep33  -DNN=$1 -tol 1e-6
+FreeFem++  HelmPMLDDcheckerboard.edp -ns -nw -lengthoverlaps 0.025 -lengthpml 0.025 -gmres 0 -apml 5000  -wavenumber 350 -npartx 8 -primal -sweep33 -DNN=$1 -tol 1e-6
 
 
 #echo "number of subdomain $1"
