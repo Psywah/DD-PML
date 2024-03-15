@@ -17,6 +17,12 @@ FreeFem++  HelmPMLDD.edp -ns -nw -lengthoverlaps 0.025 -lengthpml 0.025 -gmres 0
 FreeFem++  HelmPMLDD.edp -ns -nw -lengthoverlaps 0.025 -lengthpml 0.025 -gmres 0 -apml 5000  -wavenumber 250 -npart 2 -primal -sweep4
 FreeFem++  HelmPMLDD.edp -ns -nw -lengthoverlaps 0.025 -lengthpml 0.025 -gmres 0 -apml 5000  -wavenumber 250 -npart 4 -primal -sweep4
 FreeFem++  HelmPMLDD.edp -ns -nw -lengthoverlaps 0.025 -lengthpml 0.025 -gmres 0 -apml 5000  -wavenumber 250 -npart 8 -primal -sweep4
+FreeFem++  HelmPMLDD.edp -ns -nw -lengthoverlaps 0.025 -lengthpml 0.025 -gmres 0 -apml 5000  -wavenumber 300 -npart 2 -primal -sweep4
+FreeFem++  HelmPMLDD.edp -ns -nw -lengthoverlaps 0.025 -lengthpml 0.025 -gmres 0 -apml 5000  -wavenumber 300 -npart 4 -primal -sweep4
+FreeFem++  HelmPMLDD.edp -ns -nw -lengthoverlaps 0.025 -lengthpml 0.025 -gmres 0 -apml 5000  -wavenumber 300 -npart 8 -primal -sweep4
+FreeFem++  HelmPMLDD.edp -ns -nw -lengthoverlaps 0.025 -lengthpml 0.025 -gmres 0 -apml 5000  -wavenumber 350 -npart 2 -primal -sweep4
+FreeFem++  HelmPMLDD.edp -ns -nw -lengthoverlaps 0.025 -lengthpml 0.025 -gmres 0 -apml 5000  -wavenumber 350 -npart 4 -primal -sweep4
+FreeFem++  HelmPMLDD.edp -ns -nw -lengthoverlaps 0.025 -lengthpml 0.025 -gmres 0 -apml 5000  -wavenumber 350 -npart 8 -primal -sweep4
 
 
 #echo "number of subdomain $1"

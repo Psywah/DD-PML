@@ -120,7 +120,7 @@ macro betaDotGradg(u) ((1i*dsigmagx)/(1.+1i*sigmagx)^3*dx(u)+
 macro betaDotGrad(u) ((1i*dsigmaix)/(1.+1i*sigmax)^3*dx(u)+
                   (1i*dsigmaiy)/(1.+1i*sigmay)^3*dy(u)) // EOM
 // Definition of the problem to solve
-func f = exp(-((x-xs)^2+(y-ys)^2)*k*10);   // right hand side
+func f = exp(-((x-xs)^2+(y-ys)^2)*k*k)*k;   // right hand side
 
 macro Varf(varfName, meshName, PhName)
     varf varfName(u,v) =

@@ -116,7 +116,7 @@ macro betaDotGradg(u) ((1i*dsigmagx)/(1.+1i*sigmagx)^3*dx(u)+
 macro betaDotGrad(u) ((1i*dsigmaix)/(1.+1i*sigmax)^3*dx(u)+
                   (1i*dsigmaiy)/(1.+1i*sigmay)^3*dy(u)) // EOM
 // Definition of the problem to solve
-func f = exp(-((x-xs)^2+(y-ys)^2)*k*10);   // right hand side
+func f = exp(-((x-xs)^2+(y-ys)^2)*k*k)*k;   // right hand side
 
 macro Varf(varfName, meshName, PhName)
     varf varfName(u,v) =
@@ -230,21 +230,21 @@ verbosity = 0;
 if(gmres==1)
 {cout<< "Gmres:"<<endl;
     sol[] =  GMRES(un[], tol, maxit);
-cout << "running time: "<<clock()-t<<"  settup dd"<< endl;
+cout << "running time: "<<clock()-t<<"  gmres"<< endl;
 cout << "done! gmres solve....."<<endl;
 }else if(gmres==0)
 {cout<< "Stationary iteration:"<<endl;
     sol[] =  StationaryIterateNew(un[], tol, maxit);
-cout << "running time: "<<clock()-t<<"  settup dd"<< endl;
+cout << "running time: "<<clock()-t<<"  fixed point"<< endl;
 cout << "done! fixed point solve....."<<endl;
 }else
 {    cout<< "Gmres:"<<endl;
     sol[] =  GMRES(un[], tol, maxit);
-cout << "running time: "<<clock()-t<<"  settup dd"<< endl;
+cout << "running time: "<<clock()-t<<"  gmres"<< endl;
 cout << "done! gmres solve....."<<endl;
     cout<< "Stationary iteration:"<<endl;
     sol[] =  StationaryIterateNew(un[], tol, maxit);
-cout << "running time: "<<clock()-t<<"  settup dd"<< endl;
+cout << "running time: "<<clock()-t<<"  fixed point"<< endl;
 cout << "done! fixed point solve....."<<endl;
 }
 ureal = real(sol);
