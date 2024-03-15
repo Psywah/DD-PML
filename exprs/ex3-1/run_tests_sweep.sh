@@ -47,4 +47,23 @@ FreeFem++  HelmPMLDD.edp -ns -nw -overlaps 1 -gmres 0 -apml 5000  -wavenumber 25
 FreeFem++  HelmPMLDD.edp -ns -nw -overlaps 1 -gmres 0 -apml 5000  -wavenumber 250 -npart 8 -primal -sweep4 -DNN=1 -tol 1e-6
 
 
+FreeFem++  HelmPMLDD.edp -ns -nw -lengthoverlaps 0.025 -gmres 0 -apml 5000  -wavenumber 300 -npart 2 -primal -sweep4 -DNN=1 -tol 1e-6
+FreeFem++  HelmPMLDD.edp -ns -nw -lengthoverlaps 0.025 -gmres 0 -apml 5000  -wavenumber 300 -npart 4 -primal -sweep4 -DNN=1 -tol 1e-6
+FreeFem++  HelmPMLDD.edp -ns -nw -lengthoverlaps 0.025 -gmres 0 -apml 5000  -wavenumber 300 -npart 8 -primal -sweep4 -DNN=1 -tol 1e-6
+FreeFem++  HelmPMLDD.edp -ns -nw -lengthoverlaps 0.025 -gmres 0 -apml 5000  -wavenumber 350 -npart 2 -primal -sweep4 -DNN=1 -tol 1e-6
+FreeFem++  HelmPMLDD.edp -ns -nw -lengthoverlaps 0.025 -gmres 0 -apml 5000  -wavenumber 350 -npart 4 -primal -sweep4 -DNN=1 -tol 1e-6
+FreeFem++  HelmPMLDD.edp -ns -nw -lengthoverlaps 0.025 -gmres 0 -apml 5000  -wavenumber 350 -npart 8 -primal -sweep4 -DNN=1 -tol 1e-6
 
+FreeFem++  HelmPMLDD.edp -ns -nw -lengthoverlaps 0.0125 -gmres 0 -apml 5000  -wavenumber 300 -npart 2 -primal -sweep4 -DNN=1 -tol 1e-6
+FreeFem++  HelmPMLDD.edp -ns -nw -lengthoverlaps 0.0125 -gmres 0 -apml 5000  -wavenumber 300 -npart 4 -primal -sweep4 -DNN=1 -tol 1e-6
+FreeFem++  HelmPMLDD.edp -ns -nw -lengthoverlaps 0.0125 -gmres 0 -apml 5000  -wavenumber 300 -npart 8 -primal -sweep4 -DNN=1 -tol 1e-6
+FreeFem++  HelmPMLDD.edp -ns -nw -lengthoverlaps 0.0125 -gmres 0 -apml 5000  -wavenumber 350 -npart 2 -primal -sweep4 -DNN=1 -tol 1e-6
+FreeFem++  HelmPMLDD.edp -ns -nw -lengthoverlaps 0.0125 -gmres 0 -apml 5000  -wavenumber 350 -npart 4 -primal -sweep4 -DNN=1 -tol 1e-6
+FreeFem++  HelmPMLDD.edp -ns -nw -lengthoverlaps 0.0125 -gmres 0 -apml 5000  -wavenumber 350 -npart 8 -primal -sweep4 -DNN=1 -tol 1e-6
+
+FreeFem++  HelmPMLDD.edp -ns -nw -overlaps 1 -gmres 0 -apml 5000  -wavenumber 300 -npart 2 -primal -sweep4 -DNN=1 -tol 1e-6
+FreeFem++  HelmPMLDD.edp -ns -nw -overlaps 1 -gmres 0 -apml 5000  -wavenumber 300 -npart 4 -primal -sweep4 -DNN=1 -tol 1e-6
+FreeFem++  HelmPMLDD.edp -ns -nw -overlaps 1 -gmres 0 -apml 5000  -wavenumber 300 -npart 8 -primal -sweep4 -DNN=1 -tol 1e-6
+FreeFem++  HelmPMLDD.edp -ns -nw -overlaps 1 -gmres 0 -apml 5000  -wavenumber 350 -npart 2 -primal -sweep4 -DNN=1 -tol 1e-6
+FreeFem++  HelmPMLDD.edp -ns -nw -overlaps 1 -gmres 0 -apml 5000  -wavenumber 350 -npart 4 -primal -sweep4 -DNN=1 -tol 1e-6
+FreeFem++  HelmPMLDD.edp -ns -nw -overlaps 1 -gmres 0 -apml 5000  -wavenumber 350 -npart 8 -primal -sweep4 -DNN=1 -tol 1e-6

@@ -417,7 +417,7 @@ func complex[int] StationaryIterateNew(complex[int] x0, real eps, int nbiter)
             cout << "StationaryIterate can not converge in " + (it) + " iterations " << endl;
     }
             cout << "The relative residual is " +  res[it]/res[0] << endl;
-            cout << "The relative error is " +  error[it]/error[0] << endl;
+            //cout << "The relative error is " +  error[it]/error[0] << endl;
 
 
     return un[];
