@@ -1,0 +1,425 @@
+// Preconditioned GMRES algorithm Applied to the system
+// M^{-1}A x = M^{-1}b
+// Here A denotes the global matrix
+// M^{-1} is the RAS preconditioner based on domain decomposition
+// In order to use the GMRES routine define first the matrix-vector product
+/*# debutGlobalMatvec #*/
+func complex[int] Aapply(complex[int] &vec)
+{
+    // Matrix vector product with the global matrix
+    Vh<complex> Ax;
+    Ax[]= A*vec;
+    return Ax[];
+}
+/*# debutRASPrecond #*/
+// and the application of the preconditioner
+func complex[int] PREC(complex[int] &l)
+{
+    // Application of the preconditioner
+    // M^{-1}*y = \sum Ri^T*Di*Ai^{-1}*Ri*y
+    // Ri restriction operators, Ai local matrices
+    Vh<complex> s = 0;
+    complex[int] res=l;
+    if(usedARGV("-additive")!=-1){
+        for(int i=0; i<npart; ++i)  {
+            complex[int] bi(Ri[i].n);
+            bi = Ri[i]*res;          // restricts rhs
+            complex[int] ui = Ai[i] ^-1 *bi;    // local solves
+            bi = Di[i]*ui;                      // partition of unity
+            s[] += Ri[i]'*bi;                   // prolongation
+        }
+    }else if(usedARGV("-sweep4")!=-1){
+        for(int i=0; i<npart; ++i)  {
+            complex[int] bi = Ri[i]*res;          // restricts rhs
+            complex[int] ui = Ai[i] ^-1 *bi;    // local solves
+            bi = Di[i]*ui;                      // partition of unity
+            s[] += Ri[i]'*bi;                   // prolongation
+            complex[int] tmp = Aapply(s[]);
+            res = l;
+            res -= tmp;
+        }
+
+        for(int i=npart-1; i>=0; --i)  {
+            complex[int] bi = Ri[i]*res;          // restricts rhs
+            complex[int] ui = Ai[i] ^-1 *bi;    // local solves
+            bi = Di[i]*ui;                      // partition of unity
+            s[] += Ri[i]'*bi;                   // prolongation
+            complex[int] tmp = Aapply(s[]);
+            res = l;
+            res -= tmp;
+        }
+
+    }else{
+        for(int i=0; i<npart; ++i)  {
+            complex[int] bi = Ri[i]*res;          // restricts rhs
+            complex[int] ui = Ai[i] ^-1 *bi;    // local solves
+            bi = Di[i]*ui;                      // partition of unity
+            s[] += Ri[i]'*bi;                   // prolongation
+            complex[int] tmp = Aapply(s[]);
+            res = l;
+            res -= tmp;
+        }
+
+        for(int i=npart-1; i>=0; --i)  {
+            complex[int] bi = Ri[i]*res;          // restricts rhs
+            complex[int] ui = Ai[i] ^-1 *bi;    // local solves
+            bi = Di[i]*ui;                      // partition of unity
+            s[] += Ri[i]'*bi;                   // prolongation
+            complex[int] tmp = Aapply(s[]);
+            res = l;
+            res -= tmp;
+        }
+    }
+
+    return s[];
+}/*# finRASPrecond #*/
+/*# debutGMRESsolve #*/
+func complex[int] PRECnew(complex[int] &l, complex[int] u0)
+{
+    // Application of the preconditioner
+    // M^{-1}*y = \sum Ri^T*Di*Ai^{-1}*Ri*y
+    // Ri restriction operators, Ai local matrices
+    Vh<complex> s = 0, du=0;
+    complex[int] res=l;
+
+    if(usedARGV("-additive")!=-1){
+        for(int i=0; i<npart; ++i)  {
+            complex[int] bi = Ri[i]*res;          // restricts rhs
+            complex[int] tmp = Ri[i]*u0;          // restricts rhs
+            complex[int] tmp1 = Ai[i]*tmp;
+            bi += tmp1;
+            tmp = intern[i]*bi;
+            complex[int] ui = Ai[i] ^-1 *tmp;    // local solves
+            bi = Di[i]*ui;                      // partition of unity
+            s[] += Ri[i]'*bi;                   // prolongation
+        }
+    }else if(usedARGV("-sweep4")!=-1){
+        s[]=u0;
+        for(int i=0; i<npart; ++i)  {
+            complex[int] res = l - Aapply(du[]);
+            complex[int] bi = Ri[i]*res;
+            complex[int] ui = Ai[i] ^-1 *bi;    // local solves
+            complex[int] si = Ri[i]*s[];          // restricts rhs
+            complex[int] tmp = Ri[i]*u0;
+            si -= tmp;
+            ui += si;
+            bi = Di[i]*ui;                      // partition of unity
+            du[]+= Ri[i]'*bi;
+            s[] += Ri[i]'*bi;                   // prolongation
+        }
+        complex[int] u12 = s[];
+
+        for(int i=npart-1; i>=0; --i)  {
+            complex[int] res = l - Aapply(du[]);
+            complex[int] bi = Ri[i]*res;
+            complex[int] ui = Ai[i] ^-1 *bi;    // local solves
+            complex[int] si = Ri[i]*s[];          // restricts rhs
+            complex[int] tmp = Ri[i]*u12;
+            si -= tmp;
+            ui += si;
+            bi = Di[i]*ui;                      // partition of unity
+            du[]+= Ri[i]'*bi;
+            s[] += Ri[i]'*bi;                   // prolongation
+        }
+    }else if(usedARGV("-sweep33")!=-1){
+        s[]=u0;
+        complex[int] u00 = u0;
+        int[int, int] order(4,npart);
+        int[int] order0(npart);
+        for(int ix=0, index=0;ix<npartx;ix++)
+            for(int iy=0;iy<npartx;iy++){
+                order0[index] = ix*npartx+iy;
+                index++;
+                }
+        for(int iy=0, index=0;iy<npartx;iy++)
+            for(int ix=0;ix<npartx;ix++){
+                order(0,index) = ix*npartx+iy;
+                index++;}
+        for(int iy=0, index=0;iy<npartx;iy++)
+            for(int ix=npartx-1;ix>=0;ix--){
+                order(1,index) = ix*npartx+iy;
+                index++;}
+        for(int iy=npartx-1, index=0;iy>=0;iy--)
+            for(int ix=0;ix<npartx;ix++){
+                order(2,index) = ix*npartx+iy;
+                index++;}
+        for(int iy=npartx-1, index=0;iy>=0;iy--)
+            for(int ix=npartx-1;ix>=0;ix--){
+                order(3,index) = ix*npartx+iy;
+                index++;}
+                
+
+        for(int j=0;j<4;j++){
+            u00 = s[];
+            for(int i=0; i<npart; ++i)  {
+                int ii = order(j,i);
+                complex[int] res = l - Aapply(du[]);
+                complex[int] bi = Ri[ii]*res;
+                complex[int] ui = Ai[ii] ^-1 *bi;    // local solves
+                complex[int] si = Ri[ii]*s[];          // restricts rhs
+                complex[int] tmp = Ri[ii]*u00;
+                si -= tmp;
+                ui += si;
+                bi = Di[ii]*ui;                      // partition of unity
+                du[]+= Ri[ii]'*bi;
+                s[] += Ri[ii]'*bi;                   // prolongation
+            }
+        }
+        
+    }else{
+        s[]=u0;
+        for(int i=0; i<npart; ++i)  {
+            complex[int] res = l - Aapply(du[]);
+            complex[int] bi = Ri[i]*res;
+            complex[int] si = Ri[i]*s[];          // restricts rhs
+            complex[int] tmp = Ai[i]*si;
+            bi += tmp;
+            tmp = intern[i]*bi;
+            complex[int] ui = Ai[i] ^-1 *tmp;    // local solves
+            si = Ri[i]*u0;
+            ui -= si;
+            bi = Di[i]*ui;                      // partition of unity
+            du[]+= Ri[i]'*bi;
+            s[] += Ri[i]'*bi;                   // prolongation
+        }
+        complex[int] u12 = s[];
+
+        for(int i=npart-1; i>=0; --i)  {
+            complex[int] res = l - Aapply(du[]);
+            complex[int] bi = Ri[i]*res;
+            complex[int] si = Ri[i]*s[];          // restricts rhs
+            complex[int] tmp = Ai[i]*si;
+            bi += tmp;
+            tmp = intern[i]*bi;
+            complex[int] ui = Ai[i] ^-1 *tmp;    // local solves
+            si = Ri[i]*u12;
+            ui -= si;
+            bi = Di[i]*ui;                      // partition of unity
+            du[]+= Ri[i]'*bi;
+            s[] += Ri[i]'*bi;                   // prolongation
+        }
+    }
+    return s[];
+}/*# finRASPrecond #*/
+
+func complex[int] GMRES(complex[int] x0, real eps, int nbiter)
+{
+    Vh<complex> r, z, v, w, er, un;
+    Vh<complex>[int] V(nbiter+1), Vp(nbiter+1);  // orthonormal basis
+    complex[int,int] Hn(nbiter+2,nbiter+1);     // Hessenberg matrix
+    Hn = 0.;
+    complex[int,int] rot(2,nbiter+2);
+    rot = 0.;
+    complex[int] g(nbiter+1),g1(nbiter+1);
+    g = 0.;  g1 = 0.;
+    r[] = Aapply(x0);
+    r[] -= rhs[];
+    r[] *= -1.0;
+
+    z[] = r[];
+    g[0] = z[].l2;      // initial residual norm
+
+    //filei << "relres("+1+")=" << g[0] << ";" << endl;
+    V[0][]=1/g[0]*z[];           // first basis vector
+    real solL20=x0.l2;
+    bool convgRes = false;
+    for(int it=0; it<nbiter; it++){
+        Vp[it][] = PREC(V[it][]);
+        v[] = Vp[it][];
+        w[] = Aapply(v[]);   // w = A*M^{-1}V_it
+
+        for(int i=0; i<it+1; i++) {
+            Hn(i,it) = w[]'*V[i][];
+            w[] -=  conj(Hn(i,it))*V[i][];
+        }
+        Hn(it+1,it) = sqrt(real(w[]'*w[]));
+
+        complex aux = Hn(it+1,it);
+        for(int i=0; i<it; i++){ 	 // QR decomposition of Hn
+            complex aa = conj(rot(0,i))*Hn(i,it)+conj(rot(1,i))*Hn(i+1,it);
+            complex bb = -rot(1,i)*Hn(i,it)+rot(0,i)*Hn(i+1,it);
+            Hn(i,it) = aa;
+            Hn(i+1,it) = bb;
+        }
+        complex sq = sqrt( conj(Hn(it,it))*Hn(it,it) + Hn(it+1,it)*Hn(it+1,it) );
+        rot(0,it) = Hn(it,it)/sq;
+        rot(1,it) = Hn(it+1,it)/sq;
+        Hn(it,it) = conj(rot(0,it))*Hn(it,it)+conj(rot(1,it))*Hn(it+1,it);
+        Hn(it+1,it) =  0.;
+        g[it+1] = -rot(1,it)*g[it];
+        g[it] = conj(rot(0,it))*g[it];
+
+        complex[int] y(it+1);     	// Reconstruct the solution
+        for(int i=it; i>=0; i--) {
+            g1[i] = g[i];
+            for(int j=i+1; j<it+1; j++){
+                g1[i] = g1[i]-Hn(i,j)*y[j];
+            }
+            y[i]=g1[i]/Hn(i,i);
+        }
+        un[] = x0;
+        for(int i=0;i<it+1;i++){
+            un[]= un[]+ conj(y[i])*Vp[i][];
+        }
+        //er[] = un[] - uglob[];
+        real relres = abs(g[it+1]);
+        //real relerr = er[].l2/uglob[].l2;
+        //Vh abser = abs(er);
+        Vh absun = abs(un);
+        real solL2 = absun[].l2;
+        if(0){
+            //plot(abser, dim=3, cmm="Error at step " + it, value=1, fill=1,wait=debug);
+            plot(absun, dim=3, cmm="Solution at step " + it, value=1, fill=1,wait=0);
+        }
+        //cout << "It: "<< it << " Residual = " << relres  <<  " Relative L2 Error =  "<<  relerr << endl;
+        if(it==0)
+        {
+            //cout << "It: "<< it << " Residual = " << abs(g[0])  <<  " sol L2 =  "<<solL20<< endl;
+            cout<<" r = [ "<< abs(g[0]);
+        }
+        //cout << "It: "<< it << " Residual = " << relres   <<  " sol L2 =  "<<solL2<< endl;
+        cout<< ", "<< relres;
+
+        int j = it+2;
+        int l = j-1;
+        //filei << method+"GMRES_ovr"+sizeovr+"_k"+k+"("+l+")=" << relerr << ";" << endl;
+        //filei << method+"GMRES_ovr"+sizeovr+"_k"+k+"("+l+")=" << relres << ";" << endl;
+        //if(relerr < eps) //relres
+        /*       if(solL2/solL20 < eps) // error converged
+                 {
+                 cout << "GMRES has converged in error " + it + " iterations " << endl;
+                 cout << "The relative error is " +  solL2/solL20 << endl;
+                 break;	
+                 }
+         */      if(!convgRes && relres/abs(g[0]) < eps) //relres
+        {
+            convgRes = true;
+            cout <<"];"<<endl;
+            cout << "GMRES has converged in resudual " + (it+1) + " iterations " << endl;
+            cout << "The relative residual is " +  relres/abs(g[0]) << endl;
+            break;
+            cout << endl;
+        }
+        V[it+1][]=1/aux*w[];
+
+    }
+    return un[];
+}
+/*# finGMRESsolve #*/
+/*# debutIterativeSolve #*/
+/*
+func complex[int] StationaryIterate(complex[int] x0, real eps, int nbiter)
+{
+    Vh<complex> r, z, v, un;
+    complex[int] g(nbiter+1),g1(nbiter+1);
+    g = 0.;  g1 = 0.;
+    r[] = Aapply(x0);
+    r[] -= rhs[];
+    r[] *= -1.0;
+
+    z[] = r[];
+    g[0] = z[].l2;      // initial residual norm
+
+    bool convgRes = false;
+    un[] = x0;
+    for(int it=0; it<nbiter; it++){
+       v[] = PREC(r[]);
+       //v[] = PRECnew(r[], un[]);
+
+       un[] += v[];
+       z[] = Aapply(un[]);
+       r[] = rhs[] - z[];
+
+       real relres = r[].l2;
+       Vh absun = abs(un);
+       absun[] = un[].re;
+       if(0){
+            //plot(abser, dim=3, cmm="Error at step " + it, value=1, fill=1,wait=debug);
+            plot(absun, dim=2, cmm="Solution at step " + it, value=1, fill=1,wait=0);
+       }
+        //cout << "It: "<< it << " Residual = " << relres  <<  " Relative L2 Error =  "<<  relerr << endl;
+       if(it==0)
+       {
+           //cout << "It: "<< it << " Residual = " << abs(g[0])  <<  " sol L2 =  "<<solL20<< endl;
+           cout<<" r = [ "<< abs(g[0]);
+       }
+        //cout << "It: "<< it << " Residual = " << relres   <<  " sol L2 =  "<<solL2<< endl;
+       cout<< ", "<< relres;
+
+       if((!convgRes && relres/abs(g[0]) < eps) || (it>=nbiter-1)) //relres
+       {
+            cout<<"];"<<endl;
+            convgRes = true;
+            cout << "StationaryIterate has converged in resudual " + (it+1) + " iterations " << endl;
+            cout << "The relative residual is " +  relres/abs(g[0]) << endl;
+            break;
+       }
+
+    }
+    return un[];
+}
+*/
+/*# finGMRESsolve #*/
+/*# debutIterativeSolve #*/
+
+func complex[int] StationaryIterateNew(complex[int] x0, real eps, int nbiter)
+{
+    Vh<complex> r, v, un, e;
+    real[int] res(nbiter+1),error(nbiter+1);
+    bool convgRes = false;
+    un[] = x0;
+    r[] = Aapply(un[]);
+    r[] -= rhs[];
+    r[] *= -1.0;
+
+    res[0] = r[].l2;      // initial residual norm
+
+    e[] = u[]-un[];
+    error[0] = e[].l2;
+    int it;
+    for(it=0; it<nbiter; it++){
+
+       if(usedARGV("-primal")!=-1){
+            v[] = PRECnew(r[], un[]);
+            un[] = v[];
+       }else{
+       v[] = PREC(r[]);
+       un[] += v[];
+       }
+
+       r[] = Aapply(un[]);
+       r[] -= rhs[];
+       r[] *= -1.0;
+
+       e[] = u[]-un[];
+       error[it+1] = e[].l2;
+       res[it+1] = r[].l2;      // initial residual norm
+       //if(error[it+1] < max(error[0]*eps, 1e-12) || res[it+1] < max(res[0]*eps,1e-12)){
+       //if(error[it+1] < error[0]*eps || res[it+1] < res[0]*eps){
+       if(res[it+1] < res[0]*eps){
+            convgRes = true;
+            it++;
+            break;
+        }
+    }
+    cout<< "error = [";
+    for(int i =0;i<it;i++)
+        cout<<error[i]+", ";
+    cout<< error[it] +"]"<<endl;
+    cout<< "res = [";
+    for(int i =0;i<it;i++)
+        cout<<res[i]+", ";
+    cout<< res[it] +"]"<<endl;
+    if(convgRes){
+            cout << "StationaryIterate has converged in " + (it) + " iterations " << endl;
+    }
+    else{
+            cout << "StationaryIterate can not converge in " + (it) + " iterations " << endl;
+    }
+            cout << "The relative residual is " +  res[it]/res[0] << endl;
+            //cout << "The relative error is " +  error[it]/error[0] << endl;
+
+
+    return un[];
+}
+
