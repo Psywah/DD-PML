@@ -93,8 +93,18 @@ func dsigmax = max ( dsigmaix, dsigmagx );
 func dsigmay = max ( dsigmaiy, dsigmagy );
 
 // point source in the center of the domain
-real xs = length/2.;
-real ys = height/2.;
+IFMACRO(!DS)
+    macro DS 1 //
+ENDIFMACRO
+IFMACRO(DS, 1)
+    real xs = length/2.;
+    real ys = height/2.;
+ENDIFMACRO
+IFMACRO(DS, 2)
+    real xs = length/16.;
+    real ys = height/16.;
+ENDIFMACRO
+
 
 // remove singularity at the source when computing error and plotting
 func supp = sqrt((x-xs)^2+(y-ys)^2) > lambda;
