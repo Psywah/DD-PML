@@ -295,7 +295,7 @@ func complex[int] GMRES(complex[int] x0, real eps, int nbiter)
         {
             convgRes = true;
             cout <<"];"<<endl;
-            cout << "GMRES has converged in resudual " + it + " iterations " << endl;
+            cout << "GMRES has converged in resudual " + (it+1) + " iterations " << endl;
             cout << "The relative residual is " +  relres/abs(g[0]) << endl;
             break;
             cout << endl;

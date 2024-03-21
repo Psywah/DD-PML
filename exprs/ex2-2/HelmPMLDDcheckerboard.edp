@@ -27,7 +27,7 @@ npl = npl+npl%2;  // number of elements in each direction is even
 // length of the pml
 real h = height/npl;
 real lengthpml = getARGV("-lengthpml", 0.1);
-int  layerspml = 3;//ceil(lengthpml/h);//getARGV("-deltapml",2);//lambda/h/2; // can be adjusted
+int  layerspml = ceil(lengthpml/h);//getARGV("-deltapml",2);//lambda/h/2; // can be adjusted
 lengthpml = h*layerspml;
 cout << "height = "<< height <<", length = "<<length<<", lengthpml = "<< lengthpml << ", layerspml = " << layerspml << endl;
 cout << "nppwl = " << nppwl << ", h = "<< h << ", k to (-1-1/2p) = "<< pow(k, - 1.25)<< endl;
@@ -66,7 +66,7 @@ real lengthpmli=lengthpml, xia, xib, yia, yib;
 */
 
 real apml = getARGV("-apml", 1000.0);
-apml = k^2.5;
+//apml = k^2.5;
     func sigmaix = pmli * ( (x>=xib)*(x-xib)*(x-xib)  +  (x<=xia)*(x-xia)*(x-xia))*apml;
     func sigmaiy = pmli * ( (y>=yib)*(y-yib)*(y-yib)  +  (y<=yia)*(y-yia)*(y-yia))*apml;
 
