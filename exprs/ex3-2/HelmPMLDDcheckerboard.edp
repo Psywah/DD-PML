@@ -265,9 +265,9 @@ IFMACRO(POU, 2)
         else if(j==npartx-1)
             chiiy =  exp(-(yibn[ii]-yian[ii])/2/(abs(y - yian[ii]+lengthgaps) +epst)) * (y>yian[ii]+lengthgaps);
         else
-            chii = exp(-(yibn[ii]-yian[ii])^2/4/(abs(yibn[ii]-lengthgaps - x) +epst)
-                                     /(abs(x - yian[ii]+lengthgaps) +epst))
-                                     * (x<yibn[ii]-lengthgaps)* (x>yian[ii]+lengthgaps);
+            chiiy = exp(-(yibn[ii]-yian[ii])^2/4/(abs(yibn[ii]-lengthgaps - y) +epst)
+                                     /(abs(y - yian[ii]+lengthgaps) +epst))
+                                     * (y<yibn[ii]-lengthgaps)* (y>yian[ii]+lengthgaps);
 ENDIFMACRO
 
         Vhi chiii;
