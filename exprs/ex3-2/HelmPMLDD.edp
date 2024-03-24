@@ -247,10 +247,10 @@ IFMACRO(POU, 2)
     if(i==0)
         chii = exp(-(xibn[i]-xian[i])/2/(abs(xibn[i]-lengthgaps - x) +epst)) * (x<xibn[i]-lengthgaps);
     else if(i==npart-1)
-        chii = exp(-(xibn[i]-xian[i])/2/(abs(x - xian[i]+lengthgaps) +epst)) * (x>xian[i]+lengthgaps);
+        chii = exp(-(xibn[i]-xian[i])/2/(abs(x - xian[i]-lengthgaps) +epst)) * (x>xian[i]+lengthgaps);
     else
         chii = exp(-(xibn[i]-xian[i])^2/4/(abs(xibn[i]-lengthgaps - x) +epst)
-                                    /(abs(x - xian[i]+lengthgaps) +epst))
+                                    /(abs(x - xian[i]-lengthgaps) +epst))
                                     * (x<xibn[i]-lengthgaps)* (x>xian[i]+lengthgaps);
 ENDIFMACRO
     Dir[i] = chii[];

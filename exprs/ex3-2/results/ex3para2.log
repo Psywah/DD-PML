@@ -1,0 +1,848 @@
+Hello World!
+number of subdomain 2
+-- FreeFem++ v4.13 (2024年 01月 20日 星期六 00:49:06 CST - git no git)
+   file : HelmPMLDD.edp
+ Load: lg_fem lg_mesh lg_mesh3 eigenvalue 
+init MUMPS_SEQ: MPI_Init
+
+ *** Warning  The identifier dist hide a Global identifier  
+ load: iovtk 
+
+ *** Warning  The identifier z hide a Global identifier  
+
+ *** Warning  The identifier y hide a Global identifier  
+ (already loaded: iovtk) sizestack + 1024 =53416  ( 52392 )
+
+running time: 0.000155  get k
+lambda = 0.0628319
+wave number = 100
+height = 1, length = 1, lengthpml = 0.00943396, layerspml = 3
+nppwl = 19.8692, h = 0.00314465, k to (-1-1/2p) = 0.00316228
+  -- Square mesh : nb vertices  =105625 ,  nb triangles = 209952 ,  nb boundary edges 1296
+running time: 0.031905  get mesh
+ 0x5647a70b2ff0 VTK_FILE 2
+running time: 0.630728  define forms
+running time: 5.90812  assemble A(421201,421201)
+running time: 6.18954  assemble rhs
+running time: 6.18955  direct solve
+setting up dd preconditioner.....
+ num of subdomains: 2, overlaps: 8, length of overlaps: 0.0251572
+                     , gaps: 3, length of gaps: 0.00943396
+running time: 16.2381  settup dd
+done! setting up dd preconditioner.....
+Gmres:
+ r = [ 3.83592e-05, 0.000189735, 4.35677e-05, 3.02833e-06, 7.12103e-08, 1.17113e-09, 5.47164e-11, 2.02181e-12];
+GMRES has converged in resudual 7 iterations 
+The relative residual is 5.27073e-08
+running time: 26.9657  gmres done
+done! gmres solve.....
+Stationary iteration:
+error = [0, 1265.63, 2262.55, 2255.2, 2254.68, 2254.68, 2254.69, 2254.69]
+res = [0.000193574, 0.000548884, 4.51309e-05, 4.79527e-06, 2.14664e-07, 4.85086e-09, 5.61042e-10, 4.16283e-11]
+StationaryIterate has converged in 7 iterations 
+The relative residual is 2.15051e-07
+running time: 28.9121 fixed point done
+done! fixed point solve.....
+log runing arguments:
+FreeFem++  HelmPMLDD.edp  -ns  -nw  -lengthoverlaps  0.025  -lengthpml  0.025  -gmres  2  -apml  5000  -wavenumber  100  -npart  2  -additive  -DDS=1  -DNN=1  -DDA=1  -DPOU=1  -tol  1.e-6  
+running time: 29.92
+close  MUMPS_SEQ: MPI_Finalize
+-- FreeFem++ v4.13 (2024年 01月 20日 星期六 00:49:06 CST - git no git)
+   file : HelmPMLDD.edp
+ Load: lg_fem lg_mesh lg_mesh3 eigenvalue 
+init MUMPS_SEQ: MPI_Init
+
+ *** Warning  The identifier dist hide a Global identifier  
+ load: iovtk 
+
+ *** Warning  The identifier z hide a Global identifier  
+
+ *** Warning  The identifier y hide a Global identifier  
+ (already loaded: iovtk) sizestack + 1024 =53416  ( 52392 )
+
+running time: 0.000161  get k
+lambda = 0.0418879
+wave number = 150
+height = 1, length = 1, lengthpml = 0.00570342, layerspml = 3
+nppwl = 21.9889, h = 0.00190114, k to (-1-1/2p) = 0.00190496
+  -- Square mesh : nb vertices  =284089 ,  nb triangles = 566048 ,  nb boundary edges 2128
+running time: 0.091864  get mesh
+ 0x5556a475cff0 VTK_FILE 2
+running time: 1.87676  define forms
+running time: 16.7432  assemble A(1134225,1134225)
+running time: 17.4995  assemble rhs
+running time: 17.4995  direct solve
+setting up dd preconditioner.....
+ num of subdomains: 2, overlaps: 14, length of overlaps: 0.026616
+                     , gaps: 5, length of gaps: 0.0095057
+running time: 50.9784  settup dd
+done! setting up dd preconditioner.....
+Gmres:
+ r = [ 2.31904e-05, 9.23682e-05, 2.38994e-05, 2.55662e-06, 9.17086e-08, 1.94369e-09, 9.60885e-11, 4.8302e-12];
+GMRES has converged in resudual 7 iterations 
+The relative residual is 2.08285e-07
+running time: 90.4809  gmres done
+done! gmres solve.....
+Stationary iteration:
+error = [0, 2568.33, 4565.73, 4539.22, 4539.01, 4539.1, 4539.09, 4539.09, 4539.09]
+res = [9.52349e-05, 0.0002203, 2.51112e-05, 3.78366e-06, 2.84598e-07, 1.34168e-08, 1.07798e-09, 1.15178e-10, 1.06829e-11]
+StationaryIterate has converged in 8 iterations 
+The relative residual is 1.12175e-07
+running time: 97.1989 fixed point done
+done! fixed point solve.....
+log runing arguments:
+FreeFem++  HelmPMLDD.edp  -ns  -nw  -lengthoverlaps  0.025  -lengthpml  0.025  -gmres  2  -apml  5000  -wavenumber  150  -npart  2  -additive  -DDS=1  -DNN=1  -DDA=1  -DPOU=1  -tol  1.e-6  
+running time: 99.9594
+close  MUMPS_SEQ: MPI_Finalize
+-- FreeFem++ v4.13 (2024年 01月 20日 星期六 00:49:06 CST - git no git)
+   file : HelmPMLDD.edp
+ Load: lg_fem lg_mesh lg_mesh3 eigenvalue 
+init MUMPS_SEQ: MPI_Init
+
+ *** Warning  The identifier dist hide a Global identifier  
+ load: iovtk 
+
+ *** Warning  The identifier z hide a Global identifier  
+
+ *** Warning  The identifier y hide a Global identifier  
+ (already loaded: iovtk) sizestack + 1024 =53416  ( 52392 )
+
+running time: 0.000156  get k
+lambda = 0.0314159
+wave number = 200
+height = 1, length = 1, lengthpml = 0.00397878, layerspml = 3
+nppwl = 23.6286, h = 0.00132626, k to (-1-1/2p) = 0.00132957
+  -- Square mesh : nb vertices  =579121 ,  nb triangles = 1155200 ,  nb boundary edges 3040
+running time: 0.142424  get mesh
+ 0x564518087ff0 VTK_FILE 2
+running time: 3.8023  define forms
+running time: 34.8693  assemble A(2313441,2313441)
+running time: 36.4322  assemble rhs
+running time: 36.4322  direct solve
+setting up dd preconditioner.....
+ num of subdomains: 2, overlaps: 19, length of overlaps: 0.0251989
+                     , gaps: 6, length of gaps: 0.00795756
+running time: 95.0401  settup dd
+done! setting up dd preconditioner.....
+Gmres:
+ r = [ 1.32444e-05, 5.59079e-05, 1.63691e-05, 2.46654e-06, 1.33148e-07, 3.85907e-09, 2.53712e-10, 1.18781e-11];
+GMRES has converged in resudual 7 iterations 
+The relative residual is 8.96845e-07
+running time: 197.455  gmres done
+done! gmres solve.....
+Stationary iteration:
+error = [0, 4246.15, 7546.08, 7487.41, 7488.67, 7488.87, 7488.83, 7488.83, 7488.83]
+res = [5.74553e-05, 0.00014127, 1.73602e-05, 3.4401e-06, 3.82186e-07, 2.09536e-08, 1.80108e-09, 3.05076e-10, 4.22879e-11]
+StationaryIterate has converged in 8 iterations 
+The relative residual is 7.36014e-07
+running time: 212.829 fixed point done
+done! fixed point solve.....
+log runing arguments:
+FreeFem++  HelmPMLDD.edp  -ns  -nw  -lengthoverlaps  0.025  -lengthpml  0.025  -gmres  2  -apml  5000  -wavenumber  200  -npart  2  -additive  -DDS=1  -DNN=1  -DDA=1  -DPOU=1  -tol  1.e-6  
+running time: 218.427
+close  MUMPS_SEQ: MPI_Finalize
+-- FreeFem++ v4.13 (2024年 01月 20日 星期六 00:49:06 CST - git no git)
+   file : HelmPMLDD.edp
+ Load: lg_fem lg_mesh lg_mesh3 eigenvalue 
+init MUMPS_SEQ: MPI_Init
+
+ *** Warning  The identifier dist hide a Global identifier  
+ load: iovtk 
+
+ *** Warning  The identifier z hide a Global identifier  
+
+ *** Warning  The identifier y hide a Global identifier  
+ (already loaded: iovtk) sizestack + 1024 =53416  ( 52392 )
+
+running time: 0.0001  get k
+lambda = 0.0251327
+wave number = 250
+height = 1, length = 1, lengthpml = 0.00301205, layerspml = 3
+nppwl = 24.9842, h = 0.00100402, k to (-1-1/2p) = 0.00100595
+  -- Square mesh : nb vertices  =1006009 ,  nb triangles = 2008008 ,  nb boundary edges 4008
+running time: 0.234456  get mesh
+ 0x55ab9a598fd0 VTK_FILE 2
+running time: 6.79974  define forms
+running time: 61.6429  assemble A(4020025,4020025)
+running time: 64.3771  assemble rhs
+running time: 64.3771  direct solve
+setting up dd preconditioner.....
+ num of subdomains: 2, overlaps: 25, length of overlaps: 0.0251004
+                     , gaps: 8, length of gaps: 0.00803213
+running time: 171.69  settup dd
+done! setting up dd preconditioner.....
+Gmres:
+ r = [ 9.50272e-06, 3.76959e-05, 1.10483e-05, 2.07176e-06, 1.38437e-07, 6.45875e-09, 4.78225e-10, 3.05892e-11, 2.00481e-12];
+GMRES has converged in resudual 8 iterations 
+The relative residual is 2.10972e-07
+running time: 403.065  gmres done
+done! gmres solve.....
+Stationary iteration:
+error = [0, 6270.23, 11115.2, 11034.6, 11038.8, 11039, 11038.9, 11038.9, 11038.9, 11038.9]
+res = [3.88752e-05, 9.06998e-05, 1.16819e-05, 2.71201e-06, 3.39494e-07, 1.52778e-08, 1.93114e-09, 4.33123e-10, 6.64563e-11, 6.33647e-12]
+StationaryIterate has converged in 9 iterations 
+The relative residual is 1.62995e-07
+running time: 434.376 fixed point done
+done! fixed point solve.....
+log runing arguments:
+FreeFem++  HelmPMLDD.edp  -ns  -nw  -lengthoverlaps  0.025  -lengthpml  0.025  -gmres  2  -apml  5000  -wavenumber  250  -npart  2  -additive  -DDS=1  -DNN=1  -DDA=1  -DPOU=1  -tol  1.e-6  
+running time: 444.118
+close  MUMPS_SEQ: MPI_Finalize
+-- FreeFem++ v4.13 (2024年 01月 20日 星期六 00:49:06 CST - git no git)
+   file : HelmPMLDD.edp
+ Load: lg_fem lg_mesh lg_mesh3 eigenvalue 
+init MUMPS_SEQ: MPI_Init
+
+ *** Warning  The identifier dist hide a Global identifier  
+ load: iovtk 
+
+ *** Warning  The identifier z hide a Global identifier  
+
+ *** Warning  The identifier y hide a Global identifier  
+ (already loaded: iovtk) sizestack + 1024 =53416  ( 52392 )
+
+running time: 0.000117  get k
+lambda = 0.020944
+wave number = 300
+height = 1, length = 1, lengthpml = 0.0024, layerspml = 3
+nppwl = 26.1493, h = 0.0008, k to (-1-1/2p) = 0.000800937
+  -- Square mesh : nb vertices  =1578792 ,  nb triangles = 3152560 ,  nb boundary edges 5022
+running time: 0.494994  get mesh
+ 0x564d06eedff0 VTK_FILE 2
+running time: 11.191  define forms
+running time: 99.8205  assemble A(6310143,6310143)
+running time: 104.068  assemble rhs
+running time: 104.068  direct solve
+setting up dd preconditioner.....
+ num of subdomains: 2, overlaps: 32, length of overlaps: 0.0256
+                     , gaps: 10, length of gaps: 0.008
+running time: 273.604  settup dd
+done! setting up dd preconditioner.....
+Gmres:
+ r = [ 6.46201e-06, 2.75277e-05, 1.37867e-05, 5.08673e-06, 1.03376e-06, 1.76862e-07, 2.05046e-08, 2.90352e-09, 4.72591e-10, 9.10428e-11, 1.89173e-11, 4.14722e-12];
+GMRES has converged in resudual 11 iterations 
+The relative residual is 6.41785e-07
+running time: 743.999  gmres done
+done! gmres solve.....
+Stationary iteration:
+error = [0, 8904.12, 15335, 15155.4, 15163.6, 15163.3, 15162.8, 15162.9, 15163, 15163, 15163, 15163]
+res = [2.8276e-05, 7.23328e-05, 1.60276e-05, 5.99629e-06, 1.46184e-06, 1.98496e-07, 2.71819e-08, 6.56558e-09, 2.12778e-09, 5.87873e-10, 1.31571e-10, 2.19466e-11]
+StationaryIterate has converged in 11 iterations 
+The relative residual is 7.76158e-07
+running time: 805.583 fixed point done
+done! fixed point solve.....
+log runing arguments:
+FreeFem++  HelmPMLDD.edp  -ns  -nw  -lengthoverlaps  0.025  -lengthpml  0.025  -gmres  2  -apml  5000  -wavenumber  300  -npart  2  -additive  -DDS=1  -DNN=1  -DDA=1  -DPOU=1  -tol  1.e-6  
+running time: 820.9
+close  MUMPS_SEQ: MPI_Finalize
+-- FreeFem++ v4.13 (2024年 01月 20日 星期六 00:49:06 CST - git no git)
+   file : HelmPMLDD.edp
+ Load: lg_fem lg_mesh lg_mesh3 eigenvalue 
+init MUMPS_SEQ: MPI_Init
+
+ *** Warning  The identifier dist hide a Global identifier  
+ load: iovtk 
+
+ *** Warning  The identifier z hide a Global identifier  
+
+ *** Warning  The identifier y hide a Global identifier  
+ (already loaded: iovtk) sizestack + 1024 =53416  ( 52392 )
+
+running time: 0.0001  get k
+lambda = 0.017952
+wave number = 350
+height = 1, length = 1, lengthpml = 0.00198151, layerspml = 3
+nppwl = 27.1767, h = 0.000660502, k to (-1-1/2p) = 0.000660564
+  -- Square mesh : nb vertices  =2313441 ,  nb triangles = 4620800 ,  nb boundary edges 6080
+running time: 0.560958  get mesh
+ 0x55b4b0d82ff0 VTK_FILE 2
+running time: 17.1413  define forms
+running time: 144.659  assemble A(9247681,9247681)
+running time: 150.942  assemble rhs
+running time: 150.942  direct solve
+setting up dd preconditioner.....
+ num of subdomains: 2, overlaps: 38, length of overlaps: 0.0250991
+                     , gaps: 12, length of gaps: 0.00792602
+running time: 404.287  settup dd
+done! setting up dd preconditioner.....
+Gmres:
+ r = [ 5.41322e-06, 2.09098e-05, 5.94236e-06, 1.36467e-06, 1.38575e-07, 9.55278e-09, 8.32822e-10, 9.5349e-11, 9.30856e-12, 1.02364e-12];
+GMRES has converged in resudual 9 iterations 
+The relative residual is 1.89101e-07
+running time: 1188.72  gmres done
+done! gmres solve.....
+Stationary iteration:
+error = [0, 11253.3, 19898.1, 19845.1, 19848.8, 19849, 19848.8, 19848.8, 19848.8, 19848.8]
+res = [2.15992e-05, 4.91375e-05, 6.20959e-06, 1.65505e-06, 2.05892e-07, 1.19869e-08, 2.32833e-09, 5.46572e-10, 8.70289e-11, 1.17264e-11]
+StationaryIterate has converged in 9 iterations 
+The relative residual is 5.42909e-07
+running time: 1265.61 fixed point done
+done! fixed point solve.....
+log runing arguments:
+FreeFem++  HelmPMLDD.edp  -ns  -nw  -lengthoverlaps  0.025  -lengthpml  0.025  -gmres  2  -apml  5000  -wavenumber  350  -npart  2  -additive  -DDS=1  -DNN=1  -DDA=1  -DPOU=1  -tol  1.e-6  
+running time: 1287.95
+close  MUMPS_SEQ: MPI_Finalize
+-- FreeFem++ v4.13 (2024年 01月 20日 星期六 00:49:06 CST - git no git)
+   file : HelmPMLDD.edp
+ Load: lg_fem lg_mesh lg_mesh3 eigenvalue 
+init MUMPS_SEQ: MPI_Init
+
+ *** Warning  The identifier dist hide a Global identifier  
+ load: iovtk 
+
+ *** Warning  The identifier z hide a Global identifier  
+
+ *** Warning  The identifier y hide a Global identifier  
+ (already loaded: iovtk) sizestack + 1024 =53416  ( 52392 )
+
+running time: 0.00011  get k
+lambda = 0.0628319
+wave number = 100
+height = 1, length = 1, lengthpml = 0.00943396, layerspml = 3
+nppwl = 19.8692, h = 0.00314465, k to (-1-1/2p) = 0.00316228
+  -- Square mesh : nb vertices  =105625 ,  nb triangles = 209952 ,  nb boundary edges 1296
+running time: 0.024669  get mesh
+ 0x555afb7e0ff0 VTK_FILE 2
+running time: 0.659134  define forms
+running time: 6.04803  assemble A(421201,421201)
+running time: 6.32833  assemble rhs
+running time: 6.32834  direct solve
+setting up dd preconditioner.....
+ num of subdomains: 2, overlaps: 8, length of overlaps: 0.0251572
+                     , gaps: 3, length of gaps: 0.00943396
+running time: 16.6408  settup dd
+done! setting up dd preconditioner.....
+Gmres:
+ r = [ 3.83592e-05, 0.000189735, 4.35677e-05, 3.02833e-06, 7.12103e-08, 1.17113e-09, 5.47164e-11, 2.02181e-12];
+GMRES has converged in resudual 7 iterations 
+The relative residual is 5.27073e-08
+running time: 27.4465  gmres done
+done! gmres solve.....
+Stationary iteration:
+error = [0, 1265.63, 2262.55, 2255.2, 2254.68, 2254.68, 2254.69, 2254.69]
+res = [0.000193574, 0.000548884, 4.51309e-05, 4.79527e-06, 2.14664e-07, 4.85086e-09, 5.61042e-10, 4.16283e-11]
+StationaryIterate has converged in 7 iterations 
+The relative residual is 2.15051e-07
+running time: 29.4388 fixed point done
+done! fixed point solve.....
+log runing arguments:
+FreeFem++  HelmPMLDD.edp  -ns  -nw  -lengthoverlaps  0.025  -lengthpml  0.0125  -gmres  2  -apml  5000  -wavenumber  100  -npart  2  -additive  -DDS=1  -DNN=1  -DDA=1  -DPOU=1  -tol  1.e-6  
+running time: 30.452
+close  MUMPS_SEQ: MPI_Finalize
+-- FreeFem++ v4.13 (2024年 01月 20日 星期六 00:49:06 CST - git no git)
+   file : HelmPMLDD.edp
+ Load: lg_fem lg_mesh lg_mesh3 eigenvalue 
+init MUMPS_SEQ: MPI_Init
+
+ *** Warning  The identifier dist hide a Global identifier  
+ load: iovtk 
+
+ *** Warning  The identifier z hide a Global identifier  
+
+ *** Warning  The identifier y hide a Global identifier  
+ (already loaded: iovtk) sizestack + 1024 =53416  ( 52392 )
+
+running time: 0.0001  get k
+lambda = 0.0418879
+wave number = 150
+height = 1, length = 1, lengthpml = 0.00570342, layerspml = 3
+nppwl = 21.9889, h = 0.00190114, k to (-1-1/2p) = 0.00190496
+  -- Square mesh : nb vertices  =284089 ,  nb triangles = 566048 ,  nb boundary edges 2128
+running time: 0.072935  get mesh
+ 0x562ec91a3ff0 VTK_FILE 2
+running time: 2.07247  define forms
+running time: 17.056  assemble A(1134225,1134225)
+running time: 17.8148  assemble rhs
+running time: 17.8149  direct solve
+setting up dd preconditioner.....
+ num of subdomains: 2, overlaps: 14, length of overlaps: 0.026616
+                     , gaps: 5, length of gaps: 0.0095057
+running time: 51.5928  settup dd
+done! setting up dd preconditioner.....
+Gmres:
+ r = [ 2.31904e-05, 9.23682e-05, 2.38994e-05, 2.55662e-06, 9.17086e-08, 1.94369e-09, 9.60885e-11, 4.8302e-12];
+GMRES has converged in resudual 7 iterations 
+The relative residual is 2.08285e-07
+running time: 91.2641  gmres done
+done! gmres solve.....
+Stationary iteration:
+error = [0, 2568.33, 4565.73, 4539.22, 4539.01, 4539.1, 4539.09, 4539.09, 4539.09]
+res = [9.52349e-05, 0.0002203, 2.51112e-05, 3.78366e-06, 2.84598e-07, 1.34168e-08, 1.07798e-09, 1.15178e-10, 1.06829e-11]
+StationaryIterate has converged in 8 iterations 
+The relative residual is 1.12175e-07
+running time: 98.1883 fixed point done
+done! fixed point solve.....
+log runing arguments:
+FreeFem++  HelmPMLDD.edp  -ns  -nw  -lengthoverlaps  0.025  -lengthpml  0.0125  -gmres  2  -apml  5000  -wavenumber  150  -npart  2  -additive  -DDS=1  -DNN=1  -DDA=1  -DPOU=1  -tol  1.e-6  
+running time: 100.889
+close  MUMPS_SEQ: MPI_Finalize
+-- FreeFem++ v4.13 (2024年 01月 20日 星期六 00:49:06 CST - git no git)
+   file : HelmPMLDD.edp
+ Load: lg_fem lg_mesh lg_mesh3 eigenvalue 
+init MUMPS_SEQ: MPI_Init
+
+ *** Warning  The identifier dist hide a Global identifier  
+ load: iovtk 
+
+ *** Warning  The identifier z hide a Global identifier  
+
+ *** Warning  The identifier y hide a Global identifier  
+ (already loaded: iovtk) sizestack + 1024 =53416  ( 52392 )
+
+running time: 0.000115  get k
+lambda = 0.0314159
+wave number = 200
+height = 1, length = 1, lengthpml = 0.00397878, layerspml = 3
+nppwl = 23.6286, h = 0.00132626, k to (-1-1/2p) = 0.00132957
+  -- Square mesh : nb vertices  =579121 ,  nb triangles = 1155200 ,  nb boundary edges 3040
+running time: 0.151008  get mesh
+ 0x55b72e19aff0 VTK_FILE 2
+running time: 4.10476  define forms
+running time: 35.4639  assemble A(2313441,2313441)
+running time: 37.0176  assemble rhs
+running time: 37.0176  direct solve
+setting up dd preconditioner.....
+ num of subdomains: 2, overlaps: 19, length of overlaps: 0.0251989
+                     , gaps: 6, length of gaps: 0.00795756
+running time: 95.5609  settup dd
+done! setting up dd preconditioner.....
+Gmres:
+ r = [ 1.32444e-05, 5.59079e-05, 1.63691e-05, 2.46654e-06, 1.33148e-07, 3.85907e-09, 2.53712e-10, 1.18781e-11];
+GMRES has converged in resudual 7 iterations 
+The relative residual is 8.96845e-07
+running time: 198.117  gmres done
+done! gmres solve.....
+Stationary iteration:
+error = [0, 4246.15, 7546.08, 7487.41, 7488.67, 7488.87, 7488.83, 7488.83, 7488.83]
+res = [5.74553e-05, 0.00014127, 1.73602e-05, 3.4401e-06, 3.82186e-07, 2.09536e-08, 1.80108e-09, 3.05076e-10, 4.22879e-11]
+StationaryIterate has converged in 8 iterations 
+The relative residual is 7.36014e-07
+running time: 213.567 fixed point done
+done! fixed point solve.....
+log runing arguments:
+FreeFem++  HelmPMLDD.edp  -ns  -nw  -lengthoverlaps  0.025  -lengthpml  0.0125  -gmres  2  -apml  5000  -wavenumber  200  -npart  2  -additive  -DDS=1  -DNN=1  -DDA=1  -DPOU=1  -tol  1.e-6  
+running time: 219.193
+close  MUMPS_SEQ: MPI_Finalize
+-- FreeFem++ v4.13 (2024年 01月 20日 星期六 00:49:06 CST - git no git)
+   file : HelmPMLDD.edp
+ Load: lg_fem lg_mesh lg_mesh3 eigenvalue 
+init MUMPS_SEQ: MPI_Init
+
+ *** Warning  The identifier dist hide a Global identifier  
+ load: iovtk 
+
+ *** Warning  The identifier z hide a Global identifier  
+
+ *** Warning  The identifier y hide a Global identifier  
+ (already loaded: iovtk) sizestack + 1024 =53416  ( 52392 )
+
+running time: 0.000107  get k
+lambda = 0.0251327
+wave number = 250
+height = 1, length = 1, lengthpml = 0.00301205, layerspml = 3
+nppwl = 24.9842, h = 0.00100402, k to (-1-1/2p) = 0.00100595
+  -- Square mesh : nb vertices  =1006009 ,  nb triangles = 2008008 ,  nb boundary edges 4008
+running time: 0.243257  get mesh
+ 0x55e8bac74fd0 VTK_FILE 2
+running time: 6.96862  define forms
+running time: 61.7607  assemble A(4020025,4020025)
+running time: 64.498  assemble rhs
+running time: 64.498  direct solve
+setting up dd preconditioner.....
+ num of subdomains: 2, overlaps: 25, length of overlaps: 0.0251004
+                     , gaps: 8, length of gaps: 0.00803213
+running time: 170.502  settup dd
+done! setting up dd preconditioner.....
+Gmres:
+ r = [ 9.50272e-06, 3.76959e-05, 1.10483e-05, 2.07176e-06, 1.38437e-07, 6.45875e-09, 4.78225e-10, 3.05892e-11, 2.00481e-12];
+GMRES has converged in resudual 8 iterations 
+The relative residual is 2.10972e-07
+running time: 401.6  gmres done
+done! gmres solve.....
+Stationary iteration:
+error = [0, 6270.23, 11115.2, 11034.6, 11038.8, 11039, 11038.9, 11038.9, 11038.9, 11038.9]
+res = [3.88752e-05, 9.06998e-05, 1.16819e-05, 2.71201e-06, 3.39494e-07, 1.52778e-08, 1.93114e-09, 4.33123e-10, 6.64563e-11, 6.33647e-12]
+StationaryIterate has converged in 9 iterations 
+The relative residual is 1.62995e-07
+running time: 433.467 fixed point done
+done! fixed point solve.....
+log runing arguments:
+FreeFem++  HelmPMLDD.edp  -ns  -nw  -lengthoverlaps  0.025  -lengthpml  0.0125  -gmres  2  -apml  5000  -wavenumber  250  -npart  2  -additive  -DDS=1  -DNN=1  -DDA=1  -DPOU=1  -tol  1.e-6  
+running time: 443.153
+close  MUMPS_SEQ: MPI_Finalize
+-- FreeFem++ v4.13 (2024年 01月 20日 星期六 00:49:06 CST - git no git)
+   file : HelmPMLDD.edp
+ Load: lg_fem lg_mesh lg_mesh3 eigenvalue 
+init MUMPS_SEQ: MPI_Init
+
+ *** Warning  The identifier dist hide a Global identifier  
+ load: iovtk 
+
+ *** Warning  The identifier z hide a Global identifier  
+
+ *** Warning  The identifier y hide a Global identifier  
+ (already loaded: iovtk) sizestack + 1024 =53416  ( 52392 )
+
+running time: 0.000125  get k
+lambda = 0.020944
+wave number = 300
+height = 1, length = 1, lengthpml = 0.0024, layerspml = 3
+nppwl = 26.1493, h = 0.0008, k to (-1-1/2p) = 0.000800937
+  -- Square mesh : nb vertices  =1578792 ,  nb triangles = 3152560 ,  nb boundary edges 5022
+running time: 0.468392  get mesh
+ 0x561667d84ff0 VTK_FILE 2
+running time: 11.5976  define forms
+running time: 100.635  assemble A(6310143,6310143)
+running time: 104.927  assemble rhs
+running time: 104.927  direct solve
+setting up dd preconditioner.....
+ num of subdomains: 2, overlaps: 32, length of overlaps: 0.0256
+                     , gaps: 10, length of gaps: 0.008
+running time: 273.204  settup dd
+done! setting up dd preconditioner.....
+Gmres:
+ r = [ 6.46201e-06, 2.75277e-05, 1.37867e-05, 5.08673e-06, 1.03376e-06, 1.76862e-07, 2.05046e-08, 2.90352e-09, 4.72591e-10, 9.10428e-11, 1.89173e-11, 4.14722e-12];
+GMRES has converged in resudual 11 iterations 
+The relative residual is 6.41785e-07
+running time: 737.525  gmres done
+done! gmres solve.....
+Stationary iteration:
+error = [0, 8904.12, 15335, 15155.4, 15163.6, 15163.3, 15162.8, 15162.9, 15163, 15163, 15163, 15163]
+res = [2.8276e-05, 7.23328e-05, 1.60276e-05, 5.99629e-06, 1.46184e-06, 1.98496e-07, 2.71819e-08, 6.56558e-09, 2.12778e-09, 5.87873e-10, 1.31571e-10, 2.19466e-11]
+StationaryIterate has converged in 11 iterations 
+The relative residual is 7.76158e-07
+running time: 800.079 fixed point done
+done! fixed point solve.....
+log runing arguments:
+FreeFem++  HelmPMLDD.edp  -ns  -nw  -lengthoverlaps  0.025  -lengthpml  0.0125  -gmres  2  -apml  5000  -wavenumber  300  -npart  2  -additive  -DDS=1  -DNN=1  -DDA=1  -DPOU=1  -tol  1.e-6  
+running time: 815.327
+close  MUMPS_SEQ: MPI_Finalize
+-- FreeFem++ v4.13 (2024年 01月 20日 星期六 00:49:06 CST - git no git)
+   file : HelmPMLDD.edp
+ Load: lg_fem lg_mesh lg_mesh3 eigenvalue 
+init MUMPS_SEQ: MPI_Init
+
+ *** Warning  The identifier dist hide a Global identifier  
+ load: iovtk 
+
+ *** Warning  The identifier z hide a Global identifier  
+
+ *** Warning  The identifier y hide a Global identifier  
+ (already loaded: iovtk) sizestack + 1024 =53416  ( 52392 )
+
+running time: 0.00012  get k
+lambda = 0.017952
+wave number = 350
+height = 1, length = 1, lengthpml = 0.00198151, layerspml = 3
+nppwl = 27.1767, h = 0.000660502, k to (-1-1/2p) = 0.000660564
+  -- Square mesh : nb vertices  =2313441 ,  nb triangles = 4620800 ,  nb boundary edges 6080
+running time: 0.568487  get mesh
+ 0x55f7ffcd3ff0 VTK_FILE 2
+running time: 17.0537  define forms
+running time: 144.368  assemble A(9247681,9247681)
+running time: 150.598  assemble rhs
+running time: 150.598  direct solve
+setting up dd preconditioner.....
+ num of subdomains: 2, overlaps: 38, length of overlaps: 0.0250991
+                     , gaps: 12, length of gaps: 0.00792602
+running time: 404.4  settup dd
+done! setting up dd preconditioner.....
+Gmres:
+ r = [ 5.41322e-06, 2.09098e-05, 5.94236e-06, 1.36467e-06, 1.38575e-07, 9.55278e-09, 8.32822e-10, 9.5349e-11, 9.30856e-12, 1.02364e-12];
+GMRES has converged in resudual 9 iterations 
+The relative residual is 1.89101e-07
+running time: 1175.75  gmres done
+done! gmres solve.....
+Stationary iteration:
+error = [0, 11253.3, 19898.1, 19845.1, 19848.8, 19849, 19848.8, 19848.8, 19848.8, 19848.8]
+res = [2.15992e-05, 4.91375e-05, 6.20959e-06, 1.65505e-06, 2.05892e-07, 1.19869e-08, 2.32833e-09, 5.46572e-10, 8.70289e-11, 1.17264e-11]
+StationaryIterate has converged in 9 iterations 
+The relative residual is 5.42909e-07
+running time: 1253.68 fixed point done
+done! fixed point solve.....
+log runing arguments:
+FreeFem++  HelmPMLDD.edp  -ns  -nw  -lengthoverlaps  0.025  -lengthpml  0.0125  -gmres  2  -apml  5000  -wavenumber  350  -npart  2  -additive  -DDS=1  -DNN=1  -DDA=1  -DPOU=1  -tol  1.e-6  
+running time: 1276.12
+close  MUMPS_SEQ: MPI_Finalize
+-- FreeFem++ v4.13 (2024年 01月 20日 星期六 00:49:06 CST - git no git)
+   file : HelmPMLDD.edp
+ Load: lg_fem lg_mesh lg_mesh3 eigenvalue 
+init MUMPS_SEQ: MPI_Init
+
+ *** Warning  The identifier dist hide a Global identifier  
+ load: iovtk 
+
+ *** Warning  The identifier z hide a Global identifier  
+
+ *** Warning  The identifier y hide a Global identifier  
+ (already loaded: iovtk) sizestack + 1024 =53416  ( 52392 )
+
+running time: 0.000123  get k
+lambda = 0.0628319
+wave number = 100
+height = 1, length = 1, lengthpml = 0.00943396, layerspml = 3
+nppwl = 19.8692, h = 0.00314465, k to (-1-1/2p) = 0.00316228
+  -- Square mesh : nb vertices  =105625 ,  nb triangles = 209952 ,  nb boundary edges 1296
+running time: 0.033726  get mesh
+ 0x5580b9c38ff0 VTK_FILE 2
+running time: 0.724838  define forms
+running time: 6.10768  assemble A(421201,421201)
+running time: 6.38769  assemble rhs
+running time: 6.3877  direct solve
+setting up dd preconditioner.....
+ num of subdomains: 2, overlaps: 1, length of overlaps: 0.00314465
+                     , gaps: 1, length of gaps: 0.00314465
+running time: 15.9645  settup dd
+done! setting up dd preconditioner.....
+Gmres:
+ r = [ 8.752e-06, 0.000193376, 0.000115357, 2.18916e-05, 2.27008e-06, 2.40545e-07, 3.4335e-08, 4.81569e-09, 7.35482e-10, 1.12523e-10, 1.09116e-11, 8.09484e-13];
+GMRES has converged in resudual 11 iterations 
+The relative residual is 9.24914e-08
+running time: 28.8549  gmres done
+done! gmres solve.....
+Stationary iteration:
+error = [0, 1141.12, 2214.15, 2248.42, 2254.09, 2254.71, 2254.7, 2254.69, 2254.69, 2254.69, 2254.69]
+res = [0.000193574, 0.00147957, 0.000143336, 3.84562e-05, 8.49601e-06, 1.45425e-06, 2.01379e-07, 2.45664e-08, 3.65988e-09, 8.01327e-10, 1.65319e-10]
+StationaryIterate has converged in 10 iterations 
+The relative residual is 8.54034e-07
+running time: 31.6295 fixed point done
+done! fixed point solve.....
+log runing arguments:
+FreeFem++  HelmPMLDD.edp  -ns  -nw  -overlaps  1  -lengthpml  0.025  -gmres  2  -apml  5000  -wavenumber  100  -npart  2  -additive  -DDS=1  -DNN=1  -DDA=1  -DPOU=1  -tol  1.e-6  
+running time: 32.6694
+close  MUMPS_SEQ: MPI_Finalize
+-- FreeFem++ v4.13 (2024年 01月 20日 星期六 00:49:06 CST - git no git)
+   file : HelmPMLDD.edp
+ Load: lg_fem lg_mesh lg_mesh3 eigenvalue 
+init MUMPS_SEQ: MPI_Init
+
+ *** Warning  The identifier dist hide a Global identifier  
+ load: iovtk 
+
+ *** Warning  The identifier z hide a Global identifier  
+
+ *** Warning  The identifier y hide a Global identifier  
+ (already loaded: iovtk) sizestack + 1024 =53416  ( 52392 )
+
+running time: 0.000129  get k
+lambda = 0.0418879
+wave number = 150
+height = 1, length = 1, lengthpml = 0.00570342, layerspml = 3
+nppwl = 21.9889, h = 0.00190114, k to (-1-1/2p) = 0.00190496
+  -- Square mesh : nb vertices  =284089 ,  nb triangles = 566048 ,  nb boundary edges 2128
+running time: 0.094541  get mesh
+ 0x5560ba873ff0 VTK_FILE 2
+running time: 1.94311  define forms
+running time: 17.0005  assemble A(1134225,1134225)
+running time: 17.763  assemble rhs
+running time: 17.763  direct solve
+setting up dd preconditioner.....
+ num of subdomains: 2, overlaps: 1, length of overlaps: 0.00190114
+                     , gaps: 1, length of gaps: 0.00190114
+running time: 44.5923  settup dd
+done! setting up dd preconditioner.....
+Gmres:
+ r = [ 3.1165e-06, 9.51839e-05, 7.34112e-05, 2.68421e-05, 5.01461e-06, 8.67772e-07, 1.75115e-07, 2.75837e-08, 4.63486e-09, 9.314e-10, 1.73139e-10, 3.90072e-11, 8.33954e-12, 1.25994e-12];
+GMRES has converged in resudual 13 iterations 
+The relative residual is 4.04279e-07
+running time: 90.8891  gmres done
+done! gmres solve.....
+Stationary iteration:
+error = [0, 2265.86, 4416.99, 4508.76, 4531.7, 4537.9, 4539.1, 4539.16, 4539.12, 4539.1, 4539.09, 4539.09, 4539.09, 4539.09, 4539.09]
+res = [9.52349e-05, 0.00094702, 0.000114883, 4.39716e-05, 1.62357e-05, 5.29738e-06, 1.52611e-06, 3.94965e-07, 9.53338e-08, 2.20205e-08, 5.12542e-09, 1.40688e-09, 4.58742e-10, 1.48214e-10, 4.43756e-11]
+StationaryIterate has converged in 14 iterations 
+The relative residual is 4.6596e-07
+running time: 102.484 fixed point done
+done! fixed point solve.....
+log runing arguments:
+FreeFem++  HelmPMLDD.edp  -ns  -nw  -overlaps  1  -lengthpml  0.025  -gmres  2  -apml  5000  -wavenumber  150  -npart  2  -additive  -DDS=1  -DNN=1  -DDA=1  -DPOU=1  -tol  1.e-6  
+running time: 105.271
+close  MUMPS_SEQ: MPI_Finalize
+-- FreeFem++ v4.13 (2024年 01月 20日 星期六 00:49:06 CST - git no git)
+   file : HelmPMLDD.edp
+ Load: lg_fem lg_mesh lg_mesh3 eigenvalue 
+init MUMPS_SEQ: MPI_Init
+
+ *** Warning  The identifier dist hide a Global identifier  
+ load: iovtk 
+
+ *** Warning  The identifier z hide a Global identifier  
+
+ *** Warning  The identifier y hide a Global identifier  
+ (already loaded: iovtk) sizestack + 1024 =53416  ( 52392 )
+
+running time: 0.000123  get k
+lambda = 0.0314159
+wave number = 200
+height = 1, length = 1, lengthpml = 0.00397878, layerspml = 3
+nppwl = 23.6286, h = 0.00132626, k to (-1-1/2p) = 0.00132957
+  -- Square mesh : nb vertices  =579121 ,  nb triangles = 1155200 ,  nb boundary edges 3040
+running time: 0.192521  get mesh
+ 0x5608940acff0 VTK_FILE 2
+running time: 4.15646  define forms
+running time: 35.4692  assemble A(2313441,2313441)
+running time: 37.0315  assemble rhs
+running time: 37.0315  direct solve
+setting up dd preconditioner.....
+ num of subdomains: 2, overlaps: 1, length of overlaps: 0.00132626
+                     , gaps: 1, length of gaps: 0.00132626
+running time: 94.1404  settup dd
+done! setting up dd preconditioner.....
+Gmres:
+ r = [ 1.49752e-06, 5.74357e-05, 4.91413e-05, 2.57925e-05, 7.0277e-06, 1.64303e-06, 4.4351e-07, 1.07301e-07, 2.14021e-08, 4.6785e-09, 8.5598e-10, 1.86627e-10, 4.25422e-11, 1.04966e-11, 2.46712e-12, 5.55395e-13];
+GMRES has converged in resudual 15 iterations 
+The relative residual is 3.70877e-07
+running time: 213.685  gmres done
+done! gmres solve.....
+Stationary iteration:
+error = [0, 3710.81, 7237.2, 7412.19, 7462.13, 7480.75, 7487.06, 7488.73, 7488.96, 7488.9, 7488.85, 7488.83, 7488.83, 7488.83, 7488.83, 7488.83, 7488.83, 7488.83]
+res = [5.74553e-05, 0.000689237, 9.47441e-05, 4.23778e-05, 1.97571e-05, 8.63734e-06, 3.48668e-06, 1.29926e-06, 4.5403e-07, 1.52618e-07, 5.09865e-08, 1.71255e-08, 5.79871e-09, 2.04007e-09, 7.78144e-10, 3.14769e-10, 1.27068e-10, 4.97563e-11]
+StationaryIterate has converged in 17 iterations 
+The relative residual is 8.66001e-07
+running time: 245.128 fixed point done
+done! fixed point solve.....
+log runing arguments:
+FreeFem++  HelmPMLDD.edp  -ns  -nw  -overlaps  1  -lengthpml  0.025  -gmres  2  -apml  5000  -wavenumber  200  -npart  2  -additive  -DDS=1  -DNN=1  -DDA=1  -DPOU=1  -tol  1.e-6  
+running time: 250.724
+close  MUMPS_SEQ: MPI_Finalize
+-- FreeFem++ v4.13 (2024年 01月 20日 星期六 00:49:06 CST - git no git)
+   file : HelmPMLDD.edp
+ Load: lg_fem lg_mesh lg_mesh3 eigenvalue 
+init MUMPS_SEQ: MPI_Init
+
+ *** Warning  The identifier dist hide a Global identifier  
+ load: iovtk 
+
+ *** Warning  The identifier z hide a Global identifier  
+
+ *** Warning  The identifier y hide a Global identifier  
+ (already loaded: iovtk) sizestack + 1024 =53416  ( 52392 )
+
+running time: 0.000118  get k
+lambda = 0.0251327
+wave number = 250
+height = 1, length = 1, lengthpml = 0.00301205, layerspml = 3
+nppwl = 24.9842, h = 0.00100402, k to (-1-1/2p) = 0.00100595
+  -- Square mesh : nb vertices  =1006009 ,  nb triangles = 2008008 ,  nb boundary edges 4008
+running time: 0.324127  get mesh
+ 0x55b7cea67fd0 VTK_FILE 2
+running time: 7.00016  define forms
+running time: 61.9427  assemble A(4020025,4020025)
+running time: 64.6465  assemble rhs
+running time: 64.6466  direct solve
+setting up dd preconditioner.....
+ num of subdomains: 2, overlaps: 1, length of overlaps: 0.00100402
+                     , gaps: 1, length of gaps: 0.00100402
+running time: 165.812  settup dd
+done! setting up dd preconditioner.....
+Gmres:
+ r = [ 8.50968e-07, 3.88659e-05, 3.49448e-05, 2.2439e-05, 8.03222e-06, 2.29551e-06, 7.37189e-07, 2.30608e-07, 5.81682e-08, 1.56042e-08, 3.78915e-09, 8.88201e-10, 2.22802e-10, 5.77656e-11, 1.41736e-11, 3.36139e-12, 8.3776e-13];
+GMRES has converged in resudual 16 iterations 
+The relative residual is 9.84478e-07
+running time: 420.642  gmres done
+done! gmres solve.....
+Stationary iteration:
+error = [0, 5441.94, 10610.3, 10893.9, 10978.3, 11014.9, 11030.6, 11036.7, 11038.6, 11039, 11039, 11038.9, 11038.9, 11038.9, 11038.9, 11038.9, 11038.9, 11038.9, 11038.9, 11038.9, 11038.9, 11038.9]
+res = [3.88752e-05, 0.000539065, 7.98723e-05, 3.87204e-05, 2.04867e-05, 1.05104e-05, 5.1141e-06, 2.34371e-06, 1.01452e-06, 4.18248e-07, 1.67915e-07, 6.76344e-08, 2.79999e-08, 1.18571e-08, 5.055e-09, 2.16912e-09, 9.53521e-10, 4.33867e-10, 2.01332e-10, 9.3341e-11, 4.26775e-11, 1.92109e-11]
+StationaryIterate has converged in 21 iterations 
+The relative residual is 4.94168e-07
+running time: 489.878 fixed point done
+done! fixed point solve.....
+log runing arguments:
+FreeFem++  HelmPMLDD.edp  -ns  -nw  -overlaps  1  -lengthpml  0.025  -gmres  2  -apml  5000  -wavenumber  250  -npart  2  -additive  -DDS=1  -DNN=1  -DDA=1  -DPOU=1  -tol  1.e-6  
+running time: 499.573
+close  MUMPS_SEQ: MPI_Finalize
+-- FreeFem++ v4.13 (2024年 01月 20日 星期六 00:49:06 CST - git no git)
+   file : HelmPMLDD.edp
+ Load: lg_fem lg_mesh lg_mesh3 eigenvalue 
+init MUMPS_SEQ: MPI_Init
+
+ *** Warning  The identifier dist hide a Global identifier  
+ load: iovtk 
+
+ *** Warning  The identifier z hide a Global identifier  
+
+ *** Warning  The identifier y hide a Global identifier  
+ (already loaded: iovtk) sizestack + 1024 =53416  ( 52392 )
+
+running time: 0.000164  get k
+lambda = 0.020944
+wave number = 300
+height = 1, length = 1, lengthpml = 0.0024, layerspml = 3
+nppwl = 26.1493, h = 0.0008, k to (-1-1/2p) = 0.000800937
+  -- Square mesh : nb vertices  =1578792 ,  nb triangles = 3152560 ,  nb boundary edges 5022
+running time: 0.482203  get mesh
+ 0x55557c9a7ff0 VTK_FILE 2
+running time: 11.1329  define forms
+running time: 99.3969  assemble A(6310143,6310143)
+running time: 103.65  assemble rhs
+running time: 103.65  direct solve
+setting up dd preconditioner.....
+ num of subdomains: 2, overlaps: 1, length of overlaps: 0.0008
+                     , gaps: 1, length of gaps: 0.0008
+running time: 264.171  settup dd
+done! setting up dd preconditioner.....
+Gmres:
+ r = [ 1.11969e-06, 2.82538e-05, 2.71363e-05, 2.34861e-05, 1.6345e-05, 8.87797e-06, 4.70364e-06, 2.12062e-06, 9.22721e-07, 3.89129e-07, 1.50231e-07, 5.63811e-08, 2.05437e-08, 7.14523e-09, 2.42099e-09, 8.59663e-10, 3.02906e-10, 1.121e-10, 4.431e-11, 1.56206e-11, 4.35262e-12, 1.29662e-12, 3.90258e-13];
+GMRES has converged in resudual 22 iterations 
+The relative residual is 3.48541e-07
+running time: 803.855  gmres done
+done! gmres solve.....
+Stationary iteration:
+error = [0, 7382.88, 14083.8, 14862.5, 14994.5, 15061.4, 15102.2, 15126.9, 15141.8, 15150.7, 15156.1, 15159.3, 15161.1, 15162.1, 15162.6, 15162.9, 15163, 15163.1, 15163.1, 15163.1, 15163, 15163, 15163, 15163, 15163, 15163, 15163, 15163, 15163, 15163, 15163, 15163, 15163, 15163, 15163]
+res = [2.8276e-05, 0.000440306, 0.000114938, 6.14038e-05, 4.02061e-05, 2.75745e-05, 1.9017e-05, 1.2977e-05, 8.69979e-06, 5.70613e-06, 3.65331e-06, 2.27941e-06, 1.38416e-06, 8.16982e-07, 4.68019e-07, 2.59778e-07, 1.39483e-07, 7.24394e-08, 3.66166e-08, 1.84812e-08, 9.91107e-09, 6.03798e-09, 4.1025e-09, 2.88765e-09, 2.01067e-09, 1.3648e-09, 9.01767e-10, 5.81336e-10, 3.66726e-10, 2.2697e-10, 1.38113e-10, 8.27808e-11, 4.89613e-11, 2.86421e-11, 1.66284e-11]
+StationaryIterate has converged in 34 iterations 
+The relative residual is 5.88075e-07
+running time: 986.034 fixed point done
+done! fixed point solve.....
+log runing arguments:
+FreeFem++  HelmPMLDD.edp  -ns  -nw  -overlaps  1  -lengthpml  0.025  -gmres  2  -apml  5000  -wavenumber  300  -npart  2  -additive  -DDS=1  -DNN=1  -DDA=1  -DPOU=1  -tol  1.e-6  
+running time: 1001.31
+close  MUMPS_SEQ: MPI_Finalize
+-- FreeFem++ v4.13 (2024年 01月 20日 星期六 00:49:06 CST - git no git)
+   file : HelmPMLDD.edp
+ Load: lg_fem lg_mesh lg_mesh3 eigenvalue 
+init MUMPS_SEQ: MPI_Init
+
+ *** Warning  The identifier dist hide a Global identifier  
+ load: iovtk 
+
+ *** Warning  The identifier z hide a Global identifier  
+
+ *** Warning  The identifier y hide a Global identifier  
+ (already loaded: iovtk) sizestack + 1024 =53416  ( 52392 )
+
+running time: 0.000151  get k
+lambda = 0.017952
+wave number = 350
+height = 1, length = 1, lengthpml = 0.00198151, layerspml = 3
+nppwl = 27.1767, h = 0.000660502, k to (-1-1/2p) = 0.000660564
+  -- Square mesh : nb vertices  =2313441 ,  nb triangles = 4620800 ,  nb boundary edges 6080
+running time: 0.728106  get mesh
+ 0x55fdd817aff0 VTK_FILE 2
+running time: 17.6435  define forms
+running time: 145.66  assemble A(9247681,9247681)
+running time: 151.886  assemble rhs
+running time: 151.886  direct solve
+setting up dd preconditioner.....
+ num of subdomains: 2, overlaps: 1, length of overlaps: 0.000660502
+                     , gaps: 1, length of gaps: 0.000660502
+running time: 396.295  settup dd
+done! setting up dd preconditioner.....
+Gmres:
+ r = [ 3.62786e-07, 2.15961e-05, 2.03232e-05, 1.58683e-05, 8.22839e-06, 3.11052e-06, 1.23578e-06, 5.04194e-07, 1.74062e-07, 6.14794e-08, 2.01257e-08, 6.46179e-09, 1.99098e-09, 6.22892e-10, 2.01627e-10, 6.96866e-11, 2.18598e-11, 7.45584e-12, 2.17577e-12, 5.7677e-13, 1.5392e-13];
+GMRES has converged in resudual 20 iterations 
+The relative residual is 4.24273e-07
+running time: 1272.82  gmres done
+done! gmres solve.....
+Stationary iteration:
+error = [0, 9705.27, 18908.1, 19501, 19673.6, 19759.2, 19804.5, 19828.3, 19840.2, 19845.7, 19847.9, 19848.7, 19848.8, 19848.8, 19848.8, 19848.8, 19848.8, 19848.8, 19848.8, 19848.8, 19848.8, 19848.8, 19848.8, 19848.8, 19848.8, 19848.8, 19848.8, 19848.8]
+res = [2.15992e-05, 0.000373005, 6.06069e-05, 3.16498e-05, 1.90842e-05, 1.15925e-05, 6.88907e-06, 3.96019e-06, 2.19312e-06, 1.16666e-06, 5.96406e-07, 2.9366e-07, 1.40835e-07, 6.73506e-08, 3.33838e-08, 1.76108e-08, 9.76068e-09, 5.48517e-09, 3.04839e-09, 1.66502e-09, 8.98055e-10, 4.82889e-10, 2.60539e-10, 1.41444e-10, 7.71351e-11, 4.21989e-11, 2.31276e-11, 1.26937e-11]
+StationaryIterate has converged in 27 iterations 
+The relative residual is 5.87693e-07
+running time: 1493.41 fixed point done
+done! fixed point solve.....
+log runing arguments:
+FreeFem++  HelmPMLDD.edp  -ns  -nw  -overlaps  1  -lengthpml  0.025  -gmres  2  -apml  5000  -wavenumber  350  -npart  2  -additive  -DDS=1  -DNN=1  -DDA=1  -DPOU=1  -tol  1.e-6  
+running time: 1515.83
+close  MUMPS_SEQ: MPI_Finalize

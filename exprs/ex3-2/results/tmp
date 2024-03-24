@@ -1,0 +1,60 @@
+res = [0.000193574, 5.59368e-07, 1.12555e-11]
+StationaryIterate has converged in 2 iterations 
+FreeFem++  HelmPMLDDcheckerboard.edp  -ns  -nw  -lengthoverlaps  0.025  -lengthpml  0.025  -gmres  0  -apml  5000  -wavenumber  100  -npartx  2  -sweep33  -primal  -DDS=1  -DNN=1  -DDA=1  -DPOU=1  -tol  1.e-6  
+res = [9.52349e-05, 1.68365e-07, 4.05229e-12]
+StationaryIterate has converged in 2 iterations 
+FreeFem++  HelmPMLDDcheckerboard.edp  -ns  -nw  -lengthoverlaps  0.025  -lengthpml  0.025  -gmres  0  -apml  5000  -wavenumber  150  -npartx  2  -sweep33  -primal  -DDS=1  -DNN=1  -DDA=1  -DPOU=1  -tol  1.e-6  
+res = [5.74553e-05, 5.43435e-05, 2.28955e-06, 1.49317e-07, 1.04555e-08, 7.24112e-10, 4.96278e-11]
+StationaryIterate has converged in 6 iterations 
+FreeFem++  HelmPMLDD.edp  -ns  -nw  -lengthoverlaps  0.025  -lengthpml  0.025  -gmres  0  -apml  5000  -wavenumber  200  -npart  2  -sweep4  -primal-DDS=1  -DNN=1  -DDA=1  -DPOU=1  -tol  1.e-6  
+res = [3.88752e-05, 3.47827e-05, 1.52992e-06, 9.42226e-08, 6.49765e-09, 4.43664e-10, 3.00352e-11]
+StationaryIterate has converged in 6 iterations 
+FreeFem++  HelmPMLDD.edp  -ns  -nw  -lengthoverlaps  0.025  -lengthpml  0.025  -gmres  0  -apml  5000  -wavenumber  250  -npart  2  -sweep4  -primal-DDS=1  -DNN=1  -DDA=1  -DPOU=1  -tol  1.e-6  
+res = [2.8276e-05, 2.91288e-05, 2.68862e-06, 1.114e-07, 7.00087e-09, 4.97124e-10, 3.17406e-11, 2.13947e-12]
+StationaryIterate has converged in 7 iterations 
+FreeFem++  HelmPMLDD.edp  -ns  -nw  -lengthoverlaps  0.025  -lengthpml  0.025  -gmres  0  -apml  5000  -wavenumber  300  -npart  2  -sweep4  -primal-DDS=1  -DNN=1  -DDA=1  -DPOU=1  -tol  1.e-6  
+res = [2.15992e-05, 1.79935e-05, 8.81859e-07, 4.93928e-08, 3.34522e-09, 2.25769e-10, 1.51367e-11]
+StationaryIterate has converged in 6 iterations 
+FreeFem++  HelmPMLDD.edp  -ns  -nw  -lengthoverlaps  0.025  -lengthpml  0.025  -gmres  0  -apml  5000  -wavenumber  350  -npart  2  -sweep4  -primal-DDS=1  -DNN=1  -DDA=1  -DPOU=1  -tol  1.e-6  
+res = [0.000193574, 3.51643e-05, 1.33469e-07, 4.21999e-10, 1.12404e-12]
+StationaryIterate has converged in 4 iterations 
+FreeFem++  HelmPMLDD.edp  -ns  -nw  -lengthoverlaps  0.025  -lengthpml  0.0125  -gmres  0  -apml  5000  -wavenumber  100  -npart  2  -sweep4  -primal  -DDS=1  -DNN=1  -DDA=1  -DPOU=1  -tol  1.e-6  
+res = [9.52349e-05, 1.66198e-05, 1.64012e-07, 6.92067e-10, 6.21244e-12]
+StationaryIterate has converged in 4 iterations 
+FreeFem++  HelmPMLDD.edp  -ns  -nw  -lengthoverlaps  0.025  -lengthpml  0.0125  -gmres  0  -apml  5000  -wavenumber  150  -npart  2  -sweep4  -primal  -DDS=1  -DNN=1  -DDA=1  -DPOU=1  -tol  1.e-6  
+res = [5.74553e-05, 1.10677e-05, 2.20013e-07, 1.11577e-09, 2.34657e-11]
+StationaryIterate has converged in 4 iterations 
+FreeFem++  HelmPMLDD.edp  -ns  -nw  -lengthoverlaps  0.025  -lengthpml  0.0125  -gmres  0  -apml  5000  -wavenumber  200  -npart  2  -sweep4  -primal  -DDS=1  -DNN=1  -DDA=1  -DPOU=1  -tol  1.e-6  
+res = [3.88752e-05, 7.33161e-06, 2.10212e-07, 1.02959e-09, 3.6324e-11]
+StationaryIterate has converged in 4 iterations 
+FreeFem++  HelmPMLDD.edp  -ns  -nw  -lengthoverlaps  0.025  -lengthpml  0.0125  -gmres  0  -apml  5000  -wavenumber  250  -npart  2  -sweep4  -primal  -DDS=1  -DNN=1  -DDA=1  -DPOU=1  -tol  1.e-6  
+res = [2.8276e-05, 1.1693e-05, 1.14371e-06, 1.88789e-08, 1.36569e-09, 9.6382e-11, 3.24349e-12]
+StationaryIterate has converged in 6 iterations 
+FreeFem++  HelmPMLDD.edp  -ns  -nw  -lengthoverlaps  0.025  -lengthpml  0.0125  -gmres  0  -apml  5000  -wavenumber  300  -npart  2  -sweep4  -primal  -DDS=1  -DNN=1  -DDA=1  -DPOU=1  -tol  1.e-6  
+res = [2.15992e-05, 1.running time: 16.9781  define forms
+res = [2.15992e-05, 4.1537e-06, 1.63377e-07, 1.19969e-09, 6.03612e-11, 1.01899e-12]
+StationaryIterate has converged in 5 iterations 
+FreeFem++  HelmPMLDD.edp  -ns  -nw  -lengthoverlaps  0.025  -lengthpml  0.0125  -gmres  0  -apml  5000  -wavenumber  350  -npart  2  -sweep4  -primal  -DDS=1  -DNN=1  -DDA=1  -DPOU=1  -tol  1.e-6  
+res = [0.000193574, 0.000510314, 2.55039e-05, 5.16631e-07, 1.06743e-08, 4.65419e-10, 1.13587e-11]
+StationaryIterate has converged in 6 iterations 
+FreeFem++  HelmPMLDD.edp  -ns  -nw  -overlaps  1  -lengthpml  0.025  -gmres  0  -apml  5000  -wavenumber  100  -npart  2  -sweep4  -primal  -DDS=1  -DNN=1  -DDA=1  -DPOU=1  -tol  1.e-6  
+res = [9.52349e-05, 0.000468137, 6.31257e-05, 5.31122e-06, 3.14316e-07, 1.80228e-08, 1.74591e-09, 1.58633e-10, 1.11378e-11]
+StationaryIterate has converged in 8 iterations 
+FreeFem++  HelmPMLDD.edp  -ns  -nw  -overlaps  1  -lengthpml  0.025  -gmres  0  -apml  5000  -wavenumber  150  -npart  2  -sweep4  -primal  -DDS=1  -DNN=1  -DDA=1  -DPOU=1  -tol  1.e-6  
+res = [5.74553e-05, 0.000408485, 8.67515e-05, 1.42073e-05, 1.74556e-06, 1.95163e-07, 2.27893e-08, 3.25159e-09, 5.23214e-10, 7.52193e-11, 9.67984e-12]
+StationaryIterate has converged in 10 iterations 
+FreeFem++  HelmPMLDD.edp  -ns  -nw  -overlaps  1  -lengthpml  0.025  -gmres  0  -apml  5000  -wavenumber  200  -npart  2  -sweep4  -primal  -DDS=1  -DNN=1  -DDA=1  -DPOU=1  -tol  1.e-6  
+res = [3.88752e-05, 0.000354862, 9.64316e-05, 2.28649e-05, 4.29847e-06, 6.94955e-07, 1.18544e-07, 2.17045e-08, 4.20187e-09, 8.94125e-10, 1.86713e-10, 3.67889e-11]
+StationaryIterate has converged in 11 iterations 
+FreeFem++  HelmPMLDD.edp  -ns  -nw  -overlaps  1  -lengthpml  0.025  -gmres  0  -apml  5000  -wavenumber  250  -npart  2  -sweep4  -primal  -DDS=1  -DNN=1  -DDA=1  -DPOU=1  -tol  1.e-6  
+res = [2.8276e-05, 0.000205333, 3.00256e-05, 2.67804e-06, 1.33882e-07, 1.58432e-08, 2.83241e-09, 2.8096e-10, 1.96512e-11]
+StationaryIterate has converged in 8 iterations 
+res = [2.8276e-05, 0.000424154, 0.000161703, 6.9376e-05, 2.71944e-05, 9.35873e-06, 2.77515e-06, 6.92626e-07, 1.41847e-07, 3.22341e-08, 1.47492e-08, 6.68112e-09, 2.55998e-09, 8.63918e-10, 2.62928e-10, 7.32392e-11, 1.95794e-11]
+StationaryIterate has converged in 16 iterations 
+FreeFem++  HelmPMLDD.edp  -ns  -nw  -overlaps  1  -lengthpml  0.025  -gmres  0  -apml running time: 17.3371  define forms
+res = [2.15992e-05, 0.000166878, 1.38113e-05, 4.40898e-07, 4.81939e-08, 5.17035e-09, 3.50353e-10, 2.47892e-11, 2.66745e-12]
+StationaryIterate has converged in 8 iterations 
+FreeFem++  HelmPMLDDcheckerboard.edp  -ns  -nw  -overlaps  1  -lengthpml  0.025  -gmres  0  -apml  5000  -wavenumber  35running time: 17.1898  define forms
+res = [2.15992e-05, 0.000276847, 9.6973e-05, 3.41912e-05, 1.04954e-05, 2.74631e-06, 6.33391e-07, 1.55383e-07, 4.72468e-08, 1.46554e-08, 4.28759e-09, 1.24736e-09, 3.6987e-10, 1.10917e-10, 3.33997e-11, 9.9546e-12]
+StationaryIterate has converged in 15 iterations 
+FreeFem++  HelmPMLDD.edp  -ns  -nw  -overlaps  1  -lengthpml  0.025  -gmres  0  -apml  5000  -wavenumber  350  -npart  2  -sweep4  -primal  -DDS=1  -DNN=1  -DDA=1  -DPOU=1  -tol  1.e-6  

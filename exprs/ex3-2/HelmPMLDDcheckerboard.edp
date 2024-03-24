@@ -255,18 +255,18 @@ IFMACRO(POU, 2)
         if(i==0)
             chii = exp(-(xibn[ii]-xian[ii])/2/(abs(xibn[ii]-lengthgaps - x) +epst)) * (x<xibn[ii]-lengthgaps);
         else if(i==npartx-1)
-            chii =  exp(-(xibn[ii]-xian[ii])/2/(abs(x - xian[ii]+lengthgaps) +epst)) * (x>xian[ii]+lengthgaps);
+            chii =  exp(-(xibn[ii]-xian[ii])/2/(abs(x - xian[ii]-lengthgaps) +epst)) * (x>xian[ii]+lengthgaps);
         else
             chii = exp(-(xibn[ii]-xian[ii])^2/4/(abs(xibn[ii]-lengthgaps - x) +epst)
-                                     /(abs(x - xian[ii]+lengthgaps) +epst))
+                                     /(abs(x - xian[ii]-lengthgaps) +epst))
                                      * (x<xibn[ii]-lengthgaps)* (x>xian[ii]+lengthgaps);
         if(j==0)
             chiiy = exp(-(yibn[ii]-yian[ii])/2/(abs(yibn[ii]-lengthgaps - y) +epst)) * (y<yibn[ii]-lengthgaps);
         else if(j==npartx-1)
-            chiiy =  exp(-(yibn[ii]-yian[ii])/2/(abs(y - yian[ii]+lengthgaps) +epst)) * (y>yian[ii]+lengthgaps);
+            chiiy =  exp(-(yibn[ii]-yian[ii])/2/(abs(y - yian[ii]-lengthgaps) +epst)) * (y>yian[ii]+lengthgaps);
         else
             chiiy = exp(-(yibn[ii]-yian[ii])^2/4/(abs(yibn[ii]-lengthgaps - y) +epst)
-                                     /(abs(y - yian[ii]+lengthgaps) +epst))
+                                     /(abs(y - yian[ii]-lengthgaps) +epst))
                                      * (y<yibn[ii]-lengthgaps)* (y>yian[ii]+lengthgaps);
 ENDIFMACRO
 
