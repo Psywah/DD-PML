@@ -222,6 +222,7 @@ func complex[int] GMRES(complex[int] x0, real eps, int nbiter)
     //filei << "relres("+1+")=" << g[0] << ";" << endl;
     V[0][]=1/g[0]*z[];           // first basis vector
     real solL20=x0.l2;
+    real initialresidual=abs(g[0]);
     bool convgRes = false;
     for(int it=0; it<nbiter; it++){
         Vp[it][] = PREC(V[it][]);
@@ -275,7 +276,7 @@ func complex[int] GMRES(complex[int] x0, real eps, int nbiter)
         if(it==0)
         {
             //cout << "It: "<< it << " Residual = " << abs(g[0])  <<  " sol L2 =  "<<solL20<< endl;
-            cout<<" r = [ "<< abs(g[0]);
+            cout<<" r = [ "<< initialresidual;
         }
         //cout << "It: "<< it << " Residual = " << relres   <<  " sol L2 =  "<<solL2<< endl;
         cout<< ", "<< relres;
@@ -291,12 +292,12 @@ func complex[int] GMRES(complex[int] x0, real eps, int nbiter)
                  cout << "The relative error is " +  solL2/solL20 << endl;
                  break;	
                  }
-         */      if(!convgRes && relres/abs(g[0]) < eps) //relres
+         */      if(!convgRes && relres/initialresidual < eps) //relres
         {
             convgRes = true;
             cout <<"];"<<endl;
             cout << "GMRES has converged in resudual " + (it+1) + " iterations " << endl;
-            cout << "The relative residual is " +  relres/abs(g[0]) << endl;
+            cout << "The relative residual is " +  relres/initialresidual << endl;
             break;
             cout << endl;
         }
